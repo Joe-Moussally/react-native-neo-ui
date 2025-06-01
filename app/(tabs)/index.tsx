@@ -1,5 +1,6 @@
+import { Typography } from "@/core/components/Typography";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../core/theme";
 
 export default function HomeScreen() {
@@ -13,30 +14,27 @@ export default function HomeScreen() {
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <Text style={[styles.title, { color: theme.colors.text }]}>Home</Text>
+      <Typography variant="h1" style={styles.title}>
+        Home
+      </Typography>
 
       <View style={styles.infoContainer}>
-        <Text style={[styles.text, { color: theme.colors.text }]}>
+        <Typography variant="body" style={styles.text}>
           Current theme: {themeType}
-        </Text>
+        </Typography>
 
         <TouchableOpacity
           style={[styles.button, { backgroundColor: theme.colors.primary }]}
           onPress={toggleTheme}
         >
-          <Text
-            style={[
-              styles.buttonText,
-              {
-                color:
-                  theme.colors.text === theme.colors.background
-                    ? theme.colors.text
-                    : "white",
-              },
-            ]}
+          <Typography
+            variant="button"
+            weight="medium"
+            style={styles.buttonText}
+            color="white"
           >
             Toggle Theme
-          </Text>
+          </Typography>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -46,19 +44,14 @@ export default function HomeScreen() {
           ]}
           onPress={() => setThemeType("system")}
         >
-          <Text
-            style={[
-              styles.buttonText,
-              {
-                color:
-                  theme.colors.text === theme.colors.background
-                    ? theme.colors.text
-                    : "white",
-              },
-            ]}
+          <Typography
+            variant="button"
+            weight="medium"
+            style={styles.buttonText}
+            color="white"
           >
             Use System Theme
-          </Text>
+          </Typography>
         </TouchableOpacity>
       </View>
     </View>
@@ -73,8 +66,6 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
     marginBottom: 20,
   },
   infoContainer: {
@@ -83,7 +74,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 16,
     marginBottom: 20,
     textAlign: "center",
   },
@@ -95,7 +85,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: {
-    fontSize: 16,
-    fontWeight: "500",
+    color: "white",
   },
 });

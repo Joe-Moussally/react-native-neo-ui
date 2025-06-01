@@ -1,5 +1,6 @@
+import { Typography } from "@/core/components/Typography";
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { useTheme } from "../../core/theme";
 
 export default function ExploreScreen() {
@@ -25,12 +26,17 @@ export default function ExploreScreen() {
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <Text style={[styles.title, { color: theme.colors.text }]}>
+      <Typography variant="h1" style={styles.title}>
         Color Palette
-      </Text>
-      <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>
+      </Typography>
+
+      <Typography
+        variant="bodyLarge"
+        color={theme.colors.textSecondary}
+        style={styles.subtitle}
+      >
         {theme.isDark ? "Dark Theme" : "Light Theme"}
-      </Text>
+      </Typography>
 
       <ScrollView
         style={styles.scrollView}
@@ -42,17 +48,20 @@ export default function ExploreScreen() {
               style={[styles.colorSwatch, { backgroundColor: item.color }]}
             />
             <View style={styles.colorInfo}>
-              <Text style={[styles.colorName, { color: theme.colors.text }]}>
+              <Typography
+                variant="body"
+                weight="medium"
+                style={styles.colorName}
+              >
                 {item.name}
-              </Text>
-              <Text
-                style={[
-                  styles.colorValue,
-                  { color: theme.colors.textSecondary },
-                ]}
+              </Typography>
+              <Typography
+                variant="bodySmall"
+                color={theme.colors.textSecondary}
+                style={styles.colorValue}
               >
                 {item.color}
-              </Text>
+              </Typography>
             </View>
           </View>
         ))}
@@ -67,12 +76,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
     marginBottom: 5,
   },
   subtitle: {
-    fontSize: 16,
     marginBottom: 20,
   },
   scrollView: {
@@ -96,11 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   colorName: {
-    fontSize: 16,
-    fontWeight: "500",
     marginBottom: 2,
   },
-  colorValue: {
-    fontSize: 14,
-  },
+  colorValue: {},
 });
