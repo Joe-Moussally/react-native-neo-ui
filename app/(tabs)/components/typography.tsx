@@ -1,10 +1,10 @@
+import { Screen } from "@/core/components/Screen";
 import { Typography } from "@/core/components/Typography";
 import {
   TypographyVariant,
   TypographyWeight,
 } from "@/core/components/Typography/types";
 import { useTheme } from "@/core/theme";
-import { Stack } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 
@@ -126,11 +126,7 @@ export default function TypographyScreen() {
   };
 
   return (
-    <View
-      style={[styles.container, { backgroundColor: theme.colors.background }]}
-    >
-      <Stack.Screen options={{ title: "Typography" }} />
-
+    <Screen title="Typography">
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.section}>
           <Typography variant="h2" style={styles.sectionTitle}>
@@ -160,14 +156,11 @@ export default function TypographyScreen() {
           {renderCombinedExamples()}
         </View>
       </ScrollView>
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   content: {
     padding: 16,
     paddingBottom: 40,

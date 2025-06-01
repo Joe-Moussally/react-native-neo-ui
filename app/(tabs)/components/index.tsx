@@ -1,3 +1,4 @@
+import { Screen } from "@/core/components/Screen";
 import { Typography } from "@/core/components/Typography";
 import { useTheme } from "@/core/theme";
 import { router } from "expo-router";
@@ -54,25 +55,30 @@ export default function ComponentsScreen() {
   );
 
   return (
-    <View
-      style={[styles.container, { backgroundColor: theme.colors.background }]}
-    >
+    <Screen title="Components">
       <FlatList
-        data={COMPONENTS}
+        data={[
+          ...COMPONENTS,
+          ...COMPONENTS,
+          ...COMPONENTS,
+          ...COMPONENTS,
+          ...COMPONENTS,
+          ...COMPONENTS,
+          ...COMPONENTS,
+          ...COMPONENTS,
+        ]}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
       />
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   list: {
     padding: 16,
+    flex: 1,
   },
   componentCard: {
     borderRadius: 12,
