@@ -15,7 +15,12 @@ export default function ComponentsLayout() {
         contentStyle: {
           backgroundColor: theme.colors.background,
         },
+        headerBackButtonMenuEnabled: false,
+        headerBackButtonDisplayMode: "minimal",
       }}
-    />
+    >
+      <Stack.Screen name="index" options={{ title: "Components" }} />
+      <Stack.Screen name="typography" options={{ title: "Typography" }} />
+    </Stack>
   );
 }

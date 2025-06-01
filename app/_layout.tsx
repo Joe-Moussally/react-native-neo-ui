@@ -10,15 +10,12 @@ const AppStack = () => {
 
   return (
     <>
-      <Stack>
-        <Stack.Screen
-          name="(tabs)"
-          options={{
-            headerShown: false,
-            contentStyle: { backgroundColor: theme.colors.background },
-          }}
-        />
-      </Stack>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: theme.colors.background },
+        }}
+      />
       <StatusBar style={theme.isDark ? "light" : "dark"} />
     </>
   );

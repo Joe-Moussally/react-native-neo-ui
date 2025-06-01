@@ -54,6 +54,7 @@ export default function TabLayout() {
         name="components"
         options={{
           title: "Components",
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="cubes" size={size} color={color} />
           ),
