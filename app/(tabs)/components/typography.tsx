@@ -1,9 +1,9 @@
-import { Screen } from "@/core/components/Screen";
 import { Typography } from "@/core/components/Typography";
 import {
   TypographyVariant,
   TypographyWeight,
 } from "@/core/components/Typography/types";
+import { Screen } from "@/core/navigation/Screen";
 import { useTheme } from "@/core/theme";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
@@ -162,14 +162,14 @@ export default function TypographyScreen() {
 
 const styles = StyleSheet.create({
   content: {
-    padding: 16,
-    paddingBottom: 40,
+    // padding: 16,
+    // paddingBottom: 40,
   },
   section: {
-    marginBottom: 24,
+    // marginBottom: 24,
   },
   sectionTitle: {
-    marginBottom: 16,
+    // marginBottom: 16,
   },
   exampleContainer: {
     marginBottom: 12,

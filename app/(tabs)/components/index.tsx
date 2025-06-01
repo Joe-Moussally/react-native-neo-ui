@@ -1,5 +1,5 @@
-import { Screen } from "@/core/components/Screen";
 import { Typography } from "@/core/components/Typography";
+import { Screen } from "@/core/navigation/Screen";
 import { useTheme } from "@/core/theme";
 import { router } from "expo-router";
 import React from "react";
@@ -68,7 +68,7 @@ export default function ComponentsScreen() {
           ...COMPONENTS,
         ]}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => `${item.id}-${index}`}
         contentContainerStyle={styles.list}
       />
     </Screen>
@@ -78,7 +78,6 @@ export default function ComponentsScreen() {
 const styles = StyleSheet.create({
   list: {
     padding: 16,
-    flex: 1,
   },
   componentCard: {
     borderRadius: 12,

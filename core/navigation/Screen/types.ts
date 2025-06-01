@@ -8,6 +8,6 @@ export interface ScreenProps {
   useSafeArea?: boolean;
   headerLeft?: () => ReactNode;
   headerRight?: () => ReactNode;
-  stackOptions?: Partial<NativeStackNavigationOptions>;
+  options?: Partial<NativeStackNavigationOptions>;
   style?: ViewStyle;
 }

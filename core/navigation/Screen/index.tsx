@@ -2,6 +2,7 @@ import { useTheme } from "@/core/theme";
 import { Stack } from "expo-router";
 import React from "react";
 import { SafeAreaView, StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ScreenProps } from "./types";
 
 export const Screen: React.FC<ScreenProps> = ({
@@ -10,10 +11,11 @@ export const Screen: React.FC<ScreenProps> = ({
   useSafeArea = true,
   headerLeft,
   headerRight,
-  stackOptions,
+  options,
   style,
 }) => {
   const { theme } = useTheme();
+  const insets = useSafeAreaInsets();
 
   // Combine default stack options with custom ones
   const screenOptions = {
@@ -27,7 +29,9 @@ export const Screen: React.FC<ScreenProps> = ({
     headerTitleStyle: {
       color: theme.colors.text,
     },
-    ...stackOptions,
+    headerBackButtonMenuEnabled: false,
+    headerBackButtonDisplayMode: "minimal",
+    ...options,
   };
 
   const Container = useSafeArea ? SafeAreaView : View;
@@ -40,6 +44,8 @@ export const Screen: React.FC<ScreenProps> = ({
           styles.container,
           {
             backgroundColor: theme.colors.background,
+            // Add bottom padding to account for tab bar when using SafeAreaView
+            paddingBottom: useSafeArea ? insets.bottom : 0,
           },
           style,
         ]}
