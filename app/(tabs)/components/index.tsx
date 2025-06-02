@@ -21,6 +21,12 @@ const COMPONENTS: ComponentItem[] = [
     description: "Text components with different variants and weights",
     route: "/components/typography",
   },
+  {
+    id: "button",
+    name: "Button",
+    description: "Interactive button components with various styles and states",
+    route: "/components/button",
+  },
   // Add more components here as they are created
 ];
 
@@ -57,16 +63,7 @@ export default function ComponentsScreen() {
   return (
     <Screen title="Components">
       <FlatList
-        data={[
-          ...COMPONENTS,
-          ...COMPONENTS,
-          ...COMPONENTS,
-          ...COMPONENTS,
-          ...COMPONENTS,
-          ...COMPONENTS,
-          ...COMPONENTS,
-          ...COMPONENTS,
-        ]}
+        data={[...COMPONENTS]}
         renderItem={renderItem}
         keyExtractor={(item, index) => `${item.id}-${index}`}
         contentContainerStyle={styles.list}
