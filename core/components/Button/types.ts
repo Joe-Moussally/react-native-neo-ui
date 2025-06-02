@@ -5,6 +5,7 @@ export type ButtonVariant =
   | "secondary"
   | "outline"
   | "ghost"
+  | "soft"
   | "text"
   | "danger"
   | "success"
@@ -29,8 +30,9 @@ export interface ButtonProps extends Omit<TouchableOpacityProps, "style"> {
   fullWidth?: boolean;
   loading?: boolean;
   disabled?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
   children?: React.ReactNode;
   style?: TouchableOpacityProps["style"];
+  hapticsDisabled?: boolean;
 }

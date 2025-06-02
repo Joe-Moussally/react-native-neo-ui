@@ -1,5 +1,6 @@
 import { useTheme } from "@/core/theme";
 import { spacing } from "@/core/theme/spacing";
+import * as Haptics from "expo-haptics";
 import React from "react";
 import {
   ActivityIndicator,
@@ -23,13 +24,30 @@ export const Button: React.FC<ButtonProps> = ({
   fullWidth = false,
   loading = false,
   disabled = false,
-  leftIcon,
-  rightIcon,
+  startIcon,
+  endIcon,
   children,
   style,
+  hapticsDisabled = false,
+  onPressIn,
+  onPressOut,
   ...props
 }) => {
   const { theme } = useTheme();
+
+  const handlePressIn = (event: any) => {
+    if (!hapticsDisabled && !disabled && !loading) {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    onPressIn?.(event);
+  };
+
+  const handlePressOut = (event: any) => {
+    if (!hapticsDisabled && !disabled && !loading) {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    onPressOut?.(event);
+  };
 
   const getButtonColors = (
     variant: ButtonVariant,
@@ -39,7 +57,7 @@ export const Button: React.FC<ButtonProps> = ({
     if (disabled) {
       return {
         backgroundColor: theme.colors.disabled,
-        textColor: theme.colors.background,
+        textColor: theme.colors.text,
         borderColor: theme.colors.disabled,
       };
     }
@@ -68,6 +86,12 @@ export const Button: React.FC<ButtonProps> = ({
       case "ghost":
         return {
           backgroundColor: "transparent",
+          textColor: baseColor,
+          borderColor: "transparent",
+        };
+      case "soft":
+        return {
+          backgroundColor: baseColor + "15", // 15% opacity
           textColor: baseColor,
           borderColor: "transparent",
         };
@@ -118,7 +142,7 @@ export const Button: React.FC<ButtonProps> = ({
           paddingHorizontal: spacing.sm,
           borderRadius: 6,
           fontSize: 12,
-          minHeight: 28,
+          minHeight: 26,
         };
       case "sm":
         return {
@@ -126,39 +150,39 @@ export const Button: React.FC<ButtonProps> = ({
           paddingHorizontal: spacing.md,
           borderRadius: 8,
           fontSize: 14,
-          minHeight: 36,
+          minHeight: 34,
         };
       case "md":
         return {
-          paddingVertical: spacing.md,
+          paddingVertical: spacing.sm + 2,
           paddingHorizontal: spacing.lg,
           borderRadius: 10,
           fontSize: 16,
-          minHeight: 44,
+          minHeight: 42,
         };
       case "lg":
         return {
-          paddingVertical: spacing.lg,
+          paddingVertical: spacing.md,
           paddingHorizontal: spacing.xl,
           borderRadius: 12,
           fontSize: 18,
-          minHeight: 52,
+          minHeight: 50,
         };
       case "xl":
         return {
-          paddingVertical: spacing.xl,
+          paddingVertical: spacing.lg,
           paddingHorizontal: spacing.xxl,
           borderRadius: 14,
           fontSize: 20,
-          minHeight: 60,
+          minHeight: 58,
         };
       default:
         return {
-          paddingVertical: spacing.md,
+          paddingVertical: spacing.sm + 2,
           paddingHorizontal: spacing.lg,
           borderRadius: 10,
           fontSize: 16,
-          minHeight: 44,
+          minHeight: 42,
         };
     }
   };
@@ -196,6 +220,8 @@ export const Button: React.FC<ButtonProps> = ({
       style={buttonStyle}
       disabled={isDisabled}
       activeOpacity={0.7}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
       {...props}
     >
       <View style={styles.content}>
@@ -206,17 +232,15 @@ export const Button: React.FC<ButtonProps> = ({
             style={styles.loadingIndicator}
           />
         )}
-        {!loading && leftIcon && (
-          <View style={styles.leftIcon}>{leftIcon}</View>
+        {!loading && startIcon && (
+          <View style={styles.startIcon}>{startIcon}</View>
         )}
         {typeof children === "string" ? (
           <Text style={textStyle}>{children}</Text>
         ) : (
           children
         )}
-        {!loading && rightIcon && (
-          <View style={styles.rightIcon}>{rightIcon}</View>
-        )}
+        {!loading && endIcon && <View style={styles.endIcon}>{endIcon}</View>}
       </View>
     </TouchableOpacity>
   );
@@ -241,10 +265,10 @@ const styles = StyleSheet.create({
   loadingIndicator: {
     marginRight: 8,
   },
-  leftIcon: {
+  startIcon: {
     marginRight: 8,
   },
-  rightIcon: {
+  endIcon: {
     marginLeft: 8,
   },
 });
