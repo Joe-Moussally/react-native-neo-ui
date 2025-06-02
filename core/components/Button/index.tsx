@@ -49,6 +49,11 @@ export const Button: React.FC<ButtonProps> = ({
     onPressOut?.(event);
   };
 
+  // Check if this is an icon-only button (no text children)
+  const isIconOnly =
+    !children ||
+    (typeof children !== "string" && React.isValidElement(children));
+
   const getButtonColors = (
     variant: ButtonVariant,
     colorKey?: ButtonColorKey,
@@ -57,7 +62,7 @@ export const Button: React.FC<ButtonProps> = ({
     if (disabled) {
       return {
         backgroundColor: theme.colors.disabled,
-        textColor: theme.colors.text,
+        textColor: theme.colors.textSecondary,
         borderColor: theme.colors.disabled,
       };
     }
@@ -135,66 +140,69 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const getSizeStyles = (size: ButtonSize) => {
-    switch (size) {
-      case "xs":
-        return {
-          paddingVertical: spacing.xs,
-          paddingHorizontal: spacing.sm,
-          borderRadius: 6,
-          fontSize: 12,
-          minHeight: 26,
-        };
-      case "sm":
-        return {
-          paddingVertical: spacing.sm,
-          paddingHorizontal: spacing.md,
-          borderRadius: 8,
-          fontSize: 14,
-          minHeight: 34,
-        };
-      case "md":
-        return {
-          paddingVertical: spacing.sm + 2,
-          paddingHorizontal: spacing.lg,
-          borderRadius: 10,
-          fontSize: 16,
-          minHeight: 42,
-        };
-      case "lg":
-        return {
-          paddingVertical: spacing.md,
-          paddingHorizontal: spacing.xl,
-          borderRadius: 12,
-          fontSize: 18,
-          minHeight: 50,
-        };
-      case "xl":
-        return {
-          paddingVertical: spacing.lg,
-          paddingHorizontal: spacing.xxl,
-          borderRadius: 14,
-          fontSize: 20,
-          minHeight: 58,
-        };
-      default:
-        return {
-          paddingVertical: spacing.sm + 2,
-          paddingHorizontal: spacing.lg,
-          borderRadius: 10,
-          fontSize: 16,
-          minHeight: 42,
-        };
+    const baseStyles = {
+      xs: {
+        paddingVertical: spacing.xs,
+        paddingHorizontal: spacing.sm,
+        borderRadius: 6,
+        fontSize: 12,
+        minHeight: 26,
+      },
+      sm: {
+        paddingVertical: spacing.sm,
+        paddingHorizontal: spacing.md,
+        borderRadius: 8,
+        fontSize: 14,
+        minHeight: 34,
+      },
+      md: {
+        paddingVertical: spacing.sm + 2,
+        paddingHorizontal: spacing.lg,
+        borderRadius: 10,
+        fontSize: 16,
+        minHeight: 42,
+      },
+      lg: {
+        paddingVertical: spacing.md,
+        paddingHorizontal: spacing.xl,
+        borderRadius: 12,
+        fontSize: 18,
+        minHeight: 50,
+      },
+      xl: {
+        paddingVertical: spacing.lg,
+        paddingHorizontal: spacing.xxl,
+        borderRadius: 14,
+        fontSize: 20,
+        minHeight: 58,
+      },
+    };
+
+    const sizeStyle = baseStyles[size] || baseStyles.md;
+
+    // For icon-only buttons, remove horizontal padding
+    if (isIconOnly) {
+      return {
+        ...sizeStyle,
+        paddingHorizontal: 0,
+      };
     }
+
+    return sizeStyle;
   };
 
   const colors = getButtonColors(variant, color, disabled || loading);
   const sizeStyles = getSizeStyles(size);
+
+  // Determine border width - make outline variants thicker
+  const borderWidth = variant === "outline" ? 2 : 1;
 
   const buttonStyle = [
     styles.button,
     {
       backgroundColor: colors.backgroundColor,
       borderColor: colors.borderColor,
+      borderWidth,
       paddingVertical: sizeStyles.paddingVertical,
       paddingHorizontal: sizeStyles.paddingHorizontal,
       borderRadius: sizeStyles.borderRadius,
@@ -215,6 +223,16 @@ export const Button: React.FC<ButtonProps> = ({
 
   const isDisabled = disabled || loading;
 
+  // Clone icons with proper color inheritance
+  const cloneIconWithColor = (icon: React.ReactNode) => {
+    if (React.isValidElement(icon)) {
+      return React.cloneElement(icon as React.ReactElement<any>, {
+        color: colors.textColor,
+      });
+    }
+    return icon;
+  };
+
   return (
     <TouchableOpacity
       style={buttonStyle}
@@ -233,14 +251,18 @@ export const Button: React.FC<ButtonProps> = ({
           />
         )}
         {!loading && startIcon && (
-          <View style={styles.startIcon}>{startIcon}</View>
+          <View style={styles.startIcon}>{cloneIconWithColor(startIcon)}</View>
         )}
         {typeof children === "string" ? (
           <Text style={textStyle}>{children}</Text>
+        ) : React.isValidElement(children) ? (
+          cloneIconWithColor(children)
         ) : (
           children
         )}
-        {!loading && endIcon && <View style={styles.endIcon}>{endIcon}</View>}
+        {!loading && endIcon && (
+          <View style={styles.endIcon}>{cloneIconWithColor(endIcon)}</View>
+        )}
       </View>
     </TouchableOpacity>
   );
@@ -248,7 +270,6 @@ export const Button: React.FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",

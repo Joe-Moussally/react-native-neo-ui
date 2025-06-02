@@ -146,22 +146,22 @@ export default function ButtonScreen() {
       {
         label: "startIcon={<Icon />}",
         props: {
-          startIcon: <Ionicons name="mail" size={16} color="inherit" />,
+          startIcon: <Ionicons name="mail" size={16} />,
         },
         text: "Email",
       },
       {
         label: "endIcon={<Icon />}",
         props: {
-          endIcon: <Ionicons name="arrow-forward" size={16} color="inherit" />,
+          endIcon: <Ionicons name="arrow-forward" size={16} />,
         },
         text: "Next",
       },
       {
         label: "startIcon={<Icon />} endIcon={<Icon />}",
         props: {
-          startIcon: <Ionicons name="settings" size={16} color="inherit" />,
-          endIcon: <Ionicons name="flash" size={16} color="inherit" />,
+          startIcon: <Ionicons name="settings" size={16} />,
+          endIcon: <Ionicons name="flash" size={16} />,
         },
         text: "Settings",
       },
@@ -179,45 +179,45 @@ export default function ButtonScreen() {
         props: {
           variant: "primary" as ButtonVariant,
           size: "md" as ButtonSize,
-          style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 42 },
+          style: { aspectRatio: 1, minWidth: 42 },
         },
-        icon: <Ionicons name="person" size={20} color="inherit" />,
+        icon: <Ionicons name="person" size={20} />,
       },
       {
         label: "Icon Button - Outline",
         props: {
           variant: "outline" as ButtonVariant,
           size: "sm" as ButtonSize,
-          style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 34 },
+          style: { aspectRatio: 1, minWidth: 34 },
         },
-        icon: <Ionicons name="settings" size={16} color="inherit" />,
+        icon: <Ionicons name="settings" size={16} />,
       },
       {
         label: "Icon Button - Ghost",
         props: {
           variant: "ghost" as ButtonVariant,
           size: "lg" as ButtonSize,
-          style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 50 },
+          style: { aspectRatio: 1, minWidth: 50 },
         },
-        icon: <Ionicons name="heart" size={24} color="inherit" />,
+        icon: <Ionicons name="heart" size={24} />,
       },
       {
         label: "Icon Button - Soft",
         props: {
           variant: "soft" as ButtonVariant,
           size: "md" as ButtonSize,
-          style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 42 },
+          style: { aspectRatio: 1, minWidth: 42 },
         },
-        icon: <Ionicons name="star" size={20} color="inherit" />,
+        icon: <Ionicons name="star" size={20} />,
       },
       {
         label: "Icon Button - Danger",
         props: {
           variant: "danger" as ButtonVariant,
           size: "sm" as ButtonSize,
-          style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 34 },
+          style: { aspectRatio: 1, minWidth: 34 },
         },
-        icon: <Ionicons name="close" size={16} color="inherit" />,
+        icon: <Ionicons name="close" size={16} />,
       },
     ].map((example, index) => (
       <ExampleContainer key={index} label={example.label}>
@@ -251,11 +251,10 @@ export default function ButtonScreen() {
             size={size}
             style={{
               aspectRatio: 1,
-              paddingHorizontal: 0,
               minWidth: minWidths[size],
             }}
           >
-            <Ionicons name="add" size={iconSizes[size]} color="inherit" />
+            <Ionicons name="add" size={iconSizes[size]} />
           </Button>
         </ExampleContainer>
       );
@@ -332,7 +331,7 @@ export default function ButtonScreen() {
               onPress={() => toggleLoading("save")}
               startIcon={
                 !loadingStates.save ? (
-                  <Ionicons name="save" size={16} color="inherit" />
+                  <Ionicons name="save" size={16} />
                 ) : undefined
               }
             >
@@ -347,7 +346,7 @@ export default function ButtonScreen() {
               onPress={() => toggleLoading("delete")}
               startIcon={
                 !loadingStates.delete ? (
-                  <Ionicons name="trash" size={16} color="inherit" />
+                  <Ionicons name="trash" size={16} />
                 ) : undefined
               }
             >
