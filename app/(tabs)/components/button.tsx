@@ -7,6 +7,7 @@ import {
 import { Typography } from "@/core/components/Typography";
 import { Screen } from "@/core/navigation/Screen";
 import { useTheme } from "@/core/theme";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 
@@ -145,22 +146,22 @@ export default function ButtonScreen() {
       {
         label: "startIcon={<Icon />}",
         props: {
-          startIcon: <Typography style={{ color: "inherit" }}>📧</Typography>,
+          startIcon: <Ionicons name="mail" size={16} color="inherit" />,
         },
         text: "Email",
       },
       {
         label: "endIcon={<Icon />}",
         props: {
-          endIcon: <Typography style={{ color: "inherit" }}>→</Typography>,
+          endIcon: <Ionicons name="arrow-forward" size={16} color="inherit" />,
         },
         text: "Next",
       },
       {
         label: "startIcon={<Icon />} endIcon={<Icon />}",
         props: {
-          startIcon: <Typography style={{ color: "inherit" }}>⚙️</Typography>,
-          endIcon: <Typography style={{ color: "inherit" }}>⚡</Typography>,
+          startIcon: <Ionicons name="settings" size={16} color="inherit" />,
+          endIcon: <Ionicons name="flash" size={16} color="inherit" />,
         },
         text: "Settings",
       },
@@ -180,7 +181,7 @@ export default function ButtonScreen() {
           size: "md" as ButtonSize,
           style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 42 },
         },
-        icon: "👤",
+        icon: <Ionicons name="person" size={20} color="inherit" />,
       },
       {
         label: "Icon Button - Outline",
@@ -189,7 +190,7 @@ export default function ButtonScreen() {
           size: "sm" as ButtonSize,
           style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 34 },
         },
-        icon: "⚙️",
+        icon: <Ionicons name="settings" size={16} color="inherit" />,
       },
       {
         label: "Icon Button - Ghost",
@@ -198,7 +199,7 @@ export default function ButtonScreen() {
           size: "lg" as ButtonSize,
           style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 50 },
         },
-        icon: "❤️",
+        icon: <Ionicons name="heart" size={24} color="inherit" />,
       },
       {
         label: "Icon Button - Soft",
@@ -207,7 +208,7 @@ export default function ButtonScreen() {
           size: "md" as ButtonSize,
           style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 42 },
         },
-        icon: "✨",
+        icon: <Ionicons name="star" size={20} color="inherit" />,
       },
       {
         label: "Icon Button - Danger",
@@ -216,17 +217,49 @@ export default function ButtonScreen() {
           size: "sm" as ButtonSize,
           style: { aspectRatio: 1, paddingHorizontal: 0, minWidth: 34 },
         },
-        icon: "✕",
+        icon: <Ionicons name="close" size={16} color="inherit" />,
       },
     ].map((example, index) => (
       <ExampleContainer key={index} label={example.label}>
-        <Button {...example.props}>
-          <Typography style={{ color: "inherit", fontSize: 18 }}>
-            {example.icon}
-          </Typography>
-        </Button>
+        <Button {...example.props}>{example.icon}</Button>
       </ExampleContainer>
     ));
+  };
+
+  const renderIconButtonSizeExamples = () => {
+    return SIZES.map((size) => {
+      const iconSizes = {
+        xs: 12,
+        sm: 16,
+        md: 20,
+        lg: 24,
+        xl: 28,
+      };
+
+      const minWidths = {
+        xs: 26,
+        sm: 34,
+        md: 42,
+        lg: 50,
+        xl: 58,
+      };
+
+      return (
+        <ExampleContainer key={size} label={`Icon Button size="${size}"`}>
+          <Button
+            variant="primary"
+            size={size}
+            style={{
+              aspectRatio: 1,
+              paddingHorizontal: 0,
+              minWidth: minWidths[size],
+            }}
+          >
+            <Ionicons name="add" size={iconSizes[size]} color="inherit" />
+          </Button>
+        </ExampleContainer>
+      );
+    });
   };
 
   const renderCombinedExamples = () => {
@@ -285,6 +318,10 @@ export default function ButtonScreen() {
 
         <Section title="Icon Buttons">{renderIconButtonExamples()}</Section>
 
+        <Section title="Icon Button Sizes">
+          {renderIconButtonSizeExamples()}
+        </Section>
+
         <Section title="Combined Examples">{renderCombinedExamples()}</Section>
 
         <Section title="Interactive Examples">
@@ -295,7 +332,7 @@ export default function ButtonScreen() {
               onPress={() => toggleLoading("save")}
               startIcon={
                 !loadingStates.save ? (
-                  <Typography style={{ color: "inherit" }}>💾</Typography>
+                  <Ionicons name="save" size={16} color="inherit" />
                 ) : undefined
               }
             >
@@ -310,7 +347,7 @@ export default function ButtonScreen() {
               onPress={() => toggleLoading("delete")}
               startIcon={
                 !loadingStates.delete ? (
-                  <Typography style={{ color: "inherit" }}>🗑️</Typography>
+                  <Ionicons name="trash" size={16} color="inherit" />
                 ) : undefined
               }
             >

@@ -68,7 +68,7 @@ export const Button: React.FC<ButtonProps> = ({
       case "primary":
         return {
           backgroundColor: baseColor,
-          textColor: theme.colors.background,
+          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: baseColor,
         };
       case "secondary":
@@ -104,31 +104,31 @@ export const Button: React.FC<ButtonProps> = ({
       case "danger":
         return {
           backgroundColor: theme.colors.error,
-          textColor: theme.colors.background,
+          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: theme.colors.error,
         };
       case "success":
         return {
           backgroundColor: theme.colors.success,
-          textColor: theme.colors.background,
+          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: theme.colors.success,
         };
       case "warning":
         return {
           backgroundColor: theme.colors.warning,
-          textColor: theme.colors.background,
+          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: theme.colors.warning,
         };
       case "info":
         return {
           backgroundColor: theme.colors.info,
-          textColor: theme.colors.background,
+          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: theme.colors.info,
         };
       default:
         return {
           backgroundColor: baseColor,
-          textColor: theme.colors.background,
+          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: baseColor,
         };
     }
