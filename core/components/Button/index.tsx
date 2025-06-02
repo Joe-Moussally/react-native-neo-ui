@@ -5,17 +5,25 @@ import React from "react";
 import {
   ActivityIndicator,
   DimensionValue,
+  Pressable,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
 import {
   ButtonColorKey,
   ButtonProps,
   ButtonSize,
   ButtonVariant,
 } from "./types";
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export const Button: React.FC<ButtonProps> = ({
   variant = "primary",
@@ -34,11 +42,13 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const { theme } = useTheme();
+  const pressed = useSharedValue(0);
 
   const handlePressIn = (event: any) => {
     if (!hapticsDisabled && !disabled && !loading) {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
+    pressed.value = withSpring(1, { damping: 15, stiffness: 300 });
     onPressIn?.(event);
   };
 
@@ -46,6 +56,7 @@ export const Button: React.FC<ButtonProps> = ({
     if (!hapticsDisabled && !disabled && !loading) {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
+    pressed.value = withSpring(0, { damping: 15, stiffness: 300 });
     onPressOut?.(event);
   };
 
@@ -64,6 +75,7 @@ export const Button: React.FC<ButtonProps> = ({
         backgroundColor: theme.colors.disabled,
         textColor: theme.colors.textSecondary,
         borderColor: theme.colors.disabled,
+        shadowColor: theme.colors.disabled,
       };
     }
 
@@ -75,66 +87,77 @@ export const Button: React.FC<ButtonProps> = ({
           backgroundColor: baseColor,
           textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: baseColor,
+          shadowColor: baseColor,
         };
       case "secondary":
         return {
           backgroundColor: theme.colors.surface,
           textColor: baseColor,
           borderColor: theme.colors.border,
+          shadowColor: theme.colors.border,
         };
       case "outline":
         return {
           backgroundColor: "transparent",
           textColor: baseColor,
           borderColor: baseColor,
+          shadowColor: baseColor,
         };
       case "ghost":
         return {
           backgroundColor: "transparent",
           textColor: baseColor,
           borderColor: "transparent",
+          shadowColor: baseColor,
         };
       case "soft":
         return {
           backgroundColor: baseColor + "15", // 15% opacity
           textColor: baseColor,
           borderColor: "transparent",
+          shadowColor: baseColor,
         };
       case "text":
         return {
           backgroundColor: "transparent",
           textColor: baseColor,
           borderColor: "transparent",
+          shadowColor: baseColor,
         };
       case "danger":
         return {
           backgroundColor: theme.colors.error,
           textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: theme.colors.error,
+          shadowColor: theme.colors.error,
         };
       case "success":
         return {
           backgroundColor: theme.colors.success,
           textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: theme.colors.success,
+          shadowColor: theme.colors.success,
         };
       case "warning":
         return {
           backgroundColor: theme.colors.warning,
           textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: theme.colors.warning,
+          shadowColor: theme.colors.warning,
         };
       case "info":
         return {
           backgroundColor: theme.colors.info,
           textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: theme.colors.info,
+          shadowColor: theme.colors.info,
         };
       default:
         return {
           backgroundColor: baseColor,
           textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: baseColor,
+          shadowColor: baseColor,
         };
     }
   };
@@ -147,6 +170,7 @@ export const Button: React.FC<ButtonProps> = ({
         borderRadius: 6,
         fontSize: 12,
         minHeight: 26,
+        shadowOffset: 2,
       },
       sm: {
         paddingVertical: spacing.sm,
@@ -154,6 +178,7 @@ export const Button: React.FC<ButtonProps> = ({
         borderRadius: 8,
         fontSize: 14,
         minHeight: 34,
+        shadowOffset: 3,
       },
       md: {
         paddingVertical: spacing.sm + 2,
@@ -161,6 +186,7 @@ export const Button: React.FC<ButtonProps> = ({
         borderRadius: 10,
         fontSize: 16,
         minHeight: 42,
+        shadowOffset: 4,
       },
       lg: {
         paddingVertical: spacing.md,
@@ -168,6 +194,7 @@ export const Button: React.FC<ButtonProps> = ({
         borderRadius: 12,
         fontSize: 18,
         minHeight: 50,
+        shadowOffset: 5,
       },
       xl: {
         paddingVertical: spacing.lg,
@@ -175,6 +202,7 @@ export const Button: React.FC<ButtonProps> = ({
         borderRadius: 14,
         fontSize: 20,
         minHeight: 58,
+        shadowOffset: 6,
       },
     };
 
@@ -197,6 +225,36 @@ export const Button: React.FC<ButtonProps> = ({
   // Determine border width - make outline variants thicker
   const borderWidth = variant === "outline" ? 2 : 1;
 
+  // Animated styles for 3D effect
+  const animatedButtonStyle = useAnimatedStyle(() => {
+    const translateY = interpolate(
+      pressed.value,
+      [0, 1],
+      [0, sizeStyles.shadowOffset / 2]
+    );
+    const shadowOffsetY = interpolate(
+      pressed.value,
+      [0, 1],
+      [sizeStyles.shadowOffset, sizeStyles.shadowOffset / 2]
+    );
+    const shadowOpacity = interpolate(pressed.value, [0, 1], [0.3, 0.15]);
+
+    return {
+      transform: [{ translateY }],
+      shadowOffset: {
+        width: 0,
+        height: shadowOffsetY,
+      },
+      shadowOpacity,
+      shadowRadius: sizeStyles.shadowOffset,
+      elevation: interpolate(
+        pressed.value,
+        [0, 1],
+        [sizeStyles.shadowOffset, sizeStyles.shadowOffset / 2]
+      ),
+    };
+  });
+
   const buttonStyle = [
     styles.button,
     {
@@ -209,6 +267,8 @@ export const Button: React.FC<ButtonProps> = ({
       minHeight: sizeStyles.minHeight,
       opacity: disabled && !loading ? 0.6 : 1,
       width: (fullWidth ? "100%" : undefined) as DimensionValue,
+      shadowColor: colors.shadowColor,
+      marginBottom: sizeStyles.shadowOffset, // Reserve space for shadow so layout doesn't shift
     },
     style,
   ];
@@ -234,10 +294,9 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <TouchableOpacity
-      style={buttonStyle}
+    <AnimatedPressable
+      style={[buttonStyle, animatedButtonStyle]}
       disabled={isDisabled}
-      activeOpacity={0.7}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       {...props}
@@ -264,7 +323,7 @@ export const Button: React.FC<ButtonProps> = ({
           <View style={styles.endIcon}>{cloneIconWithColor(endIcon)}</View>
         )}
       </View>
-    </TouchableOpacity>
+    </AnimatedPressable>
   );
 };
 

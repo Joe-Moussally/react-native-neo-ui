@@ -1,4 +1,4 @@
-import { TouchableOpacityProps } from "react-native";
+import { PressableProps } from "react-native";
 
 export type ButtonVariant =
   | "primary"
@@ -23,7 +23,7 @@ export type ButtonColorKey =
   | "warning"
   | "info";
 
-export interface ButtonProps extends Omit<TouchableOpacityProps, "style"> {
+export interface ButtonProps extends Omit<PressableProps, "style"> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   color?: ButtonColorKey;
@@ -33,6 +33,6 @@ export interface ButtonProps extends Omit<TouchableOpacityProps, "style"> {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   children?: React.ReactNode;
-  style?: TouchableOpacityProps["style"];
+  style?: PressableProps["style"];
   hapticsDisabled?: boolean;
 }
