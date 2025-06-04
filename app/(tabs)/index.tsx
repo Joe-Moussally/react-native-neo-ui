@@ -1,6 +1,8 @@
+import { Box } from "@/core/components/Box";
+import { Button } from "@/core/components/Button";
 import { Typography } from "@/core/components/Typography";
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { useTheme } from "../../core/theme";
 
 export default function HomeScreen() {
@@ -11,50 +13,33 @@ export default function HomeScreen() {
   };
 
   return (
-    <View
+    <Box
       style={[styles.container, { backgroundColor: theme.colors.background }]}
+      padding="lg"
+      gap="lg"
     >
       <Typography variant="h1" style={styles.title}>
-        Home
+        TeamLock
       </Typography>
 
-      <View style={styles.infoContainer}>
+      <Box style={styles.infoContainer} gap="md">
         <Typography variant="body" style={styles.text}>
           Current theme: {themeType}
         </Typography>
 
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: theme.colors.primary }]}
-          onPress={toggleTheme}
-        >
-          <Typography
-            variant="button"
-            weight="medium"
-            style={styles.buttonText}
-            color="white"
-          >
-            Toggle Theme
-          </Typography>
-        </TouchableOpacity>
+        <Button variant="primary" onPress={toggleTheme} fullWidth>
+          Toggle Theme
+        </Button>
 
-        <TouchableOpacity
-          style={[
-            styles.button,
-            { backgroundColor: theme.colors.secondary, marginTop: 10 },
-          ]}
+        <Button
+          variant="secondary"
           onPress={() => setThemeType("system")}
+          fullWidth
         >
-          <Typography
-            variant="button"
-            weight="medium"
-            style={styles.buttonText}
-            color="white"
-          >
-            Use System Theme
-          </Typography>
-        </TouchableOpacity>
-      </View>
-    </View>
+          Use System Theme
+        </Button>
+      </Box>
+    </Box>
   );
 }
 
@@ -63,7 +48,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 20,
   },
   title: {
     marginBottom: 20,
@@ -76,15 +60,5 @@ const styles = StyleSheet.create({
   text: {
     marginBottom: 20,
     textAlign: "center",
-  },
-  button: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 8,
-    width: "100%",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "white",
   },
 });

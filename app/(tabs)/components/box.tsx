@@ -62,7 +62,16 @@ export default function BoxScreen() {
   const renderVariantExamples = () => {
     return VARIANTS.map((variant) => (
       <ExampleContainer key={variant} label={`variant="${variant}"`}>
-        <Box variant={variant} padding="md">
+        <Box
+          variant={variant}
+          color={variant === "transparent" ? "primary" : "primary"}
+          padding="md"
+          style={
+            variant === "transparent"
+              ? { borderWidth: 1, borderColor: theme.colors.border }
+              : undefined
+          }
+        >
           <Typography
             variant="body"
             color={variant === "solid" ? theme.colors.background : undefined}

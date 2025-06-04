@@ -6,7 +6,7 @@ import { BoxProps } from "./types";
 
 export const Box: React.FC<BoxProps> = ({
   children,
-  color = "primary",
+  color = "transparent",
   variant = "solid",
   margin,
   padding,

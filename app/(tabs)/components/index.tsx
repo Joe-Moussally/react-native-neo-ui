@@ -39,6 +39,21 @@ const COMPONENTS: ComponentItem[] = [
     route: "/components/box",
     icon: "square",
   },
+  {
+    id: "textfield",
+    name: "TextField",
+    description: "Input field component with labels, validation, and icons",
+    route: "/components/textfield",
+    icon: "create",
+  },
+  {
+    id: "chip",
+    name: "Chip",
+    description:
+      "Compact elements for tags, filters, and interactive selections",
+    route: "/components/chip",
+    icon: "pricetag",
+  },
   // Add more components here as they are created
 ];
 
