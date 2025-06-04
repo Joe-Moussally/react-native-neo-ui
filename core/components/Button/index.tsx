@@ -5,6 +5,7 @@ import React from "react";
 import {
   ActivityIndicator,
   DimensionValue,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -239,20 +240,29 @@ export const Button: React.FC<ButtonProps> = ({
     );
     const shadowOpacity = interpolate(pressed.value, [0, 1], [0.3, 0.15]);
 
-    return {
+    const baseStyle = {
       transform: [{ translateY }],
-      shadowOffset: {
-        width: 0,
-        height: shadowOffsetY,
-      },
-      shadowOpacity,
-      shadowRadius: sizeStyles.shadowOffset,
       elevation: interpolate(
         pressed.value,
         [0, 1],
         [sizeStyles.shadowOffset, sizeStyles.shadowOffset / 2]
       ),
     };
+
+    // Add iOS-specific shadow properties
+    if (Platform.OS === "ios") {
+      return {
+        ...baseStyle,
+        shadowOffset: {
+          width: 0,
+          height: shadowOffsetY,
+        },
+        shadowOpacity,
+        shadowRadius: sizeStyles.shadowOffset,
+      };
+    }
+
+    return baseStyle;
   });
 
   const buttonStyle = [
@@ -267,8 +277,8 @@ export const Button: React.FC<ButtonProps> = ({
       minHeight: sizeStyles.minHeight,
       opacity: disabled && !loading ? 0.6 : 1,
       width: (fullWidth ? "100%" : undefined) as DimensionValue,
-      shadowColor: colors.shadowColor,
       marginBottom: sizeStyles.shadowOffset, // Reserve space for shadow so layout doesn't shift
+      ...(Platform.OS === "ios" && { shadowColor: colors.shadowColor }),
     },
     style,
   ];
