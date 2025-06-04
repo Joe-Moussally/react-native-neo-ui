@@ -17,6 +17,7 @@ export default function HomeScreen() {
       style={[styles.container, { backgroundColor: theme.colors.background }]}
       padding="lg"
       gap="lg"
+      borderRadius={0}
     >
       <Typography variant="h1" style={styles.title}>
         TeamLock
