@@ -1,4 +1,5 @@
 import { useTheme } from "@/core/theme";
+import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { Stack } from "expo-router";
 import React from "react";
 import { SafeAreaView, StyleSheet, View } from "react-native";
@@ -18,7 +19,7 @@ export const Screen: React.FC<ScreenProps> = ({
   const insets = useSafeAreaInsets();
 
   // Combine default stack options with custom ones
-  const screenOptions = {
+  const screenOptions: NativeStackNavigationOptions = {
     title,
     headerLeft,
     headerRight,
@@ -31,6 +32,7 @@ export const Screen: React.FC<ScreenProps> = ({
     },
     headerBackButtonMenuEnabled: false,
     headerBackButtonDisplayMode: "minimal",
+    animation: "fade_from_bottom",
     ...options,
   };
 
@@ -45,7 +47,7 @@ export const Screen: React.FC<ScreenProps> = ({
           {
             backgroundColor: theme.colors.background,
             // Add bottom padding to account for tab bar when using SafeAreaView
-            paddingBottom: useSafeArea ? insets.bottom : 0,
+            // paddingBottom: useSafeArea ? insets.bottom : 0,
           },
           style,
         ]}
