@@ -149,12 +149,6 @@ export default function ChipScreen() {
         selected: true,
         label: "Selected",
       },
-      {
-        prop: "selectable={true}",
-        selectable: true,
-        label: "Selectable",
-        onPress: () => console.log("Chip selected"),
-      },
     ];
 
     return states.map((state, index) => (
@@ -179,7 +173,7 @@ export default function ChipScreen() {
 
     return (
       <>
-        <ExampleContainer label="Selectable Chips">
+        <ExampleContainer label="Interactive Chips">
           <View style={styles.chipsGrid}>
             {["Option 1", "Option 2", "Option 3", "Option 4"].map((option) => (
               <Chip
@@ -187,7 +181,6 @@ export default function ChipScreen() {
                 label={option}
                 variant="outline"
                 selected={selectedChips.includes(option)}
-                selectable
                 onPress={() => toggleSelection(option)}
                 margin="xs"
               />

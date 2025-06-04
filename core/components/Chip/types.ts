@@ -28,7 +28,6 @@ export interface ChipProps extends Omit<PressableProps, "style"> {
   // Actions
   onDelete?: () => void;
   deletable?: boolean;
-  selectable?: boolean;
 
   // Styling
   style?: PressableProps["style"];

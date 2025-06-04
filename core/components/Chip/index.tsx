@@ -19,7 +19,6 @@ export const Chip: React.FC<ChipProps> = ({
   margin,
   onDelete,
   deletable = false,
-  selectable = false,
   onPress,
   style,
   textStyle,
@@ -76,7 +75,7 @@ export const Chip: React.FC<ChipProps> = ({
           backgroundColor: isSelectedOrPressed ? baseColor : baseColor,
           borderWidth: 0,
           borderColor: undefined,
-          textColor: theme.colors.background,
+          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
         };
       case "soft":
         return {
@@ -140,9 +139,6 @@ export const Chip: React.FC<ChipProps> = ({
   };
 
   const handlePress = (event: any) => {
-    if (selectable && !disabled) {
-      // Handle selection logic if needed
-    }
     onPress?.(event);
   };
 
@@ -162,6 +158,7 @@ export const Chip: React.FC<ChipProps> = ({
 
   const textProps = {
     variant: "bodySmall" as const,
+    weight: "600" as const,
     style: [
       {
         color: variantStyles.textColor,
@@ -177,7 +174,7 @@ export const Chip: React.FC<ChipProps> = ({
       onPress={onPress ? handlePress : undefined}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
-      disabled={disabled || (!onPress && !selectable)}
+      disabled={disabled}
       {...props}
     >
       <View style={styles.content}>
