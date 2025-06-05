@@ -168,7 +168,7 @@ export const Button: React.FC<ButtonProps> = ({
       xs: {
         paddingVertical: spacing.xs,
         paddingHorizontal: spacing.sm,
-        borderRadius: 6,
+        borderRadius: spacing.rounded,
         fontSize: 12,
         minHeight: 26,
         shadowOffset: 2,
@@ -176,7 +176,7 @@ export const Button: React.FC<ButtonProps> = ({
       sm: {
         paddingVertical: spacing.sm,
         paddingHorizontal: spacing.md,
-        borderRadius: 8,
+        borderRadius: spacing.rounded,
         fontSize: 14,
         minHeight: 34,
         shadowOffset: 3,
@@ -184,7 +184,7 @@ export const Button: React.FC<ButtonProps> = ({
       md: {
         paddingVertical: spacing.sm + 2,
         paddingHorizontal: spacing.lg,
-        borderRadius: 10,
+        borderRadius: spacing.rounded,
         fontSize: 16,
         minHeight: 42,
         shadowOffset: 4,
@@ -192,7 +192,7 @@ export const Button: React.FC<ButtonProps> = ({
       lg: {
         paddingVertical: spacing.md,
         paddingHorizontal: spacing.xl,
-        borderRadius: 12,
+        borderRadius: spacing.rounded,
         fontSize: 18,
         minHeight: 50,
         shadowOffset: 5,
@@ -200,7 +200,7 @@ export const Button: React.FC<ButtonProps> = ({
       xl: {
         paddingVertical: spacing.lg,
         paddingHorizontal: spacing.xxl,
-        borderRadius: 14,
+        borderRadius: spacing.rounded,
         fontSize: 20,
         minHeight: 58,
         shadowOffset: 6,

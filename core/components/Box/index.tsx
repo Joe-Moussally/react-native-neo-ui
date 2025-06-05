@@ -20,7 +20,7 @@ export const Box: React.FC<BoxProps> = ({
   const { theme } = useTheme();
 
   const getBoxStyles = () => {
-    const baseColor = theme.colors[color];
+    const baseColor = theme.colors[color as keyof typeof theme.colors];
 
     let backgroundColor = "transparent";
     let borderColor = "transparent";
@@ -77,7 +77,7 @@ export const Box: React.FC<BoxProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 8,
+    borderRadius: spacing.rounded,
   },
 });
 

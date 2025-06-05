@@ -5,4 +5,5 @@ export const spacing = {
   lg: 24,
   xl: 32,
   xxl: 40,
+  rounded: 10,
 };

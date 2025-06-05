@@ -70,7 +70,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         fontSize: 14,
         paddingHorizontal: spacing.sm,
         paddingVertical: spacing.xs,
-        borderRadius: 6,
+        borderRadius: spacing.rounded,
         iconSize: 16,
       },
       md: {
@@ -78,7 +78,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         fontSize: 16,
         paddingHorizontal: spacing.md,
         paddingVertical: spacing.sm,
-        borderRadius: 8,
+        borderRadius: spacing.rounded,
         iconSize: 20,
       },
       lg: {
@@ -86,7 +86,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         fontSize: 18,
         paddingHorizontal: spacing.lg,
         paddingVertical: spacing.md,
-        borderRadius: 10,
+        borderRadius: spacing.rounded,
         iconSize: 24,
       },
     };

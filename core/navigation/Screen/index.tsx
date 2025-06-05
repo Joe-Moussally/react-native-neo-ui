@@ -2,7 +2,7 @@ import { useTheme } from "@/core/theme";
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { Stack } from "expo-router";
 import React from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ScreenProps } from "./types";
 
@@ -32,6 +32,7 @@ export const Screen: React.FC<ScreenProps> = ({
     },
     headerBackButtonMenuEnabled: false,
     headerBackButtonDisplayMode: "minimal",
+    animation: Platform.OS !== "ios" ? "fade" : "default",
     ...options,
   };
 

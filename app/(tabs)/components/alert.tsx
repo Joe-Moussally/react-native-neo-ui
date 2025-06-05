@@ -1,25 +1,20 @@
 import { Alert } from "@/core/components/Alert";
+import { Screen } from "@/core/navigation/Screen";
 import { useTheme } from "@/core/theme";
 import { spacing } from "@/core/theme/spacing";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AlertDemo() {
   const { theme } = useTheme();
 
   return (
-    <SafeAreaView
-      style={[styles.container, { backgroundColor: theme.colors.background }]}
-    >
+    <Screen title="Alert">
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={[styles.title, { color: theme.colors.text }]}>
-          Alert Component
-        </Text>
         <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>
           Display important messages with different severity levels
         </Text>
@@ -119,25 +114,17 @@ export default function AlertDemo() {
           </Alert>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   scrollView: {
     flex: 1,
   },
   contentContainer: {
     padding: spacing.lg,
     paddingBottom: spacing.xxl,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    marginBottom: spacing.xs,
   },
   subtitle: {
     fontSize: 16,

@@ -1,8 +1,9 @@
+import { Box } from "@/core/components/Box";
 import { useTheme } from "@/core/theme";
 import { spacing } from "@/core/theme/spacing";
 import Feather from "@expo/vector-icons/Feather";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { AlertProps, AlertSeverity } from "./types";
 
 export const Alert: React.FC<AlertProps> = ({
@@ -80,15 +81,6 @@ export const Alert: React.FC<AlertProps> = ({
 
   const colors = getAlertColors(severity, variant);
 
-  const alertStyle = [
-    styles.alert,
-    {
-      backgroundColor: colors.backgroundColor,
-      borderColor: colors.borderColor,
-    },
-    style,
-  ];
-
   const titleStyle = [
     styles.title,
     {
@@ -104,39 +96,35 @@ export const Alert: React.FC<AlertProps> = ({
   ];
 
   return (
-    <View style={alertStyle}>
-      <View style={styles.content}>
+    <Box
+      style={[
+        {
+          backgroundColor: colors.backgroundColor,
+          borderColor: colors.borderColor,
+          borderWidth: 1,
+          marginVertical: spacing.xs,
+        },
+        style,
+      ]}
+      padding="md"
+      borderRadius={spacing.rounded}
+    >
+      <Box flexDirection="row" style={{ alignItems: "flex-start" }}>
         {showIcon && (
-          <View style={styles.iconContainer}>{getIcon(severity)}</View>
+          <Box style={{ marginRight: spacing.sm, marginTop: 2 }}>
+            {getIcon(severity)}
+          </Box>
         )}
-        <View style={styles.textContainer}>
+        <Box flex={1}>
           {title && <Text style={titleStyle}>{title}</Text>}
           <Text style={messageStyle}>{children}</Text>
-        </View>
-      </View>
-    </View>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
 const styles = StyleSheet.create({
-  alert: {
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.lg,
-    borderRadius: 12,
-    borderWidth: 1,
-    marginVertical: spacing.xs,
-  },
-  content: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-  },
-  iconContainer: {
-    marginRight: spacing.sm,
-    marginTop: 2, // Slight offset to align with text
-  },
-  textContainer: {
-    flex: 1,
-  },
   title: {
     fontSize: 16,
     fontWeight: "600",
