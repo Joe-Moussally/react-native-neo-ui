@@ -226,12 +226,17 @@ export const Button: React.FC<ButtonProps> = ({
   // Determine border width - make outline variants thicker
   const borderWidth = variant === "outline" ? 2 : 1;
 
+  // Determine if this variant should have shadows
+  const shouldHaveShadow = !["outline", "ghost", "soft", "text"].includes(
+    variant
+  );
+
   // Animated styles for 3D effect
   const animatedButtonStyle = useAnimatedStyle(() => {
     const translateY = interpolate(
       pressed.value,
       [0, 1],
-      [0, sizeStyles.shadowOffset / 2]
+      [0, shouldHaveShadow ? sizeStyles.shadowOffset / 2 : 0]
     );
     const shadowOffsetY = interpolate(
       pressed.value,
@@ -242,15 +247,17 @@ export const Button: React.FC<ButtonProps> = ({
 
     const baseStyle = {
       transform: [{ translateY }],
-      elevation: interpolate(
-        pressed.value,
-        [0, 1],
-        [sizeStyles.shadowOffset, sizeStyles.shadowOffset / 2]
-      ),
+      elevation: shouldHaveShadow
+        ? interpolate(
+            pressed.value,
+            [0, 1],
+            [sizeStyles.shadowOffset, sizeStyles.shadowOffset / 2]
+          )
+        : 0,
     };
 
-    // Add iOS-specific shadow properties
-    if (Platform.OS === "ios") {
+    // Add iOS-specific shadow properties only for variants that should have shadows
+    if (Platform.OS === "ios" && shouldHaveShadow) {
       return {
         ...baseStyle,
         shadowOffset: {
@@ -277,8 +284,9 @@ export const Button: React.FC<ButtonProps> = ({
       minHeight: sizeStyles.minHeight,
       opacity: disabled && !loading ? 0.6 : 1,
       width: (fullWidth ? "100%" : undefined) as DimensionValue,
-      marginBottom: sizeStyles.shadowOffset, // Reserve space for shadow so layout doesn't shift
-      ...(Platform.OS === "ios" && { shadowColor: colors.shadowColor }),
+      marginBottom: shouldHaveShadow ? sizeStyles.shadowOffset : 0, // Reserve space for shadow only when needed
+      ...(Platform.OS === "ios" &&
+        shouldHaveShadow && { shadowColor: colors.shadowColor }),
     },
     style,
   ];

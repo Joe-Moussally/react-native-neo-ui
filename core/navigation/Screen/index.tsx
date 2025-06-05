@@ -32,7 +32,6 @@ export const Screen: React.FC<ScreenProps> = ({
     },
     headerBackButtonMenuEnabled: false,
     headerBackButtonDisplayMode: "minimal",
-    animation: "fade_from_bottom",
     ...options,
   };
 

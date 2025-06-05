@@ -32,6 +32,13 @@ const COMPONENTS: ComponentItem[] = [
     icon: "radio-button-on",
   },
   {
+    id: "alert",
+    name: "Alert",
+    description: "Display important messages with different severity levels",
+    route: "/components/alert",
+    icon: "alert-circle",
+  },
+  {
     id: "box",
     name: "Box",
     description:
