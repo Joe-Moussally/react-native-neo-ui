@@ -129,7 +129,15 @@ export default function ComponentsScreen() {
   const memoizedData = useMemo(() => COMPONENTS, []);
 
   return (
-    <Screen title="Components">
+    <Screen
+      title="Components"
+      options={{
+        headerLargeTitle: true,
+        headerSearchBarOptions: {
+          placeholder: "Search components",
+        },
+      }}
+    >
       <FlatList
         data={memoizedData}
         renderItem={renderItem}

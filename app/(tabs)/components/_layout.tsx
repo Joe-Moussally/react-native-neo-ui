@@ -1,10 +1,18 @@
+import { useTheme } from "@/core";
 import { Stack } from "expo-router";
 import React from "react";
 
 export default function ComponentsLayout() {
+  const { theme } = useTheme();
+
   return (
     <Stack>
-      <Stack.Screen name="index" options={{ title: "Components" }} />
+      <Stack.Screen
+        name="index"
+        options={{
+          title: "Components",
+        }}
+      />
       <Stack.Screen name="typography" options={{ title: "Typography" }} />
       <Stack.Screen name="button" options={{ title: "Button" }} />
       <Stack.Screen name="box" options={{ title: "Box" }} />
