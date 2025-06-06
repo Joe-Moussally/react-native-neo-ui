@@ -29,8 +29,8 @@ const TickerList = ({
     translateY.value = withDelay(
       index * 110,
       withSpring(-fontSize * 1.1 * parseInt(digit.toString()), {
-        damping: 17,
-        stiffness: 300,
+        damping: 70,
+        stiffness: 200,
       })
     );
   }, [digit, fontSize, translateY]);
