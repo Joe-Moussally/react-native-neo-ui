@@ -1,4 +1,3 @@
-import { Box } from "@/core/components/Box";
 import { Rating } from "@/core/components/Rating";
 import { RatingSize } from "@/core/components/Rating/types";
 import { Typography } from "@/core/components/Typography";
@@ -11,19 +10,6 @@ import { ScrollView, StyleSheet, View } from "react-native";
 // Define examples for demonstration
 const SIZES: RatingSize[] = ["small", "medium", "large"];
 
-const labels: { [index: string]: string } = {
-  0.5: "Useless",
-  1: "Useless+",
-  1.5: "Poor",
-  2: "Poor+",
-  2.5: "Ok",
-  3: "Ok+",
-  3.5: "Good",
-  4: "Good+",
-  4.5: "Excellent",
-  5: "Excellent+",
-};
-
 const getLabelText = (value: number) => {
   return `${value} Star${value !== 1 ? "s" : ""}`;
 };
@@ -31,12 +17,7 @@ const getLabelText = (value: number) => {
 export default function RatingScreen() {
   const { theme } = useTheme();
   const [value, setValue] = useState<number>(2);
-  const [hover, setHover] = useState(-1);
   const [controlledValue, setControlledValue] = useState<number | null>(3);
-  const [hoverFeedbackValue, setHoverFeedbackValue] = useState<number | null>(
-    2
-  );
-  const [hoverFeedbackHover, setHoverFeedbackHover] = useState(-1);
 
   const Section = ({
     title,
@@ -106,60 +87,6 @@ export default function RatingScreen() {
     );
   };
 
-  const renderPrecisionExamples = () => {
-    return (
-      <>
-        <ExampleContainer label="precision={0.5}">
-          <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
-        </ExampleContainer>
-        <ExampleContainer label="precision={0.5} readOnly">
-          <Rating
-            name="half-rating-read"
-            defaultValue={2.5}
-            precision={0.5}
-            readOnly
-          />
-        </ExampleContainer>
-      </>
-    );
-  };
-
-  const renderHoverFeedbackExample = () => {
-    return (
-      <ExampleContainer label="Hover feedback">
-        <View style={styles.hoverFeedbackContainer}>
-          <Rating
-            name="hover-feedback"
-            value={hoverFeedbackValue}
-            precision={0.5}
-            onChange={(event, newValue) => {
-              setHoverFeedbackValue(newValue);
-            }}
-            onChangeActive={(event, newHover) => {
-              setHoverFeedbackHover(newHover);
-            }}
-            emptyIcon={
-              <Ionicons name="star-outline" style={{ opacity: 0.55 }} />
-            }
-          />
-          {hoverFeedbackValue !== null && (
-            <Box style={{ marginLeft: 8 }}>
-              <Typography variant="body">
-                {
-                  labels[
-                    hoverFeedbackHover !== -1
-                      ? hoverFeedbackHover
-                      : hoverFeedbackValue
-                  ]
-                }
-              </Typography>
-            </Box>
-          )}
-        </View>
-      </ExampleContainer>
-    );
-  };
-
   const renderSizeExamples = () => {
     return SIZES.map((size) => (
       <ExampleContainer key={size} label={`size="${size}"`}>
@@ -178,7 +105,6 @@ export default function RatingScreen() {
             getLabelText={(value: number) =>
               `${value} Heart${value !== 1 ? "s" : ""}`
             }
-            precision={0.5}
             icon={<Ionicons name="heart" />}
             emptyIcon={<Ionicons name="heart-outline" />}
           />
@@ -240,11 +166,10 @@ export default function RatingScreen() {
   const renderCombinedExamples = () => {
     return (
       <>
-        <ExampleContainer label="Large + Half precision + Custom icon">
+        <ExampleContainer label="Large + Custom icon">
           <Rating
             name="combined-1"
-            defaultValue={3.5}
-            precision={0.5}
+            defaultValue={4}
             size="large"
             icon={<Ionicons name="star" />}
             emptyIcon={<Ionicons name="star-outline" />}
@@ -290,10 +215,6 @@ export default function RatingScreen() {
 
         <Section title="Basic Rating">{renderBasicExamples()}</Section>
 
-        <Section title="Rating Precision">{renderPrecisionExamples()}</Section>
-
-        <Section title="Hover Feedback">{renderHoverFeedbackExample()}</Section>
-
         <Section title="Sizes">{renderSizeExamples()}</Section>
 
         <Section title="Customization">{renderCustomIconExamples()}</Section>
@@ -331,9 +252,5 @@ const styles = StyleSheet.create({
   },
   ratingContainer: {
     paddingVertical: 8,
-  },
-  hoverFeedbackContainer: {
-    flexDirection: "row",
-    alignItems: "center",
   },
 });

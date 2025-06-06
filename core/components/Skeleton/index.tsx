@@ -74,10 +74,10 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   // Determine skeleton color based on theme
   const skeletonColor =
     sx?.bgcolor ||
-    (theme.isDark ? theme.colors.surfaceVariant : theme.colors.surface);
+    (theme.isDark ? theme.colors.surfaceVariant : theme.colors.border);
   const highlightColor = theme.isDark
     ? theme.colors.border
-    : theme.colors.surfaceVariant;
+    : theme.colors.surface;
 
   useEffect(() => {
     if (animation === "pulse") {

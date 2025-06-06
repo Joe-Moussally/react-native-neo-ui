@@ -186,12 +186,10 @@ export const Rating: React.FC<RatingProps> = ({
   value: controlledValue,
   defaultValue = 0,
   max = 5,
-  precision = 1,
   size = "medium",
   readOnly = false,
   disabled = false,
   onChange,
-  onChangeActive,
   getLabelText,
   icon,
   emptyIcon,
@@ -200,7 +198,6 @@ export const Rating: React.FC<RatingProps> = ({
 }) => {
   const { theme } = useTheme();
   const [internalValue, setInternalValue] = useState(defaultValue);
-  const [hoverValue, setHoverValue] = useState(-1);
 
   const isControlled = controlledValue !== undefined;
   const currentValue = isControlled ? controlledValue : internalValue;
@@ -220,23 +217,7 @@ export const Rating: React.FC<RatingProps> = ({
   const handleStarPress = (starIndex: number) => {
     if (readOnly || disabled) return;
 
-    let newValue = getStarValue(starIndex);
-
-    // Handle precision for partial ratings
-    if (precision < 1) {
-      // For half-star ratings, toggle between full and half
-      const currentStarValue = currentValue || 0;
-      const fullStarValue = starIndex + 1;
-      const halfStarValue = starIndex + 0.5;
-
-      if (currentStarValue === fullStarValue) {
-        newValue = halfStarValue;
-      } else if (currentStarValue === halfStarValue) {
-        newValue = 0; // Reset if clicking same half star
-      } else {
-        newValue = fullStarValue;
-      }
-    }
+    const newValue = getStarValue(starIndex);
 
     if (!isControlled) {
       setInternalValue(newValue);
@@ -245,24 +226,9 @@ export const Rating: React.FC<RatingProps> = ({
     onChange?.(null, newValue);
   };
 
-  const handleStarHover = (starIndex: number) => {
-    if (readOnly || disabled) return;
-
-    const newHover = getStarValue(starIndex);
-    setHoverValue(newHover);
-    onChangeActive?.(null, newHover);
-  };
-
-  const handleStarHoverOut = () => {
-    if (readOnly || disabled) return;
-
-    setHoverValue(-1);
-    onChangeActive?.(null, -1);
-  };
-
   const isStarFilled = (starIndex: number): boolean => {
     const starValue = getStarValue(starIndex);
-    const valueToCheck = hoverValue !== -1 ? hoverValue : currentValue || 0;
+    const valueToCheck = currentValue || 0;
 
     if (highlightSelectedOnly) {
       return Math.ceil(valueToCheck) === starValue;
@@ -271,35 +237,25 @@ export const Rating: React.FC<RatingProps> = ({
     return starValue <= valueToCheck;
   };
 
-  const isStarHalfFilled = (starIndex: number): boolean => {
-    if (precision < 1) {
-      const starValue = starIndex + 1;
-      const valueToCheck = hoverValue !== -1 ? hoverValue : currentValue || 0;
-      return valueToCheck >= starValue - 0.5 && valueToCheck < starValue;
-    }
-    return false;
-  };
-
   const renderStars = () => {
     const stars = [];
     const totalStars = max;
 
     for (let i = 0; i < totalStars; i++) {
       const filled = isStarFilled(i);
-      const halfFilled = isStarHalfFilled(i);
 
       stars.push(
         <Star
           key={i}
           filled={filled}
-          halfFilled={halfFilled}
+          halfFilled={false}
           size={iconSize}
           disabled={disabled}
           icon={icon}
           emptyIcon={emptyIcon}
           onPress={() => handleStarPress(i)}
-          onHoverIn={() => handleStarHover(i)}
-          onHoverOut={handleStarHoverOut}
+          onHoverIn={() => {}}
+          onHoverOut={() => {}}
           readOnly={readOnly}
         />
       );
