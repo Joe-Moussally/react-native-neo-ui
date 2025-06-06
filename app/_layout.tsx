@@ -1,3 +1,4 @@
+import { RootToastProvider } from "@/core/components/Toast";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -33,7 +34,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider>
-      <AppStack />
+      <RootToastProvider>
+        <AppStack />
+      </RootToastProvider>
     </ThemeProvider>
   );
 }

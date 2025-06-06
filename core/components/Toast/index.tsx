@@ -9,7 +9,7 @@ import {
   ViewStyle,
 } from "react-native";
 import Animated, {
-  Layout,
+  LinearTransition,
   SlideInDown,
   SlideInUp,
   SlideOutDown,
@@ -35,6 +35,12 @@ export const useToast = () => {
   return context;
 };
 
+// Helper function to lighten a color
+const lightenColor = (color: string, amount: number = 0.8) => {
+  // Simple color lightening by adjusting opacity with white background
+  return color;
+};
+
 const getVariantConfig = (variant: ToastVariant, theme: any) => {
   const configs = {
     default: {
@@ -46,36 +52,36 @@ const getVariantConfig = (variant: ToastVariant, theme: any) => {
       titleColor: theme.colors.text,
     },
     success: {
-      backgroundColor: theme.colors.success + "20",
+      backgroundColor: theme.colors.success,
       borderColor: theme.colors.success,
       iconName: "checkmark-circle" as keyof typeof Ionicons.glyphMap,
-      iconColor: theme.colors.success,
-      textColor: theme.colors.success,
-      titleColor: theme.colors.success,
+      iconColor: "#ffffff",
+      textColor: "#ffffff",
+      titleColor: "#ffffff",
     },
     error: {
-      backgroundColor: theme.colors.error + "20",
+      backgroundColor: theme.colors.error,
       borderColor: theme.colors.error,
       iconName: "close-circle" as keyof typeof Ionicons.glyphMap,
-      iconColor: theme.colors.error,
-      textColor: theme.colors.error,
-      titleColor: theme.colors.error,
+      iconColor: "#ffffff",
+      textColor: "#ffffff",
+      titleColor: "#ffffff",
     },
     warning: {
-      backgroundColor: theme.colors.warning + "20",
+      backgroundColor: theme.colors.warning,
       borderColor: theme.colors.warning,
       iconName: "warning" as keyof typeof Ionicons.glyphMap,
-      iconColor: theme.colors.warning,
-      textColor: theme.colors.warning,
-      titleColor: theme.colors.warning,
+      iconColor: "#ffffff",
+      textColor: "#ffffff",
+      titleColor: "#ffffff",
     },
     info: {
-      backgroundColor: theme.colors.primary + "20",
+      backgroundColor: theme.colors.primary,
       borderColor: theme.colors.primary,
       iconName: "information-circle" as keyof typeof Ionicons.glyphMap,
-      iconColor: theme.colors.primary,
-      textColor: theme.colors.primary,
-      titleColor: theme.colors.primary,
+      iconColor: "#ffffff",
+      textColor: "#ffffff",
+      titleColor: "#ffffff",
     },
   };
   return configs[variant];
@@ -122,7 +128,7 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
     marginHorizontal: 16,
     marginVertical: 4,
     flexDirection: "row",
-    alignItems: "flex-start",
+    alignItems: title ? "flex-start" : "center",
     shadowColor: theme.colors.text,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -131,20 +137,22 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
   };
 
   const getEntryAnimation = () => {
-    return position === "top" ? SlideInUp.springify() : SlideInDown.springify();
+    return position === "top"
+      ? SlideInUp.springify().damping(15).stiffness(100)
+      : SlideInDown.springify().damping(15).stiffness(100);
   };
 
   const getExitAnimation = () => {
     return position === "top"
-      ? SlideOutUp.springify()
-      : SlideOutDown.springify();
+      ? SlideOutUp.springify().damping(15).stiffness(100)
+      : SlideOutDown.springify().damping(15).stiffness(100);
   };
 
   return (
     <Animated.View
       entering={getEntryAnimation()}
       exiting={getExitAnimation()}
-      layout={Layout.springify()}
+      layout={LinearTransition.springify().damping(15).stiffness(100)}
       style={[toastStyle, style]}
       testID={testID}
     >

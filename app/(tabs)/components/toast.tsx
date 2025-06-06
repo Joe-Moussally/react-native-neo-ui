@@ -1,5 +1,5 @@
 import { Button } from "@/core/components/Button";
-import { ToastProvider, useToast } from "@/core/components/Toast";
+import { toast, ToastProvider, useToast } from "@/core/components/Toast";
 import { Typography } from "@/core/components/Typography";
 import { Screen } from "@/core/navigation/Screen";
 import { useTheme } from "@/core/theme";
@@ -162,6 +162,7 @@ function ToastScreenContent() {
   return (
     <Screen title="Toast" options={{ headerLargeTitle: true }}>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        <Button onPress={() => toast.success("Hello")}>JOE TEST</Button>
         {/* Basic Variants */}
         <Section title="Basic Variants">
           <Demo title="Different Toast Types">
@@ -250,7 +251,7 @@ function ToastScreenContent() {
         <Section title="Controls">
           <Demo title="Toast Management">
             <View style={styles.column}>
-              <Button variant="destructive" onPress={hideAllToasts}>
+              <Button variant="outline" onPress={hideAllToasts}>
                 Clear All Toasts
               </Button>
 
@@ -345,8 +346,116 @@ export default function RootLayout() {
           </Demo>
         </Section>
 
+        {/* Global Toast Examples */}
+        <Section title="Global Toast Examples">
+          <Demo title="Use toast.method() anywhere (requires RootToastProvider)">
+            <Typography
+              style={{
+                color: theme.colors.textSecondary,
+                marginBottom: 12,
+                fontSize: 14,
+              }}
+            >
+              Global toast methods work from anywhere in your app when
+              RootToastProvider is wrapped around your app root. These toasts
+              appear above all content and navigation.
+            </Typography>
+            <View style={styles.column}>
+              <View style={styles.row}>
+                <Button
+                  size="sm"
+                  onPress={() => toast.success("Global success!")}
+                >
+                  Success
+                </Button>
+                <Button
+                  size="sm"
+                  color="error"
+                  onPress={() => toast.error("Global error!")}
+                >
+                  Error
+                </Button>
+                <Button
+                  size="sm"
+                  color="warning"
+                  onPress={() => toast.warning("Global warning!")}
+                >
+                  Warning
+                </Button>
+                <Button
+                  size="sm"
+                  color="primary"
+                  onPress={() => toast.info("Global info!")}
+                >
+                  Info
+                </Button>
+              </View>
+
+              <View style={styles.row}>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onPress={() =>
+                    toast.success("Bottom success!", { position: "bottom" })
+                  }
+                >
+                  Bottom Success
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onPress={() =>
+                    toast.error("Bottom error!", { position: "bottom" })
+                  }
+                >
+                  Bottom Error
+                </Button>
+              </View>
+
+              <View style={styles.row}>
+                <Button
+                  variant="outline"
+                  onPress={() =>
+                    toast.success("With Title!", {
+                      title: "Upload Complete",
+                      position: "bottom",
+                    })
+                  }
+                >
+                  Global with Title
+                </Button>
+                <Button
+                  variant="outline"
+                  onPress={() =>
+                    toast.warning("Persistent warning", {
+                      title: "Warning",
+                      duration: "infinite",
+                    })
+                  }
+                >
+                  Persistent Global
+                </Button>
+              </View>
+            </View>
+          </Demo>
+        </Section>
+
         {/* Usage Examples */}
-        <Section title="Common Use Cases">
+        <Section title="Local Component Usage">
+          <Demo title="Use useToast() hook within components wrapped by ToastProvider">
+            <Typography
+              style={{
+                color: theme.colors.textSecondary,
+                marginBottom: 12,
+                fontSize: 14,
+              }}
+            >
+              These examples use the useToast() hook which only works within
+              components that are wrapped by a ToastProvider. The toasts will
+              appear in the safe area within the screen bounds.
+            </Typography>
+          </Demo>
+
           <Demo title="Real-world Examples">
             <View style={styles.column}>
               <Button
