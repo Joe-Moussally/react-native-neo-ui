@@ -1,6 +1,7 @@
 export interface TickerProps {
   value: string | number;
   fontSize?: number;
+  minDigits?: number;
 }
 
 export interface TickerListProps {
