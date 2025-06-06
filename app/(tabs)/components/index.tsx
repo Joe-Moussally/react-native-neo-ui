@@ -39,6 +39,13 @@ const COMPONENTS: ComponentItem[] = [
     icon: "alert-circle",
   },
   {
+    id: "avatar",
+    name: "Avatar",
+    description: "Display user profile pictures, initials, or icons",
+    route: "/components/avatar",
+    icon: "person-circle",
+  },
+  {
     id: "badge",
     name: "Badge",
     description: "Small badge to display notifications and status indicators",
