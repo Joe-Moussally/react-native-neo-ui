@@ -82,6 +82,20 @@ const COMPONENTS: ComponentItem[] = [
     route: "/components/ticker",
     icon: "timer",
   },
+  {
+    id: "rating",
+    name: "Rating",
+    description: "Star rating component for collecting user feedback",
+    route: "/components/rating",
+    icon: "star",
+  },
+  {
+    id: "skeleton",
+    name: "Skeleton",
+    description: "Loading placeholder components with various animations",
+    route: "/components/skeleton",
+    icon: "square-outline",
+  },
   // Add more components here as they are created
 ];
 
