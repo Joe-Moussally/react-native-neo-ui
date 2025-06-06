@@ -36,6 +36,13 @@ export default function TickerScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
+          style={styles.button}
+          onPress={() => setValue(Math.floor(Math.random() * 10000))}
+        >
+          <Text style={styles.buttonText}>Random</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
           style={[styles.button, styles.resetButton]}
           onPress={() => setValue(0)}
         >

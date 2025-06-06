@@ -3,6 +3,7 @@ import { Text, TextProps, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withSpring,
 } from "react-native-reanimated";
 import { TickerListProps, TickerProps } from "./types";
@@ -16,8 +17,8 @@ const Tick = ({ children, ...rest }: TextProps) => {
 const TickerList = ({
   digit,
   fontSize,
-  position,
-}: TickerListProps & { position: number }) => {
+  index,
+}: TickerListProps & { index: number }) => {
   // Use shared value for animation
   const translateY = useSharedValue(
     -fontSize * 1.1 * parseInt(digit.toString())
@@ -25,12 +26,12 @@ const TickerList = ({
 
   // Update animation when digit changes
   useEffect(() => {
-    translateY.value = withSpring(
-      -fontSize * 1.1 * parseInt(digit.toString()),
-      {
-        damping: 12,
-        stiffness: 200,
-      }
+    translateY.value = withDelay(
+      index * 110,
+      withSpring(-fontSize * 1.1 * parseInt(digit.toString()), {
+        damping: 17,
+        stiffness: 300,
+      })
     );
   }, [digit, fontSize, translateY]);
 
@@ -82,14 +83,12 @@ export const Ticker = ({
     <View>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         {digits.map((digit, index) => {
-          // Calculate position from right (units, tens, hundreds, etc.)
-          const positionFromRight = digits.length - 1 - index;
           return (
             <TickerList
-              key={`pos-${positionFromRight}`} // Stable key based on position from right
+              key={`pos-${index}`} // Stable key based on position from right
               digit={parseInt(digit)}
               fontSize={fontSize}
-              position={positionFromRight}
+              index={index}
             />
           );
         })}
