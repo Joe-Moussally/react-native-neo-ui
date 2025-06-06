@@ -1,9 +1,9 @@
 import { useTheme } from "@/core/theme";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import React from "react";
 import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ScreenProps } from "./types";
 
 export const Screen: React.FC<ScreenProps> = ({
@@ -16,12 +16,40 @@ export const Screen: React.FC<ScreenProps> = ({
   style,
 }) => {
   const { theme } = useTheme();
-  const insets = useSafeAreaInsets();
+
+  // Check if large title is enabled to avoid back button animation conflicts
+  const hasLargeTitle = options?.headerLargeTitle;
 
   // Combine default stack options with custom ones
   const screenOptions: NativeStackNavigationOptions = {
     title,
-    headerLeft,
+    headerLeft: () => {
+      if (router.canGoBack()) {
+        return Platform.OS === "ios" ? (
+          <MaterialIcons
+            name="arrow-back-ios-new"
+            size={22}
+            color={theme.colors.text}
+          />
+        ) : (
+          <Ionicons name="arrow-back" size={22} color={theme.colors.text} />
+        );
+      } else {
+        return headerLeft;
+      }
+    },
+    //   ? () => {
+    //       Platform.OS === "ios" ? (
+    //         <MaterialIcons
+    //           name="arrow-back-ios"
+    //           size={24}
+    //           color={theme.colors.text}
+    //         />
+    //       ) : (
+    //         <Ionicons name="arrow-back" size={24} color={theme.colors.text} />
+    //       );
+    //     }
+    //   : headerLeft,
     headerRight,
     headerStyle: {
       backgroundColor: theme.colors.surface,
@@ -31,7 +59,8 @@ export const Screen: React.FC<ScreenProps> = ({
       color: theme.colors.text,
     },
     headerBackButtonMenuEnabled: false,
-    headerBackButtonDisplayMode: "minimal",
+    // Only use minimal display mode when NOT using large titles to avoid animation glitches
+    headerBackButtonDisplayMode: hasLargeTitle ? "default" : "minimal",
     animation: Platform.OS !== "ios" ? "fade" : "default",
     ...options,
   };

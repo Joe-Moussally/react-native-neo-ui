@@ -35,7 +35,12 @@ export const Box: React.FC<BoxProps> = ({
         break;
       case "outline":
         borderColor = baseColor;
-        borderWidth = 1;
+        borderWidth = 2;
+        break;
+      case "filledOutline":
+        backgroundColor = theme.colors.surface;
+        borderColor = color === "transparent" ? theme.colors.border : baseColor;
+        borderWidth = 2;
         break;
       case "transparent":
         backgroundColor = "transparent";

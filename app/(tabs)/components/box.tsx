@@ -8,7 +8,13 @@ import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 
 // Define examples for demonstration
-const VARIANTS: BoxVariant[] = ["solid", "soft", "outline", "transparent"];
+const VARIANTS: BoxVariant[] = [
+  "solid",
+  "soft",
+  "outline",
+  "filledOutline",
+  "transparent",
+];
 
 const COLORS: ThemeColor[] = [
   "primary",
@@ -76,7 +82,9 @@ export default function BoxScreen() {
             variant="body"
             color={variant === "solid" ? theme.colors.background : undefined}
           >
-            {variant.charAt(0).toUpperCase() + variant.slice(1)} Box
+            {variant === "filledOutline"
+              ? "Filled Outline Box"
+              : variant.charAt(0).toUpperCase() + variant.slice(1) + " Box"}
           </Typography>
         </Box>
       </ExampleContainer>
@@ -237,6 +245,44 @@ export default function BoxScreen() {
                 borderRadius={8}
               >
                 <Typography variant="bodySmall">Action 2</Typography>
+              </Box>
+            </Box>
+          </>
+        ),
+      },
+      {
+        label: "Filled Outline Card",
+        props: {
+          variant: "filledOutline" as BoxVariant,
+          color: "primary" as ThemeColor,
+          padding: "lg" as ThemeSpacing,
+          gap: "md" as ThemeSpacing,
+          borderRadius: 16,
+        },
+        content: (
+          <>
+            <Typography variant="h3">Filled Outline Style</Typography>
+            <Typography variant="body" color={theme.colors.textSecondary}>
+              This variant combines surface background with colored border.
+            </Typography>
+            <Box flexDirection="row" gap="sm">
+              <Box
+                variant="filledOutline"
+                color="success"
+                padding="sm"
+                flex={1}
+                borderRadius={8}
+              >
+                <Typography variant="bodySmall">Success</Typography>
+              </Box>
+              <Box
+                variant="filledOutline"
+                color="error"
+                padding="sm"
+                flex={1}
+                borderRadius={8}
+              >
+                <Typography variant="bodySmall">Error</Typography>
               </Box>
             </Box>
           </>
