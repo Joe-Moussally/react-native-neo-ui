@@ -135,6 +135,10 @@ export default function ComponentsScreen() {
         headerLargeTitle: true,
         headerSearchBarOptions: {
           placeholder: "Search components",
+          tintColor: theme.colors.primary,
+          headerIconColor: theme.colors.text,
+          barTintColor: theme.colors.surface,
+          textColor: theme.colors.text,
         },
       }}
     >

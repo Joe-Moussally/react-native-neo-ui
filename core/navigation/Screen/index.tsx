@@ -2,6 +2,7 @@ import { useTheme } from "@/core/theme";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { router, Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
 import { ScreenProps } from "./types";
@@ -38,18 +39,6 @@ export const Screen: React.FC<ScreenProps> = ({
         return headerLeft;
       }
     },
-    //   ? () => {
-    //       Platform.OS === "ios" ? (
-    //         <MaterialIcons
-    //           name="arrow-back-ios"
-    //           size={24}
-    //           color={theme.colors.text}
-    //         />
-    //       ) : (
-    //         <Ionicons name="arrow-back" size={24} color={theme.colors.text} />
-    //       );
-    //     }
-    //   : headerLeft,
     headerRight,
     headerStyle: {
       backgroundColor: theme.colors.surface,
@@ -69,6 +58,7 @@ export const Screen: React.FC<ScreenProps> = ({
 
   return (
     <>
+      <StatusBar style={theme.isDark ? "light" : "dark"} />
       <Stack.Screen options={screenOptions} />
       <Container
         style={[
