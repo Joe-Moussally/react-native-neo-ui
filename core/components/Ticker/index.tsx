@@ -69,11 +69,12 @@ const TickerList = ({
 
 export const Ticker = ({
   value,
-  fontSize = 50,
+  fontSize = 150,
   minDigits = 1,
 }: TickerProps) => {
   const valueString = value.toString();
   const digitCount = Math.max(valueString.length, minDigits);
+  //   const [newFontSize, setNewFontSize] = useState(fontSize);
 
   // Pad with leading zeros to maintain consistent positions
   const paddedValue = valueString.padStart(digitCount, "0");
@@ -81,6 +82,16 @@ export const Ticker = ({
 
   return (
     <View>
+      {/* <Tick
+        style={{ fontSize }}
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        onTextLayout={(e) => {
+          setNewFontSize(e.nativeEvent.lines[0].ascender);
+        }}
+      >
+        {value}
+      </Tick> */}
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         {digits.map((digit, index) => {
           return (

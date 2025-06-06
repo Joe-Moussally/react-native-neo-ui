@@ -10,7 +10,7 @@ export default function TickerScreen() {
       <Text style={styles.title}>Animated Ticker</Text>
 
       <View style={styles.tickerContainer}>
-        <Ticker value={value} fontSize={60} minDigits={3} />
+        <Ticker value={value} fontSize={100} minDigits={3} />
       </View>
 
       <View style={styles.controls}>
@@ -37,7 +37,7 @@ export default function TickerScreen() {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => setValue(Math.floor(Math.random() * 10000))}
+          onPress={() => setValue(Math.floor(Math.random() * 1000000))}
         >
           <Text style={styles.buttonText}>Random</Text>
         </TouchableOpacity>
