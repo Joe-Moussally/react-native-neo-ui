@@ -1,10 +1,7 @@
-import { useTheme } from "@/core";
 import { Stack } from "expo-router";
 import React from "react";
 
 export default function ComponentsLayout() {
-  const { theme } = useTheme();
-
   return (
     <Stack>
       <Stack.Screen

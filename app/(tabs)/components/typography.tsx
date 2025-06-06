@@ -126,7 +126,16 @@ export default function TypographyScreen() {
   };
 
   return (
-    <Screen title="Typography">
+    <Screen
+      title="Typography"
+      options={{
+        headerBackButtonDisplayMode: "default",
+        headerBackTitle: "____",
+        headerBackTitleStyle: {
+          fontSize: 1,
+        },
+      }}
+    >
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.section}>
           <Typography variant="h2" style={styles.sectionTitle}>

@@ -1,7 +1,6 @@
 import { useTheme } from "@/core/theme";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
-import { router, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
@@ -21,21 +20,22 @@ export const Screen: React.FC<ScreenProps> = ({
   // Combine default stack options with custom ones
   const screenOptions: NativeStackNavigationOptions = {
     title,
-    headerLeft: () => {
-      if (router.canGoBack()) {
-        return Platform.OS === "ios" ? (
-          <MaterialIcons
-            name="arrow-back-ios-new"
-            size={22}
-            color={theme.colors.text}
-          />
-        ) : (
-          <Ionicons name="arrow-back" size={22} color={theme.colors.text} />
-        );
-      } else {
-        return headerLeft;
-      }
-    },
+    // headerLeft: () => {
+    //   if (router.canGoBack()) {
+    //     return Platform.OS === "ios" ? (
+    //       <MaterialIcons
+    //         name="arrow-back-ios-new"
+    //         size={22}
+    //         color={theme.colors.text}
+    //       />
+    //     ) : (
+    //       <Ionicons name="arrow-back" size={22} color={theme.colors.text} />
+    //     );
+    //   } else {
+    //     return headerLeft;
+    //   }
+    // },
+    headerLeft,
     headerRight,
     headerStyle: {
       backgroundColor: theme.colors.surface,
