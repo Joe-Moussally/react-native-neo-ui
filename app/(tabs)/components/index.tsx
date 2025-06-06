@@ -75,6 +75,13 @@ const COMPONENTS: ComponentItem[] = [
     route: "/components/chip",
     icon: "pricetag",
   },
+  {
+    id: "ticker",
+    name: "Ticker",
+    description: "Display a scrolling ticker with customizable content",
+    route: "/components/ticker",
+    icon: "timer",
+  },
   // Add more components here as they are created
 ];
 

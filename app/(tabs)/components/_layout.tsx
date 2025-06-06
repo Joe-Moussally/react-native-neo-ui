@@ -21,6 +21,7 @@ export default function ComponentsLayout() {
       <Stack.Screen name="box" options={{ title: "Box" }} />
       <Stack.Screen name="textfield" options={{ title: "TextField" }} />
       <Stack.Screen name="chip" options={{ title: "Chip" }} />
+      <Stack.Screen name="ticker" options={{ title: "Ticker" }} />
     </Stack>
   );
 }
