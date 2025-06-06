@@ -18,9 +18,6 @@ export const Screen: React.FC<ScreenProps> = ({
 }) => {
   const { theme } = useTheme();
 
-  // Check if large title is enabled to avoid back button animation conflicts
-  const hasLargeTitle = options?.headerLargeTitle;
-
   // Combine default stack options with custom ones
   const screenOptions: NativeStackNavigationOptions = {
     title,
@@ -48,8 +45,7 @@ export const Screen: React.FC<ScreenProps> = ({
       color: theme.colors.text,
     },
     headerBackButtonMenuEnabled: false,
-    // Only use minimal display mode when NOT using large titles to avoid animation glitches
-    headerBackButtonDisplayMode: hasLargeTitle ? "default" : "minimal",
+    headerBackButtonDisplayMode: "minimal",
     animation: Platform.OS !== "ios" ? "fade" : "default",
     ...options,
   };

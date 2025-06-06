@@ -39,6 +39,13 @@ const COMPONENTS: ComponentItem[] = [
     icon: "alert-circle",
   },
   {
+    id: "badge",
+    name: "Badge",
+    description: "Small badge to display notifications and status indicators",
+    route: "/components/badge",
+    icon: "notifications",
+  },
+  {
     id: "box",
     name: "Box",
     description:
@@ -137,8 +144,10 @@ export default function ComponentsScreen() {
           placeholder: "Search components",
           tintColor: theme.colors.primary,
           headerIconColor: theme.colors.text,
-          barTintColor: theme.colors.surface,
+          hintTextColor: theme.colors.textSecondary,
+          shouldShowHintSearchIcon: false,
           textColor: theme.colors.text,
+          barTintColor: theme.colors.surface,
         },
       }}
     >

@@ -70,7 +70,13 @@ export default function BoxScreen() {
       <ExampleContainer key={variant} label={`variant="${variant}"`}>
         <Box
           variant={variant}
-          color={variant === "transparent" ? "primary" : "primary"}
+          color={
+            variant === "transparent"
+              ? "primary"
+              : variant === "filledOutline"
+              ? "secondary"
+              : "primary"
+          }
           padding="md"
           style={
             variant === "transparent"
