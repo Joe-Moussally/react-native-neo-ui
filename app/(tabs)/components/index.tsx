@@ -96,22 +96,7 @@ const COMPONENTS: ComponentItem[] = [
     route: "/components/skeleton",
     icon: "square-outline",
   },
-  {
-    id: "progress",
-    name: "Progress",
-    description:
-      "Progress indicators for loading states and determinate progress",
-    route: "/components/progress",
-    icon: "hourglass",
-  },
-  {
-    id: "toggleButton",
-    name: "Toggle Button",
-    description:
-      "Toggle buttons for selecting options with exclusive or multiple modes",
-    route: "/components/toggleButton",
-    icon: "toggle",
-  },
+
   {
     id: "toast",
     name: "Toast",

@@ -1,20 +1,20 @@
 import { useTheme } from "@/core/theme";
 import { Ionicons } from "@expo/vector-icons";
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import {
-  Animated,
   Dimensions,
   Pressable,
   SafeAreaView,
   View,
   ViewStyle,
 } from "react-native";
+import Animated, {
+  Layout,
+  SlideInDown,
+  SlideInUp,
+  SlideOutDown,
+  SlideOutUp,
+} from "react-native-reanimated";
 import { Typography } from "../Typography";
 import {
   ToastContextValue,
@@ -42,39 +42,51 @@ const getVariantConfig = (variant: ToastVariant, theme: any) => {
       borderColor: theme.colors.border,
       iconName: "information-circle" as keyof typeof Ionicons.glyphMap,
       iconColor: theme.colors.primary,
+      textColor: theme.colors.text,
+      titleColor: theme.colors.text,
     },
     success: {
-      backgroundColor: theme.colors.success + "15",
+      backgroundColor: theme.colors.success + "20",
       borderColor: theme.colors.success,
       iconName: "checkmark-circle" as keyof typeof Ionicons.glyphMap,
       iconColor: theme.colors.success,
+      textColor: theme.colors.success,
+      titleColor: theme.colors.success,
     },
     error: {
-      backgroundColor: theme.colors.error + "15",
+      backgroundColor: theme.colors.error + "20",
       borderColor: theme.colors.error,
       iconName: "close-circle" as keyof typeof Ionicons.glyphMap,
       iconColor: theme.colors.error,
+      textColor: theme.colors.error,
+      titleColor: theme.colors.error,
     },
     warning: {
-      backgroundColor: theme.colors.warning + "15",
+      backgroundColor: theme.colors.warning + "20",
       borderColor: theme.colors.warning,
       iconName: "warning" as keyof typeof Ionicons.glyphMap,
       iconColor: theme.colors.warning,
+      textColor: theme.colors.warning,
+      titleColor: theme.colors.warning,
     },
     info: {
-      backgroundColor: theme.colors.primary + "15",
+      backgroundColor: theme.colors.primary + "20",
       borderColor: theme.colors.primary,
       iconName: "information-circle" as keyof typeof Ionicons.glyphMap,
       iconColor: theme.colors.primary,
+      textColor: theme.colors.primary,
+      titleColor: theme.colors.primary,
     },
   };
   return configs[variant];
 };
 
 const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
+  title,
   message,
   variant = "default",
   duration = 4000,
+  position = "top",
   action,
   showCloseButton = true,
   icon,
@@ -86,25 +98,7 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
   const { theme } = useTheme();
   const variantConfig = getVariantConfig(variant, theme);
 
-  const opacity = useRef(new Animated.Value(0)).current;
-  const translateY = useRef(new Animated.Value(-50)).current;
-
   useEffect(() => {
-    // Entrance animation
-    Animated.parallel([
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-      Animated.spring(translateY, {
-        toValue: 0,
-        useNativeDriver: true,
-        tension: 100,
-        friction: 8,
-      }),
-    ]).start();
-
     // Auto dismiss
     if (duration !== "infinite" && typeof duration === "number") {
       const timer = setTimeout(() => {
@@ -112,24 +106,11 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
       }, duration);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [duration]);
 
   const handleDismiss = () => {
-    Animated.parallel([
-      Animated.timing(opacity, {
-        toValue: 0,
-        duration: 200,
-        useNativeDriver: true,
-      }),
-      Animated.timing(translateY, {
-        toValue: -50,
-        duration: 200,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      onRemove();
-      onClose?.();
-    });
+    onRemove();
+    onClose?.();
   };
 
   const toastStyle: ViewStyle = {
@@ -141,7 +122,7 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
     marginHorizontal: 16,
     marginVertical: 4,
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     shadowColor: theme.colors.text,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -149,16 +130,22 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
     elevation: 4,
   };
 
+  const getEntryAnimation = () => {
+    return position === "top" ? SlideInUp.springify() : SlideInDown.springify();
+  };
+
+  const getExitAnimation = () => {
+    return position === "top"
+      ? SlideOutUp.springify()
+      : SlideOutDown.springify();
+  };
+
   return (
     <Animated.View
-      style={[
-        toastStyle,
-        style,
-        {
-          opacity,
-          transform: [{ translateY }],
-        },
-      ]}
+      entering={getEntryAnimation()}
+      exiting={getExitAnimation()}
+      layout={Layout.springify()}
+      style={[toastStyle, style]}
       testID={testID}
     >
       {icon || (
@@ -166,15 +153,28 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
           name={variantConfig.iconName}
           size={20}
           color={variantConfig.iconColor}
-          style={{ marginRight: 12 }}
+          style={{ marginRight: 12, marginTop: title ? 2 : 0 }}
         />
       )}
 
       <View style={{ flex: 1 }}>
+        {title && (
+          <Typography
+            style={{
+              color: variantConfig.titleColor,
+              fontWeight: "600",
+              fontSize: 16,
+              marginBottom: 4,
+            }}
+          >
+            {title}
+          </Typography>
+        )}
         <Typography
           style={{
-            color: theme.colors.text,
+            color: variantConfig.textColor,
             lineHeight: 20,
+            fontSize: 14,
           }}
         >
           {message}
@@ -188,12 +188,14 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
             paddingVertical: 4,
             paddingHorizontal: 8,
             marginLeft: 12,
+            marginTop: title ? 2 : 0,
           }}
         >
           <Typography
             style={{
               color: variantConfig.iconColor,
               fontWeight: "600",
+              fontSize: 14,
             }}
           >
             {action.label}
@@ -207,6 +209,7 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
           style={{
             padding: 4,
             marginLeft: action ? 8 : 12,
+            marginTop: title ? 2 : 0,
           }}
         >
           <Ionicons name="close" size={16} color={theme.colors.textSecondary} />
@@ -252,6 +255,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     <ToastContext.Provider value={contextValue}>
       {children}
 
+      {/* Top Toasts */}
       <SafeAreaView
         style={{
           position: "absolute",
@@ -263,10 +267,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
         }}
       >
         {toasts
-          .filter(
-            (toast) =>
-              toast.position !== "bottom" && toast.position !== "center"
-          )
+          .filter((toast) => toast.position !== "bottom")
           .map((toast) => (
             <Toast
               key={toast.id}
@@ -276,6 +277,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
           ))}
       </SafeAreaView>
 
+      {/* Bottom Toasts */}
       <SafeAreaView
         style={{
           position: "absolute",
@@ -296,20 +298,66 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
             />
           ))}
       </SafeAreaView>
+    </ToastContext.Provider>
+  );
+};
 
-      <View
+// Root Toast Provider for the whole app
+let rootToastRef: {
+  showToast: (toast: Omit<ToastProps, "id">) => string;
+  hideToast: (id: string) => void;
+  hideAllToasts: () => void;
+} | null = null;
+
+export const RootToastProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [toasts, setToasts] = useState<(ToastProps & { id: string })[]>([]);
+
+  const showToast = (toast: Omit<ToastProps, "id">): string => {
+    const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+    const newToast = { ...toast, id };
+
+    setToasts((prevToasts) => {
+      const updatedToasts = [...prevToasts, newToast];
+      return updatedToasts.slice(-5); // Max 5 toasts
+    });
+
+    return id;
+  };
+
+  const hideToast = (id: string) => {
+    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
+  };
+
+  const hideAllToasts = () => {
+    setToasts([]);
+  };
+
+  // Set the ref for global access
+  rootToastRef = {
+    showToast,
+    hideToast,
+    hideAllToasts,
+  };
+
+  return (
+    <>
+      {children}
+
+      {/* Top Toasts */}
+      <SafeAreaView
         style={{
           position: "absolute",
-          top: "50%",
+          top: 0,
           left: 0,
           right: 0,
           zIndex: 9999,
           pointerEvents: "box-none",
-          transform: [{ translateY: -50 }],
         }}
       >
         {toasts
-          .filter((toast) => toast.position === "center")
+          .filter((toast) => toast.position !== "bottom")
           .map((toast) => (
             <Toast
               key={toast.id}
@@ -317,9 +365,70 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
               onRemove={() => hideToast(toast.id)}
             />
           ))}
-      </View>
-    </ToastContext.Provider>
+      </SafeAreaView>
+
+      {/* Bottom Toasts */}
+      <SafeAreaView
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          pointerEvents: "box-none",
+        }}
+      >
+        {toasts
+          .filter((toast) => toast.position === "bottom")
+          .map((toast) => (
+            <Toast
+              key={toast.id}
+              {...toast}
+              onRemove={() => hideToast(toast.id)}
+            />
+          ))}
+      </SafeAreaView>
+    </>
   );
+};
+
+// Global toast methods that can be used anywhere in the app
+export const toast = {
+  show: (message: string, options?: Partial<Omit<ToastProps, "message">>) => {
+    return rootToastRef?.showToast({ message, ...options }) || "";
+  },
+  success: (
+    message: string,
+    options?: Partial<Omit<ToastProps, "message">>
+  ) => {
+    return (
+      rootToastRef?.showToast({ message, variant: "success", ...options }) || ""
+    );
+  },
+  error: (message: string, options?: Partial<Omit<ToastProps, "message">>) => {
+    return (
+      rootToastRef?.showToast({ message, variant: "error", ...options }) || ""
+    );
+  },
+  warning: (
+    message: string,
+    options?: Partial<Omit<ToastProps, "message">>
+  ) => {
+    return (
+      rootToastRef?.showToast({ message, variant: "warning", ...options }) || ""
+    );
+  },
+  info: (message: string, options?: Partial<Omit<ToastProps, "message">>) => {
+    return (
+      rootToastRef?.showToast({ message, variant: "info", ...options }) || ""
+    );
+  },
+  hide: (id: string) => {
+    rootToastRef?.hideToast(id);
+  },
+  hideAll: () => {
+    rootToastRef?.hideAllToasts();
+  },
 };
 
 // Convenience exports

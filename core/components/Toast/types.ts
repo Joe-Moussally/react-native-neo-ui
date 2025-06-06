@@ -1,7 +1,7 @@
 import { ViewStyle } from "react-native";
 
 export type ToastVariant = "default" | "success" | "error" | "warning" | "info";
-export type ToastPosition = "top" | "bottom" | "center";
+export type ToastPosition = "top" | "bottom";
 export type ToastDuration = number | "infinite";
 
 export interface ToastAction {
@@ -11,6 +11,7 @@ export interface ToastAction {
 
 export interface ToastProps {
   id?: string;
+  title?: string;
   message: string;
   variant?: ToastVariant;
   duration?: ToastDuration; // in milliseconds, or "infinite"

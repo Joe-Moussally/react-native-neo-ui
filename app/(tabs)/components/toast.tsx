@@ -126,18 +126,19 @@ function ToastScreenContent() {
     });
   };
 
-  const showCenterToast = () => {
+  const showToastWithTitle = () => {
     showToast({
-      message: "This toast appears in the center",
-      variant: "error",
-      position: "center",
+      title: "Upload Complete",
+      message: "Your file has been uploaded successfully",
+      variant: "success",
     });
   };
 
   const showCustomIconToast = () => {
     showToast({
-      message: "Toast with custom icon",
-      variant: "default",
+      title: "Achievement Unlocked!",
+      message: "You've earned a gold star",
+      variant: "info",
       icon: (
         <Ionicons
           name="star"
@@ -223,10 +224,11 @@ function ToastScreenContent() {
               <Button size="sm" onPress={showBottomToast}>
                 Bottom
               </Button>
-              <Button size="sm" onPress={showCenterToast}>
-                Center
-              </Button>
             </View>
+          </Demo>
+
+          <Demo title="Toast with Title">
+            <Button onPress={showToastWithTitle}>Show Toast with Title</Button>
           </Demo>
         </Section>
 
@@ -269,6 +271,76 @@ function ToastScreenContent() {
               >
                 Show Multiple Toasts
               </Button>
+            </View>
+          </Demo>
+        </Section>
+
+        {/* Code Examples */}
+        <Section title="Usage Examples">
+          <Demo title="Basic Usage">
+            <View
+              style={[
+                styles.codeBlock,
+                {
+                  backgroundColor: theme.colors.background,
+                  borderColor: theme.colors.border,
+                },
+              ]}
+            >
+              <Typography
+                style={{
+                  fontFamily: "monospace",
+                  fontSize: 12,
+                  color: theme.colors.text,
+                }}
+              >
+                {`// Using the hook within a component
+const { showToast } = useToast();
+
+showToast({
+  message: "Hello World!",
+  variant: "success"
+});
+
+// Or using the global toast method
+// (requires RootToastProvider)
+import { toast } from "@/core/components/Toast";
+
+toast.success("Operation completed!");
+toast.error("Something went wrong");
+toast.warning("Please check your input");`}
+              </Typography>
+            </View>
+          </Demo>
+
+          <Demo title="Root Provider Setup">
+            <View
+              style={[
+                styles.codeBlock,
+                {
+                  backgroundColor: theme.colors.background,
+                  borderColor: theme.colors.border,
+                },
+              ]}
+            >
+              <Typography
+                style={{
+                  fontFamily: "monospace",
+                  fontSize: 12,
+                  color: theme.colors.text,
+                }}
+              >
+                {`// In your app's root component (_layout.tsx)
+import { RootToastProvider } from "@/core/components/Toast";
+
+export default function RootLayout() {
+  return (
+    <RootToastProvider>
+      {/* Your app content */}
+    </RootToastProvider>
+  );
+}`}
+              </Typography>
             </View>
           </Demo>
         </Section>
@@ -388,6 +460,12 @@ const styles = StyleSheet.create({
   },
   column: {
     gap: 12,
+  },
+  codeBlock: {
+    padding: 16,
+    borderRadius: 8,
+    borderWidth: 1,
+    marginVertical: 8,
   },
   bottomPadding: {
     height: 32,
