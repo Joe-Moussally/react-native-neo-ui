@@ -220,7 +220,7 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
             marginTop: title ? 2 : 0,
           }}
         >
-          <Ionicons name="close" size={16} color={theme.colors.textSecondary} />
+          <Ionicons name="close" size={16} color={variantConfig.textColor} />
         </Pressable>
       )}
     </Animated.View>
@@ -270,7 +270,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 9999,
+          zIndex: 999999,
           pointerEvents: "box-none",
         }}
       >
@@ -292,7 +292,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 9999,
+          zIndex: 999999,
           pointerEvents: "box-none",
         }}
       >
@@ -360,7 +360,7 @@ export const RootToastProvider: React.FC<{ children: React.ReactNode }> = ({
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 9999,
+          zIndex: 999999,
           pointerEvents: "box-none",
         }}
       >
@@ -382,7 +382,7 @@ export const RootToastProvider: React.FC<{ children: React.ReactNode }> = ({
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 9999,
+          zIndex: 999999,
           pointerEvents: "box-none",
         }}
       >

@@ -40,7 +40,7 @@ function ToastScreenContent() {
     <View style={[styles.demo, { backgroundColor: theme.colors.surface }]}>
       {title && (
         <Typography
-          variant="bodyMedium"
+          variant="body"
           style={[styles.demoTitle, { color: theme.colors.textSecondary }]}
         >
           {title}
@@ -50,227 +50,305 @@ function ToastScreenContent() {
     </View>
   );
 
-  const showBasicToast = () => {
+  const showLocalToast = () => {
     showToast({
-      message: `Basic toast message ${counter}`,
+      message: `Local scoped toast ${counter}`,
     });
     setCounter(counter + 1);
-  };
-
-  const showSuccessToast = () => {
-    showToast({
-      message: "Operation completed successfully!",
-      variant: "success",
-    });
-  };
-
-  const showErrorToast = () => {
-    showToast({
-      message: "Something went wrong. Please try again.",
-      variant: "error",
-    });
-  };
-
-  const showWarningToast = () => {
-    showToast({
-      message: "Warning: This action cannot be undone.",
-      variant: "warning",
-    });
-  };
-
-  const showInfoToast = () => {
-    showToast({
-      message: "New features are available in the latest update.",
-      variant: "info",
-    });
-  };
-
-  const showToastWithAction = () => {
-    showToast({
-      message: "Your changes have been saved automatically.",
-      variant: "success",
-      action: {
-        label: "View",
-        onPress: () => {
-          showToast({
-            message: "Action button pressed!",
-            variant: "info",
-          });
-        },
-      },
-    });
-  };
-
-  const showLongToast = () => {
-    showToast({
-      message:
-        "This is a very long toast message that should wrap to multiple lines and still look good in the UI. It contains a lot of text to test how the component handles longer content.",
-      variant: "default",
-      duration: 6000,
-    });
-  };
-
-  const showPersistentToast = () => {
-    showToast({
-      message: "This toast will stay until manually dismissed.",
-      variant: "warning",
-      duration: "infinite",
-    });
-  };
-
-  const showBottomToast = () => {
-    showToast({
-      message: "This toast appears at the bottom",
-      variant: "info",
-      position: "bottom",
-    });
-  };
-
-  const showToastWithTitle = () => {
-    showToast({
-      title: "Upload Complete",
-      message: "Your file has been uploaded successfully",
-      variant: "success",
-    });
-  };
-
-  const showCustomIconToast = () => {
-    showToast({
-      title: "Achievement Unlocked!",
-      message: "You've earned a gold star",
-      variant: "info",
-      icon: (
-        <Ionicons
-          name="star"
-          size={20}
-          color={theme.colors.warning}
-          style={{ marginRight: 12 }}
-        />
-      ),
-    });
-  };
-
-  const showNoCloseButtonToast = () => {
-    showToast({
-      message: "This toast has no close button",
-      variant: "info",
-      showCloseButton: false,
-      duration: 3000,
-    });
   };
 
   return (
     <Screen title="Toast" options={{ headerLargeTitle: true }}>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        <Button onPress={() => toast.success("Hello")}>JOE TEST</Button>
-        {/* Basic Variants */}
-        <Section title="Basic Variants">
-          <Demo title="Different Toast Types">
+        {/* Global Toast Examples - These work from anywhere in your app */}
+        <Section title="Global Toast Examples">
+          <Demo title="Basic Global Toast Variants">
+            <Typography
+              style={{
+                color: theme.colors.textSecondary,
+                marginBottom: 12,
+                fontSize: 14,
+              }}
+            >
+              Global toast methods work from anywhere in your app when
+              RootToastProvider is wrapped around your app root. These toasts
+              appear above all content and navigation headers.
+            </Typography>
             <View style={styles.row}>
-              <Button size="sm" onPress={showBasicToast}>
+              <Button size="sm" onPress={() => toast.show("Default toast")}>
                 Default
               </Button>
-              <Button size="sm" color="success" onPress={showSuccessToast}>
+              <Button
+                size="sm"
+                color="success"
+                onPress={() => toast.success("Success!")}
+              >
                 Success
               </Button>
-              <Button size="sm" color="error" onPress={showErrorToast}>
+              <Button
+                size="sm"
+                color="error"
+                onPress={() => toast.error("Error occurred!")}
+              >
                 Error
               </Button>
             </View>
             <View style={styles.row}>
-              <Button size="sm" color="warning" onPress={showWarningToast}>
+              <Button
+                size="sm"
+                color="warning"
+                onPress={() => toast.warning("Warning message")}
+              >
                 Warning
               </Button>
-              <Button size="sm" color="primary" onPress={showInfoToast}>
+              <Button
+                size="sm"
+                color="primary"
+                onPress={() => toast.info("Info notification")}
+              >
                 Info
               </Button>
             </View>
           </Demo>
-        </Section>
 
-        {/* With Actions */}
-        <Section title="Interactive Toasts">
-          <Demo title="Toast with Action Button">
-            <Button onPress={showToastWithAction}>
-              Show Toast with Action
-            </Button>
-          </Demo>
-
-          <Demo title="Long Content">
-            <Button onPress={showLongToast}>Show Long Message</Button>
-          </Demo>
-
-          <Demo title="Persistent Toast">
-            <Button variant="outline" onPress={showPersistentToast}>
-              Show Persistent Toast
-            </Button>
-          </Demo>
-        </Section>
-
-        {/* Positions */}
-        <Section title="Positioning">
-          <Demo title="Different Positions">
+          <Demo title="Global Toasts with Position">
             <View style={styles.row}>
               <Button
                 size="sm"
                 onPress={() =>
-                  showToast({
-                    message: "Top position (default)",
-                    position: "top",
+                  toast.success("Top success!", { position: "top" })
+                }
+              >
+                Top Success
+              </Button>
+              <Button
+                size="sm"
+                color="error"
+                onPress={() =>
+                  toast.error("Bottom error!", { position: "bottom" })
+                }
+              >
+                Bottom Error
+              </Button>
+            </View>
+          </Demo>
+
+          <Demo title="Global Toasts with Title">
+            <View style={styles.column}>
+              <Button
+                onPress={() => toast.success("Upload completed successfully!")}
+              >
+                Success Message
+              </Button>
+              <Button
+                variant="outline"
+                onPress={() =>
+                  toast.warning("This action cannot be undone", {
+                    position: "bottom",
                   })
                 }
               >
-                Top
-              </Button>
-              <Button size="sm" onPress={showBottomToast}>
-                Bottom
+                Warning at Bottom
               </Button>
             </View>
           </Demo>
 
-          <Demo title="Toast with Title">
-            <Button onPress={showToastWithTitle}>Show Toast with Title</Button>
-          </Demo>
-        </Section>
-
-        {/* Customization */}
-        <Section title="Customization">
-          <Demo title="Custom Options">
+          <Demo title="Persistent Global Toasts">
             <View style={styles.column}>
-              <Button variant="outline" onPress={showCustomIconToast}>
-                Custom Icon
+              <Button
+                variant="outline"
+                onPress={() =>
+                  toast.warning("This toast stays until dismissed", {
+                    duration: "infinite",
+                  })
+                }
+              >
+                Persistent Toast
               </Button>
-              <Button variant="outline" onPress={showNoCloseButtonToast}>
-                No Close Button
+              <Button variant="outline" onPress={() => toast.hideAll()}>
+                Clear All Global Toasts
               </Button>
             </View>
           </Demo>
         </Section>
 
-        {/* Controls */}
-        <Section title="Controls">
-          <Demo title="Toast Management">
+        {/* Interactive Global Toasts */}
+        <Section title="Interactive Global Toasts">
+          <Demo title="Global Toasts with Actions">
             <View style={styles.column}>
-              <Button variant="outline" onPress={hideAllToasts}>
-                Clear All Toasts
+              <Button
+                onPress={() =>
+                  toast.success("Changes saved automatically", {
+                    action: {
+                      label: "View",
+                      onPress: () => toast.info("Action button pressed!"),
+                    },
+                  })
+                }
+              >
+                Toast with Action
               </Button>
 
               <Button
                 variant="outline"
-                onPress={() => {
-                  // Show multiple toasts
-                  for (let i = 1; i <= 3; i++) {
-                    setTimeout(() => {
-                      showToast({
-                        message: `Toast ${i} of 3`,
-                        variant:
-                          i === 1 ? "info" : i === 2 ? "warning" : "success",
-                      });
-                    }, i * 500);
-                  }
-                }}
+                onPress={() =>
+                  toast.error("Network connection lost. Retrying...", {
+                    duration: "infinite",
+                    action: {
+                      label: "Retry",
+                      onPress: () => toast.success("Retrying connection..."),
+                    },
+                  })
+                }
               >
-                Show Multiple Toasts
+                Network Error with Action
+              </Button>
+            </View>
+          </Demo>
+
+          <Demo title="Long Content">
+            <Button
+              onPress={() =>
+                toast.info(
+                  "This is a very long toast message that should wrap to multiple lines and still look good in the UI. It contains a lot of text to test how the component handles longer content.",
+                  { duration: 6000 }
+                )
+              }
+            >
+              Show Long Message
+            </Button>
+          </Demo>
+
+          <Demo title="Custom Icon">
+            <Button
+              variant="outline"
+              onPress={() =>
+                toast.info("Achievement Unlocked! You've earned a gold star!", {
+                  icon: (
+                    <Ionicons
+                      name="star"
+                      size={20}
+                      color={theme.colors.warning}
+                      style={{ marginRight: 12 }}
+                    />
+                  ),
+                })
+              }
+            >
+              Custom Icon Toast
+            </Button>
+          </Demo>
+
+          <Demo title="No Close Button">
+            <Button
+              variant="outline"
+              onPress={() =>
+                toast.info("This toast has no close button", {
+                  showCloseButton: false,
+                  duration: 3000,
+                })
+              }
+            >
+              No Close Button
+            </Button>
+          </Demo>
+        </Section>
+
+        {/* Real-world Examples */}
+        <Section title="Real-world Examples">
+          <Demo title="Common Use Cases">
+            <View style={styles.column}>
+              <Button
+                variant="outline"
+                onPress={() =>
+                  toast.success("Profile updated successfully", {
+                    action: { label: "View", onPress: () => {} },
+                  })
+                }
+              >
+                Save Success
+              </Button>
+
+              <Button
+                variant="outline"
+                onPress={() =>
+                  toast.success("File uploaded successfully", {
+                    position: "bottom",
+                  })
+                }
+              >
+                Upload Complete
+              </Button>
+
+              <Button
+                variant="outline"
+                onPress={() =>
+                  toast.warning("Are you sure you want to delete this item?", {
+                    action: {
+                      label: "Delete",
+                      onPress: () => toast.success("Item deleted"),
+                    },
+                    duration: "infinite",
+                  })
+                }
+              >
+                Confirmation Dialog
+              </Button>
+            </View>
+          </Demo>
+
+          <Demo title="Multiple Sequential Toasts">
+            <Button
+              variant="outline"
+              onPress={() => {
+                // Show multiple toasts in sequence
+                for (let i = 1; i <= 3; i++) {
+                  setTimeout(() => {
+                    const variants = ["info", "warning", "success"] as const;
+                    const variant = variants[i - 1];
+                    toast[variant](`Toast ${i} of 3`);
+                  }, i * 500);
+                }
+              }}
+            >
+              Show Multiple Toasts
+            </Button>
+          </Demo>
+        </Section>
+
+        {/* Local Scoped Toast Examples */}
+        <Section title="Local Scoped Toast Examples">
+          <Demo title="useToast() hook - Local Component Toasts">
+            <Typography
+              style={{
+                color: theme.colors.textSecondary,
+                marginBottom: 12,
+                fontSize: 14,
+              }}
+            >
+              These examples use the useToast() hook which only works within
+              components that are wrapped by a ToastProvider. The toasts will
+              appear in the safe area within the screen bounds, not above
+              navigation.
+            </Typography>
+            <View style={styles.column}>
+              <Button onPress={showLocalToast}>Local Scoped Toast</Button>
+
+              <Button
+                variant="outline"
+                onPress={() =>
+                  showToast({
+                    message: "This is a local success message",
+                    variant: "success",
+                    action: { label: "OK", onPress: () => {} },
+                  })
+                }
+              >
+                Local Success
+              </Button>
+
+              <Button variant="outline" onPress={() => hideAllToasts()}>
+                Clear Local Toasts Only
               </Button>
             </View>
           </Demo>
@@ -295,21 +373,48 @@ function ToastScreenContent() {
                   color: theme.colors.text,
                 }}
               >
+                {`// Global toast methods (work anywhere)
+import { toast } from "@/core/components/Toast";
+
+toast.success("Operation completed!");
+toast.error("Something went wrong");
+toast.warning("Please check your input");
+toast.info("New features available");
+
+// With options
+toast.success("Upload complete!", {
+  title: "Success",
+  position: "bottom",
+  duration: 5000
+});`}
+              </Typography>
+            </View>
+          </Demo>
+
+          <Demo title="Local Component Usage">
+            <View
+              style={[
+                styles.codeBlock,
+                {
+                  backgroundColor: theme.colors.background,
+                  borderColor: theme.colors.border,
+                },
+              ]}
+            >
+              <Typography
+                style={{
+                  fontFamily: "monospace",
+                  fontSize: 12,
+                  color: theme.colors.text,
+                }}
+              >
                 {`// Using the hook within a component
 const { showToast } = useToast();
 
 showToast({
   message: "Hello World!",
   variant: "success"
-});
-
-// Or using the global toast method
-// (requires RootToastProvider)
-import { toast } from "@/core/components/Toast";
-
-toast.success("Operation completed!");
-toast.error("Something went wrong");
-toast.warning("Please check your input");`}
+});`}
               </Typography>
             </View>
           </Demo>
@@ -342,182 +447,6 @@ export default function RootLayout() {
   );
 }`}
               </Typography>
-            </View>
-          </Demo>
-        </Section>
-
-        {/* Global Toast Examples */}
-        <Section title="Global Toast Examples">
-          <Demo title="Use toast.method() anywhere (requires RootToastProvider)">
-            <Typography
-              style={{
-                color: theme.colors.textSecondary,
-                marginBottom: 12,
-                fontSize: 14,
-              }}
-            >
-              Global toast methods work from anywhere in your app when
-              RootToastProvider is wrapped around your app root. These toasts
-              appear above all content and navigation.
-            </Typography>
-            <View style={styles.column}>
-              <View style={styles.row}>
-                <Button
-                  size="sm"
-                  onPress={() => toast.success("Global success!")}
-                >
-                  Success
-                </Button>
-                <Button
-                  size="sm"
-                  color="error"
-                  onPress={() => toast.error("Global error!")}
-                >
-                  Error
-                </Button>
-                <Button
-                  size="sm"
-                  color="warning"
-                  onPress={() => toast.warning("Global warning!")}
-                >
-                  Warning
-                </Button>
-                <Button
-                  size="sm"
-                  color="primary"
-                  onPress={() => toast.info("Global info!")}
-                >
-                  Info
-                </Button>
-              </View>
-
-              <View style={styles.row}>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onPress={() =>
-                    toast.success("Bottom success!", { position: "bottom" })
-                  }
-                >
-                  Bottom Success
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onPress={() =>
-                    toast.error("Bottom error!", { position: "bottom" })
-                  }
-                >
-                  Bottom Error
-                </Button>
-              </View>
-
-              <View style={styles.row}>
-                <Button
-                  variant="outline"
-                  onPress={() =>
-                    toast.success("With Title!", {
-                      title: "Upload Complete",
-                      position: "bottom",
-                    })
-                  }
-                >
-                  Global with Title
-                </Button>
-                <Button
-                  variant="outline"
-                  onPress={() =>
-                    toast.warning("Persistent warning", {
-                      title: "Warning",
-                      duration: "infinite",
-                    })
-                  }
-                >
-                  Persistent Global
-                </Button>
-              </View>
-            </View>
-          </Demo>
-        </Section>
-
-        {/* Usage Examples */}
-        <Section title="Local Component Usage">
-          <Demo title="Use useToast() hook within components wrapped by ToastProvider">
-            <Typography
-              style={{
-                color: theme.colors.textSecondary,
-                marginBottom: 12,
-                fontSize: 14,
-              }}
-            >
-              These examples use the useToast() hook which only works within
-              components that are wrapped by a ToastProvider. The toasts will
-              appear in the safe area within the screen bounds.
-            </Typography>
-          </Demo>
-
-          <Demo title="Real-world Examples">
-            <View style={styles.column}>
-              <Button
-                variant="outline"
-                onPress={() =>
-                  showToast({
-                    message: "Profile updated successfully",
-                    variant: "success",
-                    action: { label: "View", onPress: () => {} },
-                  })
-                }
-              >
-                Save Success
-              </Button>
-
-              <Button
-                variant="outline"
-                onPress={() =>
-                  showToast({
-                    message: "Network connection lost. Retrying...",
-                    variant: "error",
-                    duration: "infinite",
-                    action: { label: "Retry", onPress: () => {} },
-                  })
-                }
-              >
-                Network Error
-              </Button>
-
-              <Button
-                variant="outline"
-                onPress={() =>
-                  showToast({
-                    message: "File uploaded successfully",
-                    variant: "success",
-                    position: "bottom",
-                  })
-                }
-              >
-                Upload Complete
-              </Button>
-
-              <Button
-                variant="outline"
-                onPress={() =>
-                  showToast({
-                    message: "Are you sure you want to delete this item?",
-                    variant: "warning",
-                    action: {
-                      label: "Delete",
-                      onPress: () =>
-                        showToast({
-                          message: "Item deleted",
-                          variant: "success",
-                        }),
-                    },
-                    duration: "infinite",
-                  })
-                }
-              >
-                Confirmation
-              </Button>
             </View>
           </Demo>
         </Section>
