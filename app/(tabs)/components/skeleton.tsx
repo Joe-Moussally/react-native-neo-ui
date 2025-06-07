@@ -351,7 +351,7 @@ export default function SkeletonScreen() {
   };
 
   return (
-    <Screen>
+    <Screen title="Skeleton">
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
