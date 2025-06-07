@@ -1,50 +1,203 @@
-# Welcome to your Expo app 👋
+# @neoui/core
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[![npm version](https://badge.fury.io/js/@neoui%2Fcore.svg)](https://www.npmjs.com/package/@neoui/core)
+[![GitHub](https://img.shields.io/github/license/Joe-Moussally/neo-ui)](https://github.com/Joe-Moussally/neo-ui/blob/builder-bob/LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
 
-## Get started
+A modern, customizable React Native UI library built with TypeScript. Inspired by Material-UI, @neoui provides a comprehensive set of components with a powerful theming system.
 
-1. Install dependencies
+![NeoUI Demo](https://raw.githubusercontent.com/Joe-Moussally/neo-ui/builder-bob/assets/demo.gif)
 
-   ```bash
-   npm install
-   ```
+## ✨ Features
 
-2. Start the app
+- 🎨 **Comprehensive Theme System** - Fully customizable colors, typography, and spacing
+- 🧩 **Rich Component Library** - Pre-built components for common UI patterns
+- 📱 **React Native First** - Built specifically for React Native with Expo support
+- 🔧 **TypeScript Support** - Full type safety and IntelliSense
+- 🎯 **Navigation Ready** - Integrated navigation components
+- 🚀 **Performance Optimized** - Lightweight and efficient
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## 📦 Installation
 
 ```bash
-npm run reset-project
+npm install @neoui/core
+# or
+yarn add @neoui/core
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Peer Dependencies
 
-## Learn more
+Install the required peer dependencies:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npm install react react-native @react-navigation/native @react-navigation/bottom-tabs @react-navigation/elements react-native-gesture-handler react-native-reanimated react-native-safe-area-context react-native-screens react-native-svg
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🚀 Quick Start
 
-## Join the community
+### 1. Setup Theme Provider
 
-Join our community of developers creating universal apps.
+Wrap your app with the `ThemeProvider`:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```tsx
+import React from "react";
+import { ThemeProvider } from "@neoui/core";
+import { YourApp } from "./YourApp";
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+```
+
+### 2. Use Components
+
+```tsx
+import React from "react";
+import { Button, Typography, Box } from "@neoui/core";
+
+export function YourApp() {
+  return (
+    <Box padding="lg">
+      <Typography variant="h1">Welcome to NeoUI</Typography>
+      <Button variant="primary" onPress={() => console.log("Hello NeoUI!")}>
+        Get Started
+      </Button>
+    </Box>
+  );
+}
+```
+
+## 🧩 Components
+
+### Layout & Navigation
+
+- **Box** - Flexible container with theme-aware spacing
+- **Screen** - Screen wrapper with safe area handling
+
+### Typography
+
+- **Typography** - Text component with predefined styles
+- **ThemedText** - Theme-aware text component
+
+### Form Controls
+
+- **Button** - Customizable button with multiple variants
+- **TextField** - Input field with validation and theming
+- **Chip** - Compact elements for tags and filters
+
+### Feedback & Indicators
+
+- **Alert** - Alert messages with different severity levels
+- **Toast** - Toast notifications with global state
+- **Skeleton** - Loading placeholders
+- **Rating** - Star rating component
+
+### Data Display
+
+- **Avatar** - User profile pictures with fallbacks
+- **Badge** - Small status indicators
+- **Ticker** - Animated text ticker
+
+## 🎨 Theming
+
+### Custom Theme
+
+```tsx
+import { ThemeProvider, createTheme } from "@neoui/core";
+
+const customTheme = createTheme({
+  colors: {
+    primary: "#007AFF",
+    secondary: "#5856D6",
+    // ... other colors
+  },
+  spacing: {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+  },
+  typography: {
+    h1: {
+      fontSize: 32,
+      fontWeight: "bold",
+    },
+    // ... other typography styles
+  },
+});
+
+export default function App() {
+  return (
+    <ThemeProvider theme={customTheme}>
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+```
+
+### Using Theme in Components
+
+```tsx
+import { useTheme } from "@neoui/core";
+
+export function CustomComponent() {
+  const theme = useTheme();
+
+  return (
+    <View style={{ backgroundColor: theme.colors.primary }}>
+      {/* Your content */}
+    </View>
+  );
+}
+```
+
+## 📱 Example App
+
+Check out our comprehensive example app that demonstrates all components:
+
+```bash
+git clone https://github.com/Joe-Moussally/neo-ui.git
+cd neo-ui
+git checkout builder-bob
+./setup.sh
+
+# Run the example
+cd example
+npm run ios    # or android, web
+```
+
+## 📚 Documentation
+
+- 📖 [API Documentation](https://github.com/Joe-Moussally/neo-ui/tree/builder-bob/docs)
+- 🎯 [Component Gallery](https://github.com/Joe-Moussally/neo-ui/tree/builder-bob/example)
+- 🛠️ [Development Guide](https://github.com/Joe-Moussally/neo-ui/blob/builder-bob/DEVELOPMENT.md)
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](https://github.com/Joe-Moussally/neo-ui/blob/builder-bob/CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+MIT © [Joe Moussally](https://github.com/Joe-Moussally)
+
+## 🙏 Support
+
+- ⭐ [Star on GitHub](https://github.com/Joe-Moussally/neo-ui)
+- 🐛 [Report Issues](https://github.com/Joe-Moussally/neo-ui/issues)
+- 💬 [Discussions](https://github.com/Joe-Moussally/neo-ui/discussions)
+
+---
+
+<p align="center">Made with ❤️ for the React Native community</p>
