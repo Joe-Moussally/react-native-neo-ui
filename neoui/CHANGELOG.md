@@ -1,3 +1,12 @@
+# 1.0.0 (2025-06-08)
+
+
+### Bug Fixes
+
+* Fixing import pathnames ([86711c0](https://github.com/Joe-Moussally/neo-ui/commit/86711c0f391cf899b61650610ed0332b6481626a))
+* Fixing linting errors ([d70660a](https://github.com/Joe-Moussally/neo-ui/commit/d70660aac9aa6b8cefc10b0dc643c3094295f7e2))
+* Testing semantic release commit message ([a937f7c](https://github.com/Joe-Moussally/neo-ui/commit/a937f7c048676af3385954318b8fd7731348f48f))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
