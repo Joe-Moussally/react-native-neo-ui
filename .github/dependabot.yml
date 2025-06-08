@@ -1,0 +1,68 @@
+version: 2
+updates:
+  # Root package dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Joe-Moussally"
+    assignees:
+      - "Joe-Moussally"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
+  # Library package dependencies
+  - package-ecosystem: "npm"
+    directory: "/neoui"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Joe-Moussally"
+    assignees:
+      - "Joe-Moussally"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
+  # Example app dependencies
+  - package-ecosystem: "npm"
+    directory: "/example"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Joe-Moussally"
+    assignees:
+      - "Joe-Moussally"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Joe-Moussally"
+    assignees:
+      - "Joe-Moussally"
+    commit-message:
+      prefix: "ci"
+      include: "scope"

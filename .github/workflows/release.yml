@@ -2,8 +2,15 @@ name: Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
+      - builder-bob
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  packages: write
 
 jobs:
   release:
@@ -12,34 +19,36 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22.x"
           cache: "npm"
-          registry-url: "https://registry.npmjs.org"
 
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Install library dependencies
+        run: cd neoui && npm ci --legacy-peer-deps
+
+      - name: Run linter
+        run: cd neoui && npm run lint
+
+      - name: Run type check
+        run: cd neoui && npm run typecheck
+
       - name: Run tests
-        run: npm test
+        run: cd neoui && npm test
 
       - name: Build library
-        run: npm run build
+        run: cd neoui && npm run build
 
-      - name: Publish to npm
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create GitHub Release
-        uses: actions/create-release@v1
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: cd neoui && npm run semantic-release

@@ -11,7 +11,9 @@
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
     "test": "echo \"Warning: No tests specified\" && exit 0",
-    "build": "echo \"Warning: No build script specified\" && exit 0"
+    "build": "echo \"Warning: No build script specified\" && exit 0",
+    "commitlint": "commitlint --edit",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -44,9 +46,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@types/react": "~19.0.10",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~9.2.0",
+    "husky": "^9.1.7",
     "typescript": "~5.8.3"
   },
   "private": true

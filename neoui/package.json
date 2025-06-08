@@ -38,7 +38,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli lib",
     "build": "bob build",
-    "release": "release-it --only-version",
+    "semantic-release": "semantic-release",
     "dev": "node scripts/dev.js"
   },
   "keywords": [
@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neoui/neoui.git"
+    "url": "git+https://github.com/Joe-Moussally/neo-ui.git"
   },
-  "author": "NeoUI Team <team@neoui.dev> (https://neoui.dev)",
+  "author": "Joe Moussally <joemoussally111@gmail.com> (https://github.com/Joe-Moussally)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/neoui/neoui/issues"
+    "url": "https://github.com/Joe-Moussally/neo-ui/issues"
   },
-  "homepage": "https://github.com/neoui/neoui#readme",
+  "homepage": "https://github.com/Joe-Moussally/neo-ui#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -68,6 +68,12 @@
     "@react-native/babel-preset": "0.78.2",
     "@react-native/eslint-config": "^0.78.0",
     "@release-it/conventional-changelog": "^9.0.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
     "@types/jest": "^29.5.5",
     "@types/react": "^19.0.12",
     "commitlint": "^19.6.1",
@@ -81,14 +87,15 @@
     "react-native": "0.79.3",
     "react-native-builder-bob": "^0.40.8",
     "release-it": "^17.10.0",
+    "semantic-release": "^24.2.5",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*",
-    "@react-navigation/native": "^7.1.6",
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
+    "@react-navigation/native": "^7.1.6",
+    "react": "*",
+    "react-native": "*",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
