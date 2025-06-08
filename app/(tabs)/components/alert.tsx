@@ -39,7 +39,7 @@ export default function AlertDemo() {
             Your action was completed successfully.
           </Alert>
           <Alert severity="info" title="Information">
-            Here's some helpful information for you.
+            Here&apos;s some helpful information for you.
           </Alert>
           <Alert severity="warning" title="Warning">
             Please check your input before proceeding.
@@ -83,7 +83,7 @@ export default function AlertDemo() {
             This action cannot be undone once confirmed.
           </Alert>
           <Alert severity="error" variant="soft" title="Access Denied">
-            You don't have permission to perform this action.
+            You don&apos;t have permission to perform this action.
           </Alert>
         </View>
 

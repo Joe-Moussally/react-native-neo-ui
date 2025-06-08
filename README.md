@@ -5,6 +5,10 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
 
+## 🚧 **BETA DEVELOPMENT** 🚧
+
+**⚠️ This library is currently in beta development and is still under active development. APIs may change, and some features may not be fully stable. Use with caution in production environments.**
+
 A modern, customizable React Native UI library built with TypeScript. Inspired by Material-UI, @neoui provides a comprehensive set of components with a powerful theming system.
 
 ![NeoUI Demo](https://raw.githubusercontent.com/Joe-Moussally/neo-ui/builder-bob/assets/demo.gif)

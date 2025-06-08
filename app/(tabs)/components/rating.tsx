@@ -10,13 +10,9 @@ import { ScrollView, StyleSheet, View } from "react-native";
 // Define examples for demonstration
 const SIZES: RatingSize[] = ["small", "medium", "large"];
 
-const getLabelText = (value: number) => {
-  return `${value} Star${value !== 1 ? "s" : ""}`;
-};
-
 export default function RatingScreen() {
   const { theme } = useTheme();
-  const [value, setValue] = useState<number>(2);
+  const [value] = useState<number>(2);
   const [controlledValue, setControlledValue] = useState<number | null>(3);
 
   const Section = ({
@@ -209,8 +205,8 @@ export default function RatingScreen() {
           Rating
         </Typography>
         <Typography variant="body" color={theme.colors.textSecondary}>
-          Ratings provide insight regarding others' opinions and experiences,
-          and can allow the user to submit a rating of their own.
+          Ratings provide insight regarding others&apos; opinions and
+          experiences, and can allow the user to submit a rating of their own.
         </Typography>
 
         <Section title="Basic Rating">{renderBasicExamples()}</Section>

@@ -50,7 +50,7 @@ export default function TypographyScreen() {
           color={theme.colors.textSecondary}
           style={styles.label}
         >
-          variant="{variant}"
+          variant=&quot;{variant}&quot;
         </Typography>
         <Typography variant={variant}>This is {variant} text</Typography>
       </View>
@@ -65,7 +65,7 @@ export default function TypographyScreen() {
           color={theme.colors.textSecondary}
           style={styles.label}
         >
-          weight="{weight}"
+          weight=&quot;{weight}&quot;
         </Typography>
         <Typography weight={weight}>This is weight {weight}</Typography>
       </View>
@@ -88,7 +88,7 @@ export default function TypographyScreen() {
           color={theme.colors.textSecondary}
           style={styles.label}
         >
-          color="{colorItem.name}"
+          color=&quot;{colorItem.name}&quot;
         </Typography>
         <Typography color={colorItem.color}>
           This is {colorItem.name} color
@@ -113,7 +113,7 @@ export default function TypographyScreen() {
           color={theme.colors.textSecondary}
           style={styles.label}
         >
-          variant="{ex.variant}" weight="{ex.weight}"
+          variant=&quot;{ex.variant}&quot; weight=&quot;{ex.weight}&quot;
         </Typography>
         <Typography
           variant={ex.variant as TypographyVariant}
