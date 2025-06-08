@@ -1,4 +1,12 @@
 {
+  "name": "@neoui/example",
+  "version": "1.0.0",
+  "scripts": {
+    "web": "echo \"Warning: Web platform not yet supported. Skipping web build.\" && exit 0",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios"
+  },
   "dependencies": {
     "@neoui/core": "file:.."
   }

@@ -8,7 +8,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"Warning: No tests specified\" && exit 0",
+    "build": "echo \"Warning: No build script specified\" && exit 0"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
