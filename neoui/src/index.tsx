@@ -2,7 +2,7 @@
 export * from './theme';
 
 // Component exports
-export * from './components/ParallaxScrollView';
+export { default as ParallaxScrollView } from './components/ParallaxScrollView';
 export * from './components/ThemedText';
 export * from './components/ThemedView';
 
@@ -22,4 +22,3 @@ export * from './components/TextField';
 export * from './components/Ticker';
 export * from './components/Toast';
 export * from './components/Typography';
-

@@ -1,44 +1,36 @@
-import { useTheme } from "@/core/theme";
-import { Ionicons } from "@expo/vector-icons";
-import React, { createContext, useContext, useEffect, useState } from "react";
-import {
-  Dimensions,
-  Pressable,
-  SafeAreaView,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { Pressable, SafeAreaView, View, ViewStyle } from 'react-native';
 import Animated, {
   LinearTransition,
   SlideInDown,
   SlideInUp,
   SlideOutDown,
   SlideOutUp,
-} from "react-native-reanimated";
-import { Typography } from "../Typography";
+} from 'react-native-reanimated';
+import { useTheme } from '../../theme';
+import { Typography } from '../Typography';
 import {
   ToastContextValue,
   ToastProps,
   ToastProviderProps,
   ToastVariant,
-} from "./types";
-
-const { width: screenWidth } = Dimensions.get("window");
+} from './types';
 
 const ToastContext = createContext<ToastContextValue | null>(null);
 
 export const useToast = () => {
   const context = useContext(ToastContext);
   if (!context) {
-    throw new Error("useToast must be used within a ToastProvider");
+    throw new Error('useToast must be used within a ToastProvider');
   }
   return context;
-};
-
-// Helper function to lighten a color
-const lightenColor = (color: string, amount: number = 0.8) => {
-  // Simple color lightening by adjusting opacity with white background
-  return color;
 };
 
 const getVariantConfig = (variant: ToastVariant, theme: any) => {
@@ -46,7 +38,7 @@ const getVariantConfig = (variant: ToastVariant, theme: any) => {
     default: {
       backgroundColor: theme.colors.surface,
       borderColor: theme.colors.border,
-      iconName: "information-circle" as keyof typeof Ionicons.glyphMap,
+      iconName: 'information-circle' as keyof typeof Ionicons.glyphMap,
       iconColor: theme.colors.primary,
       textColor: theme.colors.text,
       titleColor: theme.colors.text,
@@ -54,34 +46,34 @@ const getVariantConfig = (variant: ToastVariant, theme: any) => {
     success: {
       backgroundColor: theme.colors.success,
       borderColor: theme.colors.success,
-      iconName: "checkmark-circle" as keyof typeof Ionicons.glyphMap,
-      iconColor: "#ffffff",
-      textColor: "#ffffff",
-      titleColor: "#ffffff",
+      iconName: 'checkmark-circle' as keyof typeof Ionicons.glyphMap,
+      iconColor: '#ffffff',
+      textColor: '#ffffff',
+      titleColor: '#ffffff',
     },
     error: {
       backgroundColor: theme.colors.error,
       borderColor: theme.colors.error,
-      iconName: "close-circle" as keyof typeof Ionicons.glyphMap,
-      iconColor: "#ffffff",
-      textColor: "#ffffff",
-      titleColor: "#ffffff",
+      iconName: 'close-circle' as keyof typeof Ionicons.glyphMap,
+      iconColor: '#ffffff',
+      textColor: '#ffffff',
+      titleColor: '#ffffff',
     },
     warning: {
       backgroundColor: theme.colors.warning,
       borderColor: theme.colors.warning,
-      iconName: "warning" as keyof typeof Ionicons.glyphMap,
-      iconColor: "#ffffff",
-      textColor: "#ffffff",
-      titleColor: "#ffffff",
+      iconName: 'warning' as keyof typeof Ionicons.glyphMap,
+      iconColor: '#ffffff',
+      textColor: '#ffffff',
+      titleColor: '#ffffff',
     },
     info: {
       backgroundColor: theme.colors.primary,
       borderColor: theme.colors.primary,
-      iconName: "information-circle" as keyof typeof Ionicons.glyphMap,
-      iconColor: "#ffffff",
-      textColor: "#ffffff",
-      titleColor: "#ffffff",
+      iconName: 'information-circle' as keyof typeof Ionicons.glyphMap,
+      iconColor: '#ffffff',
+      textColor: '#ffffff',
+      titleColor: '#ffffff',
     },
   };
   return configs[variant];
@@ -90,9 +82,9 @@ const getVariantConfig = (variant: ToastVariant, theme: any) => {
 const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
   title,
   message,
-  variant = "default",
+  variant = 'default',
   duration = 4000,
-  position = "top",
+  position = 'top',
   action,
   showCloseButton = true,
   icon,
@@ -104,20 +96,20 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
   const { theme } = useTheme();
   const variantConfig = getVariantConfig(variant, theme);
 
+  const handleDismiss = useCallback(() => {
+    onRemove();
+    onClose?.();
+  }, [onRemove, onClose]);
+
   useEffect(() => {
     // Auto dismiss
-    if (duration !== "infinite" && typeof duration === "number") {
+    if (duration !== 'infinite' && typeof duration === 'number') {
       const timer = setTimeout(() => {
         handleDismiss();
       }, duration);
       return () => clearTimeout(timer);
     }
-  }, [duration]);
-
-  const handleDismiss = () => {
-    onRemove();
-    onClose?.();
-  };
+  }, [duration, handleDismiss]);
 
   const toastStyle: ViewStyle = {
     backgroundColor: variantConfig.backgroundColor,
@@ -127,8 +119,8 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
     padding: 16,
     marginHorizontal: 16,
     marginVertical: 4,
-    flexDirection: "row",
-    alignItems: title ? "flex-start" : "center",
+    flexDirection: 'row',
+    alignItems: title ? 'flex-start' : 'center',
     shadowColor: theme.colors.text,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -137,13 +129,13 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
   };
 
   const getEntryAnimation = () => {
-    return position === "top"
+    return position === 'top'
       ? SlideInUp.springify().damping(15).stiffness(100)
       : SlideInDown.springify().damping(15).stiffness(100);
   };
 
   const getExitAnimation = () => {
-    return position === "top"
+    return position === 'top'
       ? SlideOutUp.springify().damping(15).stiffness(100)
       : SlideOutDown.springify().damping(15).stiffness(100);
   };
@@ -170,7 +162,7 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
           <Typography
             style={{
               color: variantConfig.titleColor,
-              fontWeight: "600",
+              fontWeight: '600',
               fontSize: 16,
               marginBottom: 4,
             }}
@@ -202,7 +194,7 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
           <Typography
             style={{
               color: variantConfig.iconColor,
-              fontWeight: "600",
+              fontWeight: '600',
               fontSize: 14,
             }}
           >
@@ -233,7 +225,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 }) => {
   const [toasts, setToasts] = useState<(ToastProps & { id: string })[]>([]);
 
-  const showToast = (toast: Omit<ToastProps, "id">): string => {
+  const showToast = (toast: Omit<ToastProps, 'id'>): string => {
     const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
     const newToast = { ...toast, id };
 
@@ -266,16 +258,16 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
       {/* Top Toasts */}
       <SafeAreaView
         style={{
-          position: "absolute",
+          position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           zIndex: 999999,
-          pointerEvents: "box-none",
+          pointerEvents: 'box-none',
         }}
       >
         {toasts
-          .filter((toast) => toast.position !== "bottom")
+          .filter((toast) => toast.position !== 'bottom')
           .map((toast) => (
             <Toast
               key={toast.id}
@@ -288,16 +280,16 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
       {/* Bottom Toasts */}
       <SafeAreaView
         style={{
-          position: "absolute",
+          position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
           zIndex: 999999,
-          pointerEvents: "box-none",
+          pointerEvents: 'box-none',
         }}
       >
         {toasts
-          .filter((toast) => toast.position === "bottom")
+          .filter((toast) => toast.position === 'bottom')
           .map((toast) => (
             <Toast
               key={toast.id}
@@ -312,7 +304,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 
 // Root Toast Provider for the whole app
 let rootToastRef: {
-  showToast: (toast: Omit<ToastProps, "id">) => string;
+  showToast: (toast: Omit<ToastProps, 'id'>) => string;
   hideToast: (id: string) => void;
   hideAllToasts: () => void;
 } | null = null;
@@ -322,7 +314,7 @@ export const RootToastProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [toasts, setToasts] = useState<(ToastProps & { id: string })[]>([]);
 
-  const showToast = (toast: Omit<ToastProps, "id">): string => {
+  const showToast = (toast: Omit<ToastProps, 'id'>): string => {
     const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
     const newToast = { ...toast, id };
 
@@ -356,16 +348,16 @@ export const RootToastProvider: React.FC<{ children: React.ReactNode }> = ({
       {/* Top Toasts */}
       <SafeAreaView
         style={{
-          position: "absolute",
+          position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           zIndex: 999999,
-          pointerEvents: "box-none",
+          pointerEvents: 'box-none',
         }}
       >
         {toasts
-          .filter((toast) => toast.position !== "bottom")
+          .filter((toast) => toast.position !== 'bottom')
           .map((toast) => (
             <Toast
               key={toast.id}
@@ -378,16 +370,16 @@ export const RootToastProvider: React.FC<{ children: React.ReactNode }> = ({
       {/* Bottom Toasts */}
       <SafeAreaView
         style={{
-          position: "absolute",
+          position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
           zIndex: 999999,
-          pointerEvents: "box-none",
+          pointerEvents: 'box-none',
         }}
       >
         {toasts
-          .filter((toast) => toast.position === "bottom")
+          .filter((toast) => toast.position === 'bottom')
           .map((toast) => (
             <Toast
               key={toast.id}
@@ -402,33 +394,33 @@ export const RootToastProvider: React.FC<{ children: React.ReactNode }> = ({
 
 // Global toast methods that can be used anywhere in the app
 export const toast = {
-  show: (message: string, options?: Partial<Omit<ToastProps, "message">>) => {
-    return rootToastRef?.showToast({ message, ...options }) || "";
+  show: (message: string, options?: Partial<Omit<ToastProps, 'message'>>) => {
+    return rootToastRef?.showToast({ message, ...options }) || '';
   },
   success: (
     message: string,
-    options?: Partial<Omit<ToastProps, "message">>
+    options?: Partial<Omit<ToastProps, 'message'>>
   ) => {
     return (
-      rootToastRef?.showToast({ message, variant: "success", ...options }) || ""
+      rootToastRef?.showToast({ message, variant: 'success', ...options }) || ''
     );
   },
-  error: (message: string, options?: Partial<Omit<ToastProps, "message">>) => {
+  error: (message: string, options?: Partial<Omit<ToastProps, 'message'>>) => {
     return (
-      rootToastRef?.showToast({ message, variant: "error", ...options }) || ""
+      rootToastRef?.showToast({ message, variant: 'error', ...options }) || ''
     );
   },
   warning: (
     message: string,
-    options?: Partial<Omit<ToastProps, "message">>
+    options?: Partial<Omit<ToastProps, 'message'>>
   ) => {
     return (
-      rootToastRef?.showToast({ message, variant: "warning", ...options }) || ""
+      rootToastRef?.showToast({ message, variant: 'warning', ...options }) || ''
     );
   },
-  info: (message: string, options?: Partial<Omit<ToastProps, "message">>) => {
+  info: (message: string, options?: Partial<Omit<ToastProps, 'message'>>) => {
     return (
-      rootToastRef?.showToast({ message, variant: "info", ...options }) || ""
+      rootToastRef?.showToast({ message, variant: 'info', ...options }) || ''
     );
   },
   hide: (id: string) => {
@@ -440,5 +432,5 @@ export const toast = {
 };
 
 // Convenience exports
-export * from "./types";
+export * from './types';
 export { Toast };

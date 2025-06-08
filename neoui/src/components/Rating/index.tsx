@@ -1,16 +1,16 @@
-import { useTheme } from "@/core/theme";
-import { Ionicons } from "@expo/vector-icons";
-import React, { useEffect, useState } from "react";
-import { Animated, StyleSheet, TouchableOpacity, View } from "react-native";
-import { RatingProps, RatingSize } from "./types";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useEffect, useState } from 'react';
+import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useTheme } from '../../theme';
+import { RatingProps, RatingSize } from './types';
 
 const getSizeFromVariant = (size: RatingSize): number => {
   switch (size) {
-    case "small":
+    case 'small':
       return 18;
-    case "medium":
+    case 'medium':
       return 24;
-    case "large":
+    case 'large':
       return 32;
     default:
       return 24;
@@ -52,12 +52,10 @@ const Star = ({
   readOnly,
 }: StarProps) => {
   const { theme } = useTheme();
-  const [isPressed, setIsPressed] = useState(false);
   const scaleValue = new Animated.Value(1);
 
   const handlePressIn = () => {
     if (readOnly || disabled) return;
-    setIsPressed(true);
     onHoverIn?.();
     Animated.spring(scaleValue, {
       toValue: 1.1,
@@ -67,7 +65,6 @@ const Star = ({
 
   const handlePressOut = () => {
     if (readOnly || disabled) return;
-    setIsPressed(false);
     onHoverOut?.();
     Animated.spring(scaleValue, {
       toValue: 1,
@@ -186,7 +183,7 @@ export const Rating: React.FC<RatingProps> = ({
   value: controlledValue,
   defaultValue = 0,
   max = 5,
-  size = "medium",
+  size = 'medium',
   readOnly = false,
   disabled = false,
   onChange,
@@ -196,7 +193,6 @@ export const Rating: React.FC<RatingProps> = ({
   highlightSelectedOnly = false,
   style,
 }) => {
-  const { theme } = useTheme();
   const [internalValue, setInternalValue] = useState(defaultValue);
 
   const isControlled = controlledValue !== undefined;
@@ -238,7 +234,7 @@ export const Rating: React.FC<RatingProps> = ({
   };
 
   const renderStars = () => {
-    const stars = [];
+    const stars: React.ReactElement[] = [];
     const totalStars = max;
 
     for (let i = 0; i < totalStars; i++) {
@@ -273,26 +269,26 @@ export const Rating: React.FC<RatingProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   starsContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   starContainer: {
     marginHorizontal: 1,
   },
   halfStarContainer: {
-    position: "relative",
+    position: 'relative',
   },
   halfStarMask: {
-    overflow: "hidden",
-    position: "absolute",
+    overflow: 'hidden',
+    position: 'absolute',
     zIndex: 2,
   },
   halfStarBackground: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 1,
   },
 });
