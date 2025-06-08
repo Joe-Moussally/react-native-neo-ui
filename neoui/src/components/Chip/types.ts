@@ -1,4 +1,4 @@
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
+import { ThemeColor, ThemeSpacing } from "../../theme/types";
 import { PressableProps } from "react-native";
 
 export type ChipVariant = "solid" | "soft" | "outline" | "ghost";

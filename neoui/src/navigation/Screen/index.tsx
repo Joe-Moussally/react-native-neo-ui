@@ -1,10 +1,10 @@
-import { useTheme } from "@/core/theme";
-import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
-import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
-import { ScreenProps } from "./types";
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { Platform, SafeAreaView, StyleSheet, View } from 'react-native';
+import { useTheme } from '../../theme';
+import { ScreenProps } from './types';
 
 export const Screen: React.FC<ScreenProps> = ({
   children,
@@ -45,8 +45,8 @@ export const Screen: React.FC<ScreenProps> = ({
       color: theme.colors.text,
     },
     headerBackButtonMenuEnabled: false,
-    headerBackButtonDisplayMode: "minimal",
-    animation: Platform.OS !== "ios" ? "fade" : "default",
+    headerBackButtonDisplayMode: 'minimal',
+    animation: Platform.OS !== 'ios' ? 'fade' : 'default',
     ...options,
   };
 
@@ -54,7 +54,7 @@ export const Screen: React.FC<ScreenProps> = ({
 
   return (
     <>
-      <StatusBar style={theme.isDark ? "light" : "dark"} />
+      <StatusBar style={theme.isDark ? 'light' : 'dark'} />
       <Stack.Screen options={screenOptions} />
       <Container
         style={[
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export * from "./types";
+export * from './types';

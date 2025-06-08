@@ -1,6 +1,6 @@
-import { Typography } from "@/core/components/Typography";
-import { useTheme } from "@/core/theme";
-import { spacing } from "@/core/theme/spacing";
+import { Typography } from "../Typography";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";

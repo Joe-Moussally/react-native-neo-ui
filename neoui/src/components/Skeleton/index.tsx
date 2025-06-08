@@ -1,4 +1,4 @@
-import { useTheme } from "@/core/theme";
+import { useTheme } from "../../theme";
 import React, { useEffect, useRef } from "react";
 import {
   Animated,

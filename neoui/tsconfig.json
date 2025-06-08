@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@neoui/core": ["./src/index"]
+    },
+    "types": ["react-native", "jest"],
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*", "scripts/**/*", "**/__tests__/**/*"],
+  "exclude": ["node_modules", "lib", "example"]
+}

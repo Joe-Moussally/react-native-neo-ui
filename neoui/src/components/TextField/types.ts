@@ -1,4 +1,4 @@
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
+import { ThemeColor, ThemeSpacing } from "../../theme/types";
 import { TextInputProps } from "react-native";
 
 export type TextFieldVariant = "filled" | "outline" | "underline";

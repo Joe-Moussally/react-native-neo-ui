@@ -1,7 +1,7 @@
-import { Box } from "@/core/components/Box";
-import { Typography } from "@/core/components/Typography";
-import { useTheme } from "@/core/theme";
-import { spacing } from "@/core/theme/spacing";
+import { Box } from "../Box";
+import { Typography } from "../Typography";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import React, { useRef, useState } from "react";
 import { ActivityIndicator, StyleSheet, TextInput, View } from "react-native";
 import { TextFieldProps, TextFieldSize, TextFieldVariant } from "./types";

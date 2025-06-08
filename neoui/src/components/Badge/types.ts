@@ -1,4 +1,4 @@
-import { ThemeColor } from "@/core/theme/types";
+import { ThemeColor } from "../../theme/types";
 import { ReactNode } from "react";
 import { StyleProp, ViewStyle } from "react-native";
 

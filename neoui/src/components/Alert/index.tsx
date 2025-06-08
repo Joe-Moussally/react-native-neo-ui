@@ -1,14 +1,14 @@
-import { Box } from "@/core/components/Box";
-import { useTheme } from "@/core/theme";
-import { spacing } from "@/core/theme/spacing";
-import Feather from "@expo/vector-icons/Feather";
-import React from "react";
-import { StyleSheet, Text } from "react-native";
-import { AlertProps, AlertSeverity } from "./types";
+import Feather from '@expo/vector-icons/Feather';
+import React from 'react';
+import { StyleSheet, Text } from 'react-native';
+import { useTheme } from '../../theme';
+import { spacing } from '../../theme/spacing';
+import { Box } from '../Box';
+import { AlertProps, AlertSeverity } from './types';
 
 export const Alert: React.FC<AlertProps> = ({
   severity,
-  variant = "solid",
+  variant = 'solid',
   title,
   children,
   style,
@@ -18,7 +18,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   const getAlertColors = (
     severity: AlertSeverity,
-    variant: "solid" | "soft"
+    variant: 'solid' | 'soft'
   ) => {
     const baseColors = {
       success: theme.colors.success,
@@ -29,7 +29,7 @@ export const Alert: React.FC<AlertProps> = ({
 
     const severityColor = baseColors[severity];
 
-    if (variant === "solid") {
+    if (variant === 'solid') {
       return {
         backgroundColor: severityColor,
         textColor: theme.isDark ? theme.colors.text : theme.colors.background,
@@ -39,10 +39,10 @@ export const Alert: React.FC<AlertProps> = ({
     } else {
       // soft variant
       return {
-        backgroundColor: severityColor + "15", // 15% opacity
+        backgroundColor: severityColor + '15', // 15% opacity
         textColor: severityColor,
         iconColor: severityColor,
-        borderColor: severityColor + "40", // 40% opacity
+        borderColor: severityColor + '40', // 40% opacity
       };
     }
   };
@@ -52,7 +52,7 @@ export const Alert: React.FC<AlertProps> = ({
     const colors = getAlertColors(severity, variant);
 
     switch (severity) {
-      case "success":
+      case 'success':
         return (
           <Feather
             name="check-circle"
@@ -60,9 +60,9 @@ export const Alert: React.FC<AlertProps> = ({
             color={colors.iconColor}
           />
         );
-      case "info":
+      case 'info':
         return <Feather name="info" size={iconSize} color={colors.iconColor} />;
-      case "warning":
+      case 'warning':
         return (
           <Feather
             name="alert-triangle"
@@ -70,7 +70,7 @@ export const Alert: React.FC<AlertProps> = ({
             color={colors.iconColor}
           />
         );
-      case "error":
+      case 'error':
         return (
           <Feather name="x-circle" size={iconSize} color={colors.iconColor} />
         );
@@ -109,7 +109,7 @@ export const Alert: React.FC<AlertProps> = ({
       padding="md"
       borderRadius={spacing.rounded}
     >
-      <Box flexDirection="row" style={{ alignItems: "flex-start" }}>
+      <Box flexDirection="row" style={{ alignItems: 'flex-start' }}>
         {showIcon && (
           <Box style={{ marginRight: spacing.sm, marginTop: 2 }}>
             {getIcon(severity)}
@@ -127,7 +127,7 @@ export const Alert: React.FC<AlertProps> = ({
 const styles = StyleSheet.create({
   title: {
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: '600',
     marginBottom: spacing.xs,
   },
   message: {
@@ -136,4 +136,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export * from "./types";
+export * from './types';

@@ -1,5 +1,5 @@
-import { useTheme } from "@/core/theme";
-import { spacing } from "@/core/theme/spacing";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";

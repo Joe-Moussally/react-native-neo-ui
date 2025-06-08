@@ -1,5 +1,5 @@
-import { useTheme } from "@/core/theme";
-import { spacing } from "@/core/theme/spacing";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { BadgeAnchorOrigin, BadgeProps } from "./types";

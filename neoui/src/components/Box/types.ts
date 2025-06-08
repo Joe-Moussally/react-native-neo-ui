@@ -1,4 +1,4 @@
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
+import { ThemeColor, ThemeSpacing } from "../../theme/types";
 import { ViewProps } from "react-native";
 
 export type BoxVariant =
