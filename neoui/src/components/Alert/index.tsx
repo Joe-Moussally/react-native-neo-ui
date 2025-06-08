@@ -39,10 +39,10 @@ export const Alert: React.FC<AlertProps> = ({
     } else {
       // soft variant
       return {
-        backgroundColor: severityColor + '15', // 15% opacity
+        backgroundColor: severityColor + '15',
         textColor: severityColor,
         iconColor: severityColor,
-        borderColor: severityColor + '40', // 40% opacity
+        borderColor: severityColor + '40',
       };
     }
   };
