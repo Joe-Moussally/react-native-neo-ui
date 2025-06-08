@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Joe-Moussally/neo-ui/compare/v1.0.0...v1.0.1) (2025-06-08)
+
+
+### Bug Fixes
+
+* Testing semantic release commit ([762de44](https://github.com/Joe-Moussally/neo-ui/commit/762de44fd2b11b87854149ee542e92aaf883defa))
+
 # 1.0.0 (2025-06-08)
 
 
