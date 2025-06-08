@@ -1,0 +1,46 @@
+export declare const lightColors: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    surface: string;
+    surfaceVariant: string;
+    error: string;
+    success: string;
+    warning: string;
+    info: string;
+    text: string;
+    textSecondary: string;
+    border: string;
+    disabled: string;
+    divider: string;
+    card: string;
+    shadow: string;
+    tabBar: string;
+    tabBarInactive: string;
+    tabBarActive: string;
+};
+export declare const darkColors: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    surface: string;
+    surfaceVariant: string;
+    error: string;
+    success: string;
+    warning: string;
+    info: string;
+    text: string;
+    textSecondary: string;
+    border: string;
+    disabled: string;
+    divider: string;
+    card: string;
+    shadow: string;
+    tabBar: string;
+    tabBarInactive: string;
+    tabBarActive: string;
+};
+export type ColorPalette = typeof lightColors;
+//# sourceMappingURL=colors.d.ts.map

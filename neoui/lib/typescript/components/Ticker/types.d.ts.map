@@ -1,0 +1,1 @@
+{"version":3,"file":"types.d.ts","sourceRoot":"","sources":["../../../../src/components/Ticker/types.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,WAAW;IAC1B,KAAK,EAAE,MAAM,GAAG,MAAM,CAAC;IACvB,QAAQ,CAAC,EAAE,MAAM,CAAC;IAClB,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAED,MAAM,WAAW,eAAe;IAC9B,KAAK,EAAE,MAAM,GAAG,MAAM,CAAC;IACvB,QAAQ,EAAE,MAAM,CAAC;CAClB"}

@@ -3,7 +3,10 @@
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,
-    "outDir": "./lib/typescript"
+    "outDir": "./lib/typescript",
+    "rootDir": "./src",
+    "noEmit": false,
+    "emitDeclarationOnly": true
   },
   "include": ["src/**/*"],
   "exclude": [
