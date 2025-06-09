@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/Joe-Moussally/neo-ui/compare/v1.0.1...v1.0.2) (2025-06-09)
+
+
+### Bug Fixes
+
+* update repository URLs to match GitHub repo ([51421f1](https://github.com/Joe-Moussally/neo-ui/commit/51421f196aa9d8a4f915059c7629d91c7e2ab770))
+* Updated package.json ([fec1657](https://github.com/Joe-Moussally/neo-ui/commit/fec1657e0e00760d7c0bf76c2f068df36e31090b))
+
 ## [1.0.1](https://github.com/Joe-Moussally/neo-ui/compare/v1.0.0...v1.0.1) (2025-06-08)
 
 
