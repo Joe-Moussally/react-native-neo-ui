@@ -1,5 +1,5 @@
 {
-  "name": "@neoui/core",
+  "name": "@joe111/neo-ui",
   "version": "1.0.1",
   "description": "A modern React Native UI library",
   "main": "./lib/module/index.js",
@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Joe-Moussally/neo-ui.git"
+    "url": "git+https://github.com/Joe-Moussally/teamlock.git"
   },
   "author": "Joe Moussally <joemoussally111@gmail.com> (https://github.com/Joe-Moussally)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Joe-Moussally/neo-ui/issues"
+    "url": "https://github.com/Joe-Moussally/teamlock/issues"
   },
-  "homepage": "https://github.com/Joe-Moussally/neo-ui#readme",
+  "homepage": "https://github.com/Joe-Moussally/teamlock#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
