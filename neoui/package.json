@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Joe-Moussally/teamlock.git"
+    "url": "git+https://github.com/Joe-Moussally/neo-ui.git"
   },
   "author": "Joe Moussally <joemoussally111@gmail.com> (https://github.com/Joe-Moussally)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Joe-Moussally/teamlock/issues"
+    "url": "https://github.com/Joe-Moussally/neo-ui/issues"
   },
-  "homepage": "https://github.com/Joe-Moussally/teamlock#readme",
+  "homepage": "https://github.com/Joe-Moussally/neo-ui#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
