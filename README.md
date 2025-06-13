@@ -1,7 +1,7 @@
-# @neoui/core
+# @joe111/neo-ui
 
-[![npm version](https://badge.fury.io/js/@neoui%2Fcore.svg)](https://www.npmjs.com/package/@neoui/core)
-[![GitHub](https://img.shields.io/github/license/Joe-Moussally/neo-ui)](https://github.com/Joe-Moussally/neo-ui/blob/builder-bob/LICENSE)
+[![npm version](https://badge.fury.io/js/@joe111%2Fneo-ui.svg)](https://www.npmjs.com/package/@joe111/neo-ui)
+[![GitHub](https://img.shields.io/github/license/Joe-Moussally/react-native-neo-ui)](https://github.com/Joe-Moussally/react-native-neo-ui/blob/builder-bob/LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
 
@@ -25,9 +25,9 @@ A modern, customizable React Native UI library built with TypeScript. Inspired b
 ## 📦 Installation
 
 ```bash
-npm install @neoui/core
+npm install @joe111/neo-ui
 # or
-yarn add @neoui/core
+yarn add @joe111/neo-ui
 ```
 
 ### Peer Dependencies
@@ -46,7 +46,7 @@ Wrap your app with the `ThemeProvider`:
 
 ```tsx
 import React from "react";
-import { ThemeProvider } from "@neoui/core";
+import { ThemeProvider } from "@joe111/neo-ui";
 import { YourApp } from "./YourApp";
 
 export default function App() {
@@ -62,7 +62,7 @@ export default function App() {
 
 ```tsx
 import React from "react";
-import { Button, Typography, Box } from "@neoui/core";
+import { Button, Typography, Box } from "@joe111/neo-ui";
 
 export function YourApp() {
   return (
@@ -112,7 +112,7 @@ export function YourApp() {
 ### Custom Theme
 
 ```tsx
-import { ThemeProvider, createTheme } from "@neoui/core";
+import { ThemeProvider, createTheme } from "@joe111/neo-ui";
 
 const customTheme = createTheme({
   colors: {
@@ -148,7 +148,7 @@ export default function App() {
 ### Using Theme in Components
 
 ```tsx
-import { useTheme } from "@neoui/core";
+import { useTheme } from "@joe111/neo-ui";
 
 export function CustomComponent() {
   const theme = useTheme();
@@ -166,7 +166,7 @@ export function CustomComponent() {
 Check out our comprehensive example app that demonstrates all components:
 
 ```bash
-git clone https://github.com/Joe-Moussally/neo-ui.git
+git clone https://github.com/Joe-Moussally/react-native-neo-ui.git
 cd neo-ui
 git checkout builder-bob
 ./setup.sh
@@ -178,13 +178,13 @@ npm run ios    # or android, web
 
 ## 📚 Documentation
 
-- 📖 [API Documentation](https://github.com/Joe-Moussally/neo-ui/tree/builder-bob/docs)
-- 🎯 [Component Gallery](https://github.com/Joe-Moussally/neo-ui/tree/builder-bob/example)
-- 🛠️ [Development Guide](https://github.com/Joe-Moussally/neo-ui/blob/builder-bob/DEVELOPMENT.md)
+- 📖 [API Documentation](https://github.com/Joe-Moussally/react-native-neo-ui/tree/builder-bob/docs)
+- 🎯 [Component Gallery](https://github.com/Joe-Moussally/react-native-neo-ui/tree/builder-bob/example)
+- 🛠️ [Development Guide](https://github.com/Joe-Moussally/react-native-neo-ui/blob/builder-bob/DEVELOPMENT.md)
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](https://github.com/Joe-Moussally/neo-ui/blob/builder-bob/CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guide](https://github.com/Joe-Moussally/react-native-neo-ui/blob/builder-bob/CONTRIBUTING.md) for details.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -198,9 +198,9 @@ MIT © [Joe Moussally](https://github.com/Joe-Moussally)
 
 ## 🙏 Support
 
-- ⭐ [Star on GitHub](https://github.com/Joe-Moussally/neo-ui)
-- 🐛 [Report Issues](https://github.com/Joe-Moussally/neo-ui/issues)
-- 💬 [Discussions](https://github.com/Joe-Moussally/neo-ui/discussions)
+- ⭐ [Star on GitHub](https://github.com/Joe-Moussally/react-native-neo-ui)
+- 🐛 [Report Issues](https://github.com/Joe-Moussally/react-native-neo-ui/issues)
+- 💬 [Discussions](https://github.com/Joe-Moussally/react-native-neo-ui/discussions)
 
 ---
 

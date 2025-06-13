@@ -1,6 +1,6 @@
 /* eslint-env jest */
 /* eslint-disable no-undef */
-// Jest setup file for @neoui/core
+// Jest setup file for @joe111/neo-ui
 import 'react-native-gesture-handler/jestSetup';
 
 // Mock react-native-reanimated

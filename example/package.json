@@ -8,6 +8,6 @@
     "ios": "expo start --ios"
   },
   "dependencies": {
-    "@neoui/core": "file:.."
+    "@joe111/neo-ui": "file:.."
   }
 }

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@neoui/core": ["./src/index"]
+      "@joe111/neo-ui": ["./src/index"]
     },
     "types": ["react-native", "jest"],
     "skipLibCheck": true

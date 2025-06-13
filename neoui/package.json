@@ -32,7 +32,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace @neoui/core-example",
+    "example": "yarn workspace @joe111/neo-ui-example",
     "test": "jest --passWithNoTests",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Joe-Moussally/neo-ui.git"
+    "url": "git+https://github.com/Joe-Moussally/react-native-neo-ui.git"
   },
   "author": "Joe Moussally <joemoussally111@gmail.com> (https://github.com/Joe-Moussally)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Joe-Moussally/neo-ui/issues"
+    "url": "https://github.com/Joe-Moussally/react-native-neo-ui/issues"
   },
-  "homepage": "https://github.com/Joe-Moussally/neo-ui#readme",
+  "homepage": "https://github.com/Joe-Moussally/react-native-neo-ui#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

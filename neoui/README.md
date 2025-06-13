@@ -1,4 +1,4 @@
-# @neoui/core
+# @joe111/neo-ui
 
 A modern, customizable React Native UI library built with TypeScript. Inspired by Material-UI, @neoui provides a comprehensive set of components with a powerful theming system.
 
@@ -14,9 +14,9 @@ A modern, customizable React Native UI library built with TypeScript. Inspired b
 ## Installation
 
 ```bash
-npm install @neoui/core
+npm install @joe111/neo-ui
 # or
-yarn add @neoui/core
+yarn add @joe111/neo-ui
 ```
 
 ### Peer Dependencies
@@ -34,9 +34,9 @@ npm install react react-native @react-navigation/native @react-navigation/bottom
 Wrap your app with the `ThemeProvider`:
 
 ```tsx
-import React from "react";
-import { ThemeProvider } from "@neoui/core";
-import { YourApp } from "./YourApp";
+import React from 'react';
+import { ThemeProvider } from '@joe111/neo-ui';
+import { YourApp } from './YourApp';
 
 export default function App() {
   return (
@@ -50,14 +50,14 @@ export default function App() {
 ### 2. Use Components
 
 ```tsx
-import React from "react";
-import { Button, Typography, Box } from "@neoui/core";
+import React from 'react';
+import { Button, Typography, Box } from '@joe111/neo-ui';
 
 export function YourApp() {
   return (
     <Box padding="lg">
       <Typography variant="h1">Welcome to NeoUI</Typography>
-      <Button variant="primary" onPress={() => console.log("Hello NeoUI!")}>
+      <Button variant="primary" onPress={() => console.log('Hello NeoUI!')}>
         Get Started
       </Button>
     </Box>
@@ -106,12 +106,12 @@ export function YourApp() {
 ### Custom Theme
 
 ```tsx
-import { ThemeProvider, createTheme } from "@neoui/core";
+import { ThemeProvider, createTheme } from '@joe111/neo-ui';
 
 const customTheme = createTheme({
   colors: {
-    primary: "#007AFF",
-    secondary: "#5856D6",
+    primary: '#007AFF',
+    secondary: '#5856D6',
     // ... other colors
   },
   spacing: {
@@ -124,7 +124,7 @@ const customTheme = createTheme({
   typography: {
     h1: {
       fontSize: 32,
-      fontWeight: "bold",
+      fontWeight: 'bold',
     },
     // ... other typography styles
   },
@@ -142,7 +142,7 @@ export default function App() {
 ### Using Theme in Components
 
 ```tsx
-import { useTheme } from "@neoui/core";
+import { useTheme } from '@joe111/neo-ui';
 
 export function CustomComponent() {
   const theme = useTheme();

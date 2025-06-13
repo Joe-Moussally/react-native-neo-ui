@@ -20,7 +20,7 @@ export default function HomeScreen() {
       borderRadius={0}
     >
       <Typography variant="h1" style={styles.title}>
-        TeamLock
+        NeoUI
       </Typography>
 
       <Box style={styles.infoContainer} gap="md">
