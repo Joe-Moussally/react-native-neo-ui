@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.0.2...v1.1.0) (2025-06-13)
+
+
+### Features
+
+* Created a Docusaurus documentation ([97d535a](https://github.com/Joe-Moussally/react-native-neo-ui/commit/97d535a50e3d944bf659170691bcd2c14462d554))
+
 ## [1.0.2](https://github.com/Joe-Moussally/neo-ui/compare/v1.0.1...v1.0.2) (2025-06-09)
 
 
