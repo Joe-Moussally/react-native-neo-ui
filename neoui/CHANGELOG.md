@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.1.0...v1.2.0) (2025-06-14)
+
+
+### Features
+
+* Added a functional local search ([dd79842](https://github.com/Joe-Moussally/react-native-neo-ui/commit/dd7984283d32e71c8258f7696287c43d146beb61))
+
 # [1.1.0](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.0.2...v1.1.0) (2025-06-13)
 
 
