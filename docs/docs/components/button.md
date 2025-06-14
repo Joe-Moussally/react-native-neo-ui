@@ -2,24 +2,33 @@
 
 A versatile button component with multiple variants, sizes, and states for consistent user interactions.
 
+import ComponentPreview from '@site/src/components/ComponentPreview';
+
 ## Installation
 
 ```typescript
-import { Button } from "@/core/components/Button";
+import { Button } from "@joe111/neo-ui";
 ```
 
 ## Basic Usage
 
-```typescript
-import React from "react";
-import { Button } from "@/core/components/Button";
+<ComponentPreview
+title="Button"
+description="A simple button with primary styling"
+code={`<Button onPress={() => console.log("Button pressed!")}>
+  Click me
+</Button>`}
+usage={`import React from "react";
+import { Button } from "@joe111/neo-ui";
 
 export default function ButtonExample() {
-  return (
-    <Button onPress={() => console.log("Button pressed!")}>Click me</Button>
-  );
-}
-```
+return (
+<Button onPress={() => console.log("Button pressed!")}>
+Click me
+</Button>
+);
+}`}
+/>
 
 ## Props
 
@@ -62,66 +71,109 @@ type ButtonColorKey = keyof typeof theme.colors;
 
 ## Usage Examples
 
-### Basic Button
-
-```typescript
-<Button onPress={() => console.log("Pressed!")}>Click me</Button>
-```
-
 ### Button Variants
 
-```typescript
+<ComponentPreview
+title="Button Variants"
+description="Different visual styles for various use cases"
+code={`<View style={{ gap: 12 }}>
 <Button variant="primary" onPress={handlePress}>
-  Primary Button
+Primary Button
 </Button>
 
-<Button variant="outline" onPress={handlePress}>
-  Outline Button
-</Button>
+  <Button variant="secondary" onPress={handlePress}>
+    Secondary Button
+  </Button>
+  
+  <Button variant="outline" onPress={handlePress}>
+    Outline Button
+  </Button>
+  
+  <Button variant="ghost" onPress={handlePress}>
+    Ghost Button
+  </Button>
+  
+  <Button variant="danger" onPress={handlePress}>
+    Danger Button
+  </Button>
+</View>`}
+/>
 
-<Button variant="danger" onPress={handlePress}>
-  Danger Button
-</Button>
-```
+### Button Sizes
+
+<ComponentPreview
+title="Button Sizes"
+description="Different sizes from extra small to extra large"
+code={`<View style={{ gap: 12 }}>
+  <Button size="xs" onPress={handlePress}>Extra Small</Button>
+  <Button size="sm" onPress={handlePress}>Small</Button>
+  <Button size="md" onPress={handlePress}>Medium</Button>
+  <Button size="lg" onPress={handlePress}>Large</Button>
+  <Button size="xl" onPress={handlePress}>Extra Large</Button>
+</View>`}
+/>
 
 ### Button with Icons
 
-```typescript
+<ComponentPreview
+title="Buttons with Icons"
+description="Adding icons to enhance button functionality"
+code={`<View style={{ gap: 12 }}>
 <Button
-  startIcon={<PlusIcon />}
-  onPress={handlePress}
+startIcon={<PlusIcon />}
+onPress={handlePress}
+
 >
-  Add Item
-</Button>
+
+    Add Item
+
+  </Button>
 
 <Button
-  endIcon={<ArrowRightIcon />}
-  onPress={handlePress}
+endIcon={<ArrowRightIcon />}
+variant="outline"
+onPress={handlePress}
+
 >
-  Continue
-</Button>
-```
 
-### Loading State
+    Continue
 
-```typescript
+  </Button>
+  
+  <Button
+    startIcon={<HeartIcon />}
+    endIcon={<StarIcon />}
+    variant="ghost"
+    onPress={handlePress}
+  >
+    Like & Favorite
+  </Button>
+</View>`}
+/>
+
+### Loading and Disabled States
+
+<ComponentPreview
+title="Button States"
+description="Loading and disabled button states"
+code={`<View style={{ gap: 12 }}>
 <Button loading onPress={handlePress}>
-  Loading...
+Loading...
 </Button>
-```
 
-### Custom Styling
-
-```typescript
-<Button
-  style={{ marginTop: 20 }}
-  color="secondary"
-  size="lg"
-  onPress={handlePress}
->
-  Custom Button
-</Button>
-```
+  <Button disabled onPress={handlePress}>
+    Disabled Button
+  </Button>
+  
+  <Button 
+    variant="outline" 
+    loading 
+    onPress={handlePress}
+  >
+    Processing...
+  </Button>
+</View>`}
+/>
 
 ## Accessibility
 
