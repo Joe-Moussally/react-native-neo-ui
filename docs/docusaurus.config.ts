@@ -102,6 +102,7 @@ const config: Config = {
           position: "left",
           label: "Getting Started",
         },
+        { to: "/demo", label: "Demo", position: "left" },
         { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/your-org/teamlock",
@@ -147,6 +148,10 @@ const config: Config = {
           title: "More",
           items: [
             {
+              label: "Interactive Demo",
+              to: "/demo",
+            },
+            {
               label: "Blog",
               to: "/blog",
             },
@@ -156,7 +161,7 @@ const config: Config = {
             },
             {
               label: "npm",
-              href: "https://www.npmjs.com/package/teamlock",
+              href: "https://www.npmjs.com/package/@joe111/neo-ui",
             },
           ],
         },
