@@ -60,6 +60,16 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="examples"
+        options={{
+          title: "Examples",
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="magic" size={size} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
