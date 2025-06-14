@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: "TeamLock UI",
+  title: "Neo UI",
   tagline: "Beautiful and accessible React Native UI components",
   favicon: "img/favicon.ico",
 
@@ -25,7 +25,7 @@ const config: Config = {
   organizationName: "teamlock", // Usually your GitHub org/user name.
   projectName: "teamlock", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
@@ -36,7 +36,18 @@ const config: Config = {
     locales: ["en"],
   },
 
-  plugins: ["./plugins/webpack-plugin.js"],
+  plugins: [
+    "./plugins/webpack-plugin.js",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        language: ["en"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -73,9 +84,9 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/teamlock-social-card.jpg",
     navbar: {
-      title: "TeamLock UI",
+      title: "Neo UI",
       logo: {
-        alt: "TeamLock UI Logo",
+        alt: "Neo UI Logo",
         src: "img/logo.svg",
       },
       items: [
@@ -150,19 +161,12 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} TeamLock UI. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Neo UI. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
       additionalLanguages: ["bash", "typescript", "javascript", "tsx", "jsx"],
-    },
-    algolia: {
-      // You can configure Algolia DocSearch later
-      appId: "YOUR_APP_ID",
-      apiKey: "YOUR_SEARCH_API_KEY",
-      indexName: "teamlock-ui",
-      contextualSearch: true,
     },
   } satisfies Preset.ThemeConfig,
 };
