@@ -7,7 +7,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config: Config = {
   title: "Neo UI",
   tagline: "Beautiful and accessible React Native UI components",
-  favicon: "img/favicon.ico",
+  favicon: "img/neo/neo-logo-blue-gradient.svg",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -82,12 +82,12 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/teamlock-social-card.jpg",
+    image: "img/neo/neo-logo-blue-gradient.svg",
     navbar: {
       title: "Neo UI",
       logo: {
         alt: "Neo UI Logo",
-        src: "img/logo.svg",
+        src: "img/neo/neo-logo-blue-gradient.svg",
       },
       items: [
         {
@@ -102,6 +102,7 @@ const config: Config = {
           position: "left",
           label: "Getting Started",
         },
+        { to: "/demo", label: "Demo", position: "left" },
         { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/your-org/teamlock",
@@ -112,6 +113,13 @@ const config: Config = {
     },
     footer: {
       style: "dark",
+      logo: {
+        alt: "Neo UI Logo",
+        src: "img/neo/neo-logo-blue-gradient.svg",
+        href: "/",
+        width: 160,
+        height: 51,
+      },
       links: [
         {
           title: "Documentation",
@@ -147,6 +155,10 @@ const config: Config = {
           title: "More",
           items: [
             {
+              label: "Interactive Demo",
+              to: "/demo",
+            },
+            {
               label: "Blog",
               to: "/blog",
             },
@@ -156,7 +168,7 @@ const config: Config = {
             },
             {
               label: "npm",
-              href: "https://www.npmjs.com/package/teamlock",
+              href: "https://www.npmjs.com/package/@joe111/neo-ui",
             },
           ],
         },

@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "teamlock",
+    "slug": "teamlock",
+    "version": "1.0.0",
+    "platforms": ["ios", "android", "web"],
+    "experiments": {
+      "tsconfigPaths": true
+    }
+  }
+}

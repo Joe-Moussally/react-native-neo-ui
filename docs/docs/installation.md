@@ -1,10 +1,10 @@
 # Installation
 
-Learn how to install and set up TeamLock UI in your React Native project.
+Learn how to install and set up Neo UI in your React Native project.
 
 ## Requirements
 
-Before installing TeamLock UI, make sure your project meets these requirements:
+Before installing Neo UI, make sure your project meets these requirements:
 
 - **React Native**: 0.70 or higher
 - **React**: 18.0 or higher
@@ -16,24 +16,24 @@ Before installing TeamLock UI, make sure your project meets these requirements:
 ### Using npm
 
 ```bash
-npm install teamlock-ui
+npm install @joe111/neo-ui
 ```
 
 ### Using yarn
 
 ```bash
-yarn add teamlock-ui
+yarn add @joe111/neo-ui
 ```
 
 ### Using pnpm
 
 ```bash
-pnpm add teamlock-ui
+pnpm add @joe111/neo-ui
 ```
 
 ## Peer Dependencies
 
-TeamLock UI requires several peer dependencies to function properly. Install them based on your project setup:
+Neo UI requires several peer dependencies to function properly. Install them based on your project setup:
 
 ### Core Dependencies
 
@@ -121,7 +121,7 @@ public class MainActivity extends ReactActivity {
 
 ```tsx
 import React from "react";
-import { ThemeProvider } from "teamlock-ui";
+import { ThemeProvider } from "@joe111/neo-ui";
 import { App } from "./App";
 
 export default function Root() {
@@ -138,12 +138,12 @@ export default function Root() {
 ```tsx
 import React from "react";
 import { View } from "react-native";
-import { Button, TextField, Typography } from "teamlock-ui";
+import { Button, TextField, Typography } from "@joe111/neo-ui";
 
 export function MyScreen() {
   return (
     <View style={{ padding: 20 }}>
-      <Typography variant="h1">Welcome to TeamLock UI</Typography>
+      <Typography variant="h1">Welcome to Neo UI</Typography>
 
       <TextField
         label="Your Name"
@@ -151,7 +151,7 @@ export function MyScreen() {
         style={{ marginVertical: 16 }}
       />
 
-      <Button variant="primary" onPress={() => alert("Hello TeamLock UI!")}>
+      <Button variant="primary" onPress={() => alert("Hello Neo UI!")}>
         Get Started
       </Button>
     </View>

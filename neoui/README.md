@@ -10,6 +10,7 @@ A modern, customizable React Native UI library built with TypeScript. Inspired b
 - 🔧 **TypeScript Support** - Full type safety and IntelliSense
 - 🎯 **Navigation Ready** - Integrated navigation components
 - 🚀 **Performance Optimized** - Lightweight and efficient
+- 📦 **Tree Shakeable** - Individual component imports for optimal bundle size
 
 ## Installation
 
@@ -35,7 +36,7 @@ Wrap your app with the `ThemeProvider`:
 
 ```tsx
 import React from 'react';
-import { ThemeProvider } from '@joe111/neo-ui';
+import { ThemeProvider } from '@joe111/neo-ui/theme';
 import { YourApp } from './YourApp';
 
 export default function App() {
@@ -48,6 +49,30 @@ export default function App() {
 ```
 
 ### 2. Use Components
+
+You can import components in two ways:
+
+#### Individual Imports (Recommended for Tree Shaking)
+
+```tsx
+import React from 'react';
+import { Button } from '@joe111/neo-ui/Button';
+import { Typography } from '@joe111/neo-ui/Typography';
+import { Box } from '@joe111/neo-ui/Box';
+
+export function YourApp() {
+  return (
+    <Box padding="lg">
+      <Typography variant="h1">Welcome to NeoUI</Typography>
+      <Button variant="primary" onPress={() => console.log('Hello NeoUI!')}>
+        Get Started
+      </Button>
+    </Box>
+  );
+}
+```
+
+#### Barrel Imports (Legacy)
 
 ```tsx
 import React from 'react';
@@ -64,6 +89,31 @@ export function YourApp() {
   );
 }
 ```
+
+## Import Paths
+
+### Components
+
+- `@joe111/neo-ui/Alert` - Alert components
+- `@joe111/neo-ui/Avatar` - Avatar and AvatarGroup
+- `@joe111/neo-ui/Badge` - Badge component
+- `@joe111/neo-ui/Box` - Layout container
+- `@joe111/neo-ui/Button` - Button component
+- `@joe111/neo-ui/Chip` - Chip component
+- `@joe111/neo-ui/Rating` - Rating component
+- `@joe111/neo-ui/Skeleton` - Loading skeleton
+- `@joe111/neo-ui/TextField` - Text input
+- `@joe111/neo-ui/Ticker` - Animated ticker
+- `@joe111/neo-ui/Toast` - Toast notifications
+- `@joe111/neo-ui/Typography` - Text component
+- `@joe111/neo-ui/ParallaxScrollView` - Parallax scroll view
+- `@joe111/neo-ui/ThemedText` - Themed text
+- `@joe111/neo-ui/ThemedView` - Themed view
+
+### Theme and Navigation
+
+- `@joe111/neo-ui/theme` - Theme provider, hooks, and utilities
+- `@joe111/neo-ui/navigation` - Navigation components and utilities
 
 ## Components
 
@@ -106,7 +156,7 @@ export function YourApp() {
 ### Custom Theme
 
 ```tsx
-import { ThemeProvider, createTheme } from '@joe111/neo-ui';
+import { ThemeProvider, createTheme } from '@joe111/neo-ui/theme';
 
 const customTheme = createTheme({
   colors: {
@@ -142,7 +192,7 @@ export default function App() {
 ### Using Theme in Components
 
 ```tsx
-import { useTheme } from '@joe111/neo-ui';
+import { useTheme } from '@joe111/neo-ui/theme';
 
 export function CustomComponent() {
   const theme = useTheme();
@@ -163,6 +213,21 @@ Check out the example app in the `/example` directory to see all components in a
 cd example
 npm install
 npm run ios # or android
+```
+
+## Migration Guide
+
+### From v1.x to v2.x
+
+Version 2.0 introduces individual module imports for better tree shaking. While the old barrel imports still work, we recommend migrating to individual imports:
+
+```tsx
+// Old (v1.x) - Still works but not recommended
+import { Button, ThemeProvider } from '@joe111/neo-ui';
+
+// New (v2.x) - Recommended
+import { Button } from '@joe111/neo-ui/Button';
+import { ThemeProvider } from '@joe111/neo-ui/theme';
 ```
 
 ## API Documentation

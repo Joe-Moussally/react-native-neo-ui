@@ -1,0 +1,35 @@
+.codeExample {
+  margin: 1.5rem 0;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.title {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--ifm-color-emphasis-100);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.description {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--ifm-background-surface-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.85rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.codeExample :global(.prism-code) {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.codeExample :global(.theme-code-block) {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
