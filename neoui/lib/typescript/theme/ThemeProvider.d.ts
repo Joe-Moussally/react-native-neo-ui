@@ -1,5 +1,5 @@
-import React from "react";
-import { ThemeContextType } from "./types";
+import React from 'react';
+import { ThemeContextType } from './types';
 export declare const ThemeProvider: React.FC<{
     children: React.ReactNode;
 }>;

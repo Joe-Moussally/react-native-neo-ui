@@ -1,7 +1,8 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { useColorScheme } from "react-native";
-import { darkColors, lightColors } from "./colors";
-import { Theme, ThemeContextType, ThemeType } from "./types";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useColorScheme } from 'react-native';
+import { darkColors, lightColors } from './colors';
+import { spacing } from './spacing';
+import { Theme, ThemeContextType, ThemeType } from './types';
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -9,15 +10,18 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const colorScheme = useColorScheme();
-  const [themeType, setThemeType] = useState<ThemeType>("system");
+  const [themeType, setThemeType] = useState<ThemeType>('system');
 
   // Determine if we should use dark mode based on themeType and system preference
   const isDark =
-    themeType === "system" ? colorScheme === "dark" : themeType === "dark";
+    themeType === 'system' ? colorScheme === 'dark' : themeType === 'dark';
 
-  // Create the theme object
+  // Determine colors based on theme
+  const colors = isDark ? darkColors : lightColors;
+
+  // Create the theme object (for backward compatibility)
   const theme: Theme = {
-    colors: isDark ? darkColors : lightColors,
+    colors,
     isDark,
   };
 
@@ -27,7 +31,16 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [themeType]);
 
   return (
-    <ThemeContext.Provider value={{ theme, themeType, setThemeType }}>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        colors,
+        spacing,
+        isDark,
+        themeType,
+        setThemeType,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );
@@ -38,7 +51,7 @@ export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
 
   if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error('useTheme must be used within a ThemeProvider');
   }
 
   return context;

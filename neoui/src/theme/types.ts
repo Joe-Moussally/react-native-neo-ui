@@ -1,7 +1,7 @@
-import { ColorPalette } from "./colors";
-import { spacing } from "./spacing";
+import { ColorPalette } from './colors';
+import { spacing } from './spacing';
 
-export type ThemeType = "light" | "dark" | "system";
+export type ThemeType = 'light' | 'dark' | 'system';
 
 // Color type based on the available colors in the theme
 export type ThemeColor = keyof ColorPalette;
@@ -16,6 +16,9 @@ export interface Theme {
 
 export interface ThemeContextType {
   theme: Theme;
+  colors: ColorPalette;
+  spacing: typeof spacing;
+  isDark: boolean;
   themeType: ThemeType;
   setThemeType: (type: ThemeType) => void;
 }
