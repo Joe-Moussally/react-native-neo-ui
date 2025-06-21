@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.1...v1.3.2) (2025-06-21)
+
+
+### Bug Fixes
+
+* **npm:** Fixing npm versioning ([2b3e988](https://github.com/Joe-Moussally/react-native-neo-ui/commit/2b3e9888259884ac9916855f47872a6bf367b55b))
+
 ## [1.3.1](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.0...v1.3.1) (2025-06-21)
 
 
