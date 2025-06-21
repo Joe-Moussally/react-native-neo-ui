@@ -7,7 +7,7 @@ With the updated theme hook, you can now access colors and spacing directly:
 ```tsx
 import React from 'react';
 import { View, Text } from 'react-native';
-import { useTheme } from '@your-username/neoui';
+import { useTheme } from '@joe111/neo-ui';
 
 export const MyComponent = () => {
   // Direct access to colors, spacing, and isDark
@@ -37,7 +37,7 @@ The old pattern still works for existing code:
 ```tsx
 import React from 'react';
 import { View, Text } from 'react-native';
-import { useTheme } from '@your-username/neoui';
+import { useTheme } from '@joe111/neo-ui';
 
 export const LegacyComponent = () => {
   // Old pattern still works

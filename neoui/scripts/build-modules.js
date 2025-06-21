@@ -1,7 +1,7 @@
+/* eslint-env node */
 const fs = require('fs');
 const path = require('path');
 
-const srcDir = path.join(__dirname, '..', 'src');
 const libDir = path.join(__dirname, '..', 'lib');
 const moduleDir = path.join(libDir, 'module');
 
