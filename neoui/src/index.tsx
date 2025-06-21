@@ -1,24 +1,16 @@
-// Theme exports
+// Theme exports - commonly used across the app
 export * from './theme';
 
-// Component exports
+// Navigation exports - commonly used across the app
+export * from './navigation';
+
+// Core utility components that are commonly used
 export { default as ParallaxScrollView } from './components/ParallaxScrollView';
 export * from './components/ThemedText';
 export * from './components/ThemedView';
 
-// Navigation exports
-export * from './navigation';
-
-// Individual component exports (only including ones that exist)
-export * from './components/Alert';
-export * from './components/Avatar';
-export * from './components/Badge';
-export * from './components/Box';
-export * from './components/Button';
-export * from './components/Chip';
-export * from './components/Rating';
-export * from './components/Skeleton';
-export * from './components/TextField';
-export * from './components/Ticker';
-export * from './components/Toast';
-export * from './components/Typography';
+// Note: Individual components should be imported from their specific paths:
+// import { Button } from '@joe111/neo-ui/Button';
+// import { RootToastProvider } from '@joe111/neo-ui/Toast';
+// import { Alert } from '@joe111/neo-ui/Alert';
+// etc.
