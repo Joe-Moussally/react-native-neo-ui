@@ -1,3 +1,22 @@
+# [1.3.0](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.2.0...v1.3.0) (2025-06-21)
+
+
+### Bug Fixes
+
+* Added more Button examples ([8004cde](https://github.com/Joe-Moussally/react-native-neo-ui/commit/8004cde83e5a205b50ca0e6ff9e8d4f95cda1280))
+* **Demo:** Added App.tsx to the demo folder ([e95e2a3](https://github.com/Joe-Moussally/react-native-neo-ui/commit/e95e2a33d24cb7015c0134388124b28f3f648c52))
+* **Expo:** Added expo config files ([5f71af6](https://github.com/Joe-Moussally/react-native-neo-ui/commit/5f71af66f6bc719881806613e2294c860ac00011))
+* **Files:** Deleted package.json ([f742ff0](https://github.com/Joe-Moussally/react-native-neo-ui/commit/f742ff08117f64a0c7a3e75694596572454a9123))
+* **Folders:** Added a App.tsx main component ([97426de](https://github.com/Joe-Moussally/react-native-neo-ui/commit/97426def0f604ebe4529514017d8077e2ad634ac))
+* **Linter:** Fixing linting errors ([0184ba7](https://github.com/Joe-Moussally/react-native-neo-ui/commit/0184ba76529dd7470323fa29f9b52259ceb7ae86))
+* **Theme:** Updated theme hook return ([75ca65e](https://github.com/Joe-Moussally/react-native-neo-ui/commit/75ca65ea79df63ae474b3c42c8edb939b9efde50))
+
+
+### Features
+
+* add support for individual module imports - Updated package.json exports to support imports like @joe111/neo-ui/Button - Added custom build script to generate module structure - Updated version to 2.0.0 for breaking change ([dc6e312](https://github.com/Joe-Moussally/react-native-neo-ui/commit/dc6e312f26fca3de2fea44bdd26a25b45a695db4))
+* **Demo:** Added a demo app folder ([5f6bd6e](https://github.com/Joe-Moussally/react-native-neo-ui/commit/5f6bd6e2a881965204550dcf32b19d52faf9389d))
+
 # [1.2.0](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.1.0...v1.2.0) (2025-06-14)
 
 
