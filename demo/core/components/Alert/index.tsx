@@ -1,5 +1,5 @@
-import { Box } from "@/core/components/Box";
-import { useTheme } from "@/core/theme";
+import { Box } from "@joe111/neo-ui/Box";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { spacing } from "@/core/theme/spacing";
 import Feather from "@expo/vector-icons/Feather";
 import React from "react";

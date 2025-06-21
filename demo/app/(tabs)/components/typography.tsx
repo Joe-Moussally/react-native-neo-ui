@@ -1,10 +1,10 @@
-import { Typography } from "@/core/components/Typography";
+import { Typography } from "@joe111/neo-ui/Typography";
 import {
   TypographyVariant,
   TypographyWeight,
-} from "@/core/components/Typography/types";
-import { Screen } from "@/core/navigation/Screen";
-import { useTheme } from "@/core/theme";
+} from "@joe111/neo-ui/Typography/types";
+import { Screen } from "@joe111/neo-ui/navigation";
+import { useTheme } from "@joe111/neo-ui/theme";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

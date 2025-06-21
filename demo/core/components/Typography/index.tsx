@@ -1,4 +1,4 @@
-import { useTheme } from "@/core/theme";
+import { useTheme } from "@joe111/neo-ui/theme";
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 import { TypographyProps } from "./types";

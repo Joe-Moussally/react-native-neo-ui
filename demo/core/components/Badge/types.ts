@@ -1,4 +1,4 @@
-import { ThemeColor } from "@/core/theme/types";
+import { ThemeColor } from "@joe111/neo-ui/theme";
 import { ReactNode } from "react";
 import { StyleProp, ViewStyle } from "react-native";
 

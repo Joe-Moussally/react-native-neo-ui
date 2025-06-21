@@ -1,6 +1,6 @@
-import { Box } from "@/core/components/Box";
-import { Typography } from "@/core/components/Typography";
-import { useTheme } from "@/core/theme";
+import { Box } from "@joe111/neo-ui/Box";
+import { Typography } from "@joe111/neo-ui/Typography";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { spacing } from "@/core/theme/spacing";
 import React, { useRef, useState } from "react";
 import { ActivityIndicator, StyleSheet, TextInput, View } from "react-native";

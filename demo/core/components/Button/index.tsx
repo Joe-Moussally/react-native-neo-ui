@@ -1,4 +1,4 @@
-import { useTheme } from "@/core/theme";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { spacing } from "@/core/theme/spacing";
 import * as Haptics from "expo-haptics";
 import React from "react";

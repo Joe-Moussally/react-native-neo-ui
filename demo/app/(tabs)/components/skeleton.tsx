@@ -1,12 +1,12 @@
-import { Avatar } from "@/core/components/Avatar";
-import { Skeleton } from "@/core/components/Skeleton";
+import { Avatar } from "@joe111/neo-ui/Avatar";
+import { Skeleton } from "@joe111/neo-ui/Skeleton";
 import {
   SkeletonAnimation,
   SkeletonVariant,
-} from "@/core/components/Skeleton/types";
-import { Typography } from "@/core/components/Typography";
-import { Screen } from "@/core/navigation/Screen";
-import { useTheme } from "@/core/theme";
+} from "@joe111/neo-ui/Skeleton/types";
+import { Typography } from "@joe111/neo-ui/Typography";
+import { Screen } from "@joe111/neo-ui/navigation";
+import { useTheme } from "@joe111/neo-ui/theme";
 import React, { useState } from "react";
 import { Image, ScrollView, StyleSheet, Switch, View } from "react-native";
 

@@ -1,10 +1,10 @@
-import { Avatar } from "@/core/components/Avatar";
-import { Badge } from "@/core/components/Badge";
-import { Box } from "@/core/components/Box";
-import { Button } from "@/core/components/Button";
-import { Typography } from "@/core/components/Typography";
-import { Screen } from "@/core/navigation/Screen";
-import { useTheme } from "@/core/theme";
+import { Avatar } from "@joe111/neo-ui/Avatar";
+import { Badge } from "@joe111/neo-ui/Badge";
+import { Box } from "@joe111/neo-ui/Box";
+import { Button } from "@joe111/neo-ui/Button";
+import { Typography } from "@joe111/neo-ui/Typography";
+import { Screen } from "@joe111/neo-ui/navigation";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";

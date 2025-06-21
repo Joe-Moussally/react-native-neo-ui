@@ -1,4 +1,4 @@
-import { useTheme } from "@/core/theme";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { spacing as themeSpacing } from "@/core/theme/spacing";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";

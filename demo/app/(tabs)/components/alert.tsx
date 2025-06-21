@@ -1,6 +1,6 @@
-import { Alert } from "@/core/components/Alert";
-import { Screen } from "@/core/navigation/Screen";
-import { useTheme } from "@/core/theme";
+import { Alert } from "@joe111/neo-ui/Alert";
+import { Screen } from "@joe111/neo-ui/navigation";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { spacing } from "@/core/theme/spacing";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";

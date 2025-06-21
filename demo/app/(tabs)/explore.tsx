@@ -1,7 +1,7 @@
-import { Typography } from "@/core/components/Typography";
+import { Typography } from "@joe111/neo-ui/Typography";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { useTheme } from "../../core/theme";
+import { useTheme } from "@joe111/neo-ui/theme";
 
 export default function ExploreScreen() {
   const { theme } = useTheme();

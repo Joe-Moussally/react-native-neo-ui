@@ -1,7 +1,7 @@
-import { Avatar, AvatarGroup } from "@/core/components/Avatar";
-import { AvatarSize, AvatarVariant } from "@/core/components/Avatar/types";
-import { Screen } from "@/core/navigation/Screen";
-import { useTheme } from "@/core/theme";
+import { Avatar, AvatarGroup } from "@joe111/neo-ui/Avatar";
+import { AvatarSize, AvatarVariant } from "@joe111/neo-ui/Avatar/types";
+import { Screen } from "@joe111/neo-ui/navigation";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { spacing } from "@/core/theme/spacing";
 import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
 import Ionicons from "@expo/vector-icons/Ionicons";

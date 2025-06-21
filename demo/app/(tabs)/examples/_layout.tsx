@@ -1,4 +1,4 @@
-import { useTheme } from "@/core/theme";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { Stack } from "expo-router";
 
 export default function ExamplesLayout() {

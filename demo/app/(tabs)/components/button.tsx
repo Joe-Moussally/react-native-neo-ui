@@ -1,12 +1,12 @@
-import { Button } from "@/core/components/Button";
+import { Button } from "@joe111/neo-ui/Button";
 import {
   ButtonColorKey,
   ButtonSize,
   ButtonVariant,
-} from "@/core/components/Button/types";
-import { Typography } from "@/core/components/Typography";
-import { Screen } from "@/core/navigation/Screen";
-import { useTheme } from "@/core/theme";
+} from "@joe111/neo-ui/Button/types";
+import { Typography } from "@joe111/neo-ui/Typography";
+import { Screen } from "@joe111/neo-ui/navigation";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";

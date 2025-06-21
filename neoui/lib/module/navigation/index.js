@@ -1,1 +1,4 @@
-export * from '../../src/navigation/index.ts';
+"use strict";
+
+export * from "./Screen/index.js";
+//# sourceMappingURL=index.js.map

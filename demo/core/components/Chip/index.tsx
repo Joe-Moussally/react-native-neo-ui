@@ -1,5 +1,5 @@
-import { Typography } from "@/core/components/Typography";
-import { useTheme } from "@/core/theme";
+import { Typography } from "@joe111/neo-ui/Typography";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { spacing } from "@/core/theme/spacing";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";

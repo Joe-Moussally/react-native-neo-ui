@@ -1,4 +1,4 @@
-import { useTheme } from "@/core/theme";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { spacing } from "@/core/theme/spacing";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React, { useState } from "react";

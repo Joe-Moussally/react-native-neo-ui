@@ -1,10 +1,10 @@
-import { Alert } from "@/core/components/Alert";
-import { Avatar } from "@/core/components/Avatar";
-import { Box } from "@/core/components/Box";
-import { Button } from "@/core/components/Button";
-import { Typography } from "@/core/components/Typography";
-import { Screen } from "@/core/navigation/Screen";
-import { useTheme } from "@/core/theme";
+import { Alert } from "@joe111/neo-ui/Alert";
+import { Avatar } from "@joe111/neo-ui/Avatar";
+import { Box } from "@joe111/neo-ui/Box";
+import { Button } from "@joe111/neo-ui/Button";
+import { Typography } from "@joe111/neo-ui/Typography";
+import { Screen } from "@joe111/neo-ui/navigation";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";

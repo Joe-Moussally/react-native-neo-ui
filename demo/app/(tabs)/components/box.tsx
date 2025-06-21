@@ -1,8 +1,8 @@
-import { Box } from "@/core/components/Box";
-import { BoxVariant } from "@/core/components/Box/types";
-import { Typography } from "@/core/components/Typography";
-import { Screen } from "@/core/navigation/Screen";
-import { useTheme } from "@/core/theme";
+import { Box } from "@joe111/neo-ui/Box";
+import { BoxVariant } from "@joe111/neo-ui/Box/types";
+import { Typography } from "@joe111/neo-ui/Typography";
+import { Screen } from "@joe111/neo-ui/navigation";
+import { useTheme } from "@joe111/neo-ui/theme";
 import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
