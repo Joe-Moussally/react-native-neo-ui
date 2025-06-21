@@ -159,7 +159,7 @@
     "@semantic-release/github": "^11.0.3",
     "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.3",
-    "@types/jest": "^29.5.5",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.0.12",
     "commitlint": "^19.6.1",
     "del-cli": "^5.1.0",
