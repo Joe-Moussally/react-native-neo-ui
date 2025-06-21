@@ -90,7 +90,8 @@ const Toast = ({
       }, duration);
       return () => clearTimeout(timer);
     }
-  }, [duration, handleDismiss]);
+  }, [duration]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const toastStyle = {
     backgroundColor: variantConfig.backgroundColor,
     borderWidth: 1,

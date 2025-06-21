@@ -109,7 +109,7 @@ const Toast: React.FC<ToastProps & { onRemove: () => void }> = ({
       }, duration);
       return () => clearTimeout(timer);
     }
-  }, [duration, handleDismiss]);
+  }, [duration]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toastStyle: ViewStyle = {
     backgroundColor: variantConfig.backgroundColor,

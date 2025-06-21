@@ -1,9 +1,9 @@
-import { ThemeProvider, useTheme } from "@joe111/neo-ui/theme";
 import { RootToastProvider } from "@joe111/neo-ui/Toast";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import { ThemeProvider, useTheme } from "@joe111/neo-ui/theme";
 
 // Inner component that uses the theme
 const AppStack = () => {

@@ -1,38 +1,40 @@
 "use strict";
 
+import React, { useEffect, useRef } from 'react';
+import { Animated, Dimensions, StyleSheet, View } from 'react-native';
 import { useTheme } from "../../theme/index.js";
-import React, { useEffect, useRef } from "react";
-import { Animated, Dimensions, StyleSheet, View } from "react-native";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 const {
   width: screenWidth
-} = Dimensions.get("window");
+} = Dimensions.get('window');
 const getVariantStyles = (variant, width, height, fontSize) => {
   const baseStyles = {};
   switch (variant) {
-    case "text":
+    case 'text':
       return {
         ...baseStyles,
-        width: width || "100%",
-        height: fontSize ? typeof fontSize === "number" ? fontSize * 1.2 : 20 : 16,
+        width: width || '100%',
+        height: fontSize ? typeof fontSize === 'number' ? fontSize * 1.2 : 20 : 16,
         borderRadius: 4
       };
-    case "circular":
-      const size = width || height || 40;
-      return {
-        ...baseStyles,
-        width: size,
-        height: size,
-        borderRadius: typeof size === "number" ? size / 2 : 20
-      };
-    case "rectangular":
+    case 'circular':
+      {
+        const size = width || height || 40;
+        return {
+          ...baseStyles,
+          width: size,
+          height: size,
+          borderRadius: typeof size === 'number' ? size / 2 : 20
+        };
+      }
+    case 'rectangular':
       return {
         ...baseStyles,
         width: width || 100,
         height: height || 60,
         borderRadius: 0
       };
-    case "rounded":
+    case 'rounded':
       return {
         ...baseStyles,
         width: width || 100,
@@ -44,8 +46,8 @@ const getVariantStyles = (variant, width, height, fontSize) => {
   }
 };
 export const Skeleton = ({
-  variant = "text",
-  animation = "pulse",
+  variant = 'text',
+  animation = 'pulse',
   width,
   height,
   style,
@@ -62,7 +64,7 @@ export const Skeleton = ({
   const skeletonColor = sx?.bgcolor || (theme.isDark ? theme.colors.surfaceVariant : theme.colors.border);
   const highlightColor = theme.isDark ? theme.colors.border : theme.colors.surface;
   useEffect(() => {
-    if (animation === "pulse") {
+    if (animation === 'pulse') {
       const startPulse = () => {
         Animated.sequence([Animated.timing(pulseAnimation, {
           toValue: 1,
@@ -75,7 +77,7 @@ export const Skeleton = ({
         })]).start(() => startPulse());
       };
       startPulse();
-    } else if (animation === "wave") {
+    } else if (animation === 'wave') {
       const startWave = () => {
         waveAnimation.setValue(-screenWidth);
         Animated.timing(waveAnimation, {
@@ -106,7 +108,7 @@ export const Skeleton = ({
   const finalHeight = height || childDimensions.height;
   const variantStyles = getVariantStyles(variant, finalWidth, finalHeight, sx?.fontSize);
   const animationStyle = {};
-  if (animation === "pulse") {
+  if (animation === 'pulse') {
     animationStyle.opacity = pulseAnimation;
   }
   const renderContent = () => {
@@ -122,7 +124,7 @@ export const Skeleton = ({
     return null;
   };
   const renderSkeleton = () => {
-    if (animation === "wave") {
+    if (animation === 'wave') {
       return /*#__PURE__*/_jsx(View, {
         style: [styles.waveContainer, variantStyles, {
           backgroundColor: skeletonColor
@@ -151,21 +153,21 @@ export const Skeleton = ({
 };
 const styles = StyleSheet.create({
   container: {
-    position: "relative"
+    position: 'relative'
   },
   waveContainer: {
-    overflow: "hidden",
-    position: "relative"
+    overflow: 'hidden',
+    position: 'relative'
   },
   waveOverlay: {
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     width: 100,
     transform: [{
-      skewX: "-20deg"
+      skewX: '-20deg'
     }]
   }
 });
