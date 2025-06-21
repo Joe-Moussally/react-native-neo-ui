@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.0...v1.3.1) (2025-06-21)
+
+
+### Bug Fixes
+
+* Major code refactoring ([d2be8e8](https://github.com/Joe-Moussally/react-native-neo-ui/commit/d2be8e805a52e19ae7e19203d34d25c89eed031e))
+* **Theme:** Major code refactoring ([9bfb428](https://github.com/Joe-Moussally/react-native-neo-ui/commit/9bfb42878d59577c7f4eff7d1b4752be8ac51a7e))
+
 # [1.3.0](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.2.0...v1.3.0) (2025-06-21)
 
 
