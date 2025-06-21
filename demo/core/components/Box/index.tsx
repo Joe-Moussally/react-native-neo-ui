@@ -1,5 +1,4 @@
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { BoxProps } from "./types";
@@ -17,7 +16,13 @@ export const Box: React.FC<BoxProps> = ({
   style,
   ...props
 }) => {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      borderRadius: spacing.rounded,
+    },
+  });
 
   const getBoxStyles = () => {
     const baseColor = theme.colors[color as keyof typeof theme.colors];
@@ -79,11 +84,5 @@ export const Box: React.FC<BoxProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    borderRadius: spacing.rounded,
-  },
-});
 
 export * from "./types";

@@ -1,6 +1,5 @@
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
 import { ViewProps } from "react-native";
-
+import { ThemeColor, ThemeSpacing } from "@joe111/neo-ui/theme";
 export type BoxVariant =
   | "solid"
   | "soft"

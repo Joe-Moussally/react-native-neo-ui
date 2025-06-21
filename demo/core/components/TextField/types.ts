@@ -1,6 +1,5 @@
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
 import { TextInputProps } from "react-native";
-
+import { ThemeColor, ThemeSpacing } from "@joe111/neo-ui/theme";
 export type TextFieldVariant = "filled" | "outline" | "underline";
 export type TextFieldSize = "sm" | "md" | "lg";
 

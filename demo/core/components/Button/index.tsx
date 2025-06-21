@@ -1,5 +1,4 @@
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
 import * as Haptics from "expo-haptics";
 import React from "react";
 import {
@@ -42,7 +41,7 @@ export const Button: React.FC<ButtonProps> = ({
   onPressOut,
   ...props
 }) => {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
   const pressed = useSharedValue(0);
 
   const handlePressIn = (event: any) => {

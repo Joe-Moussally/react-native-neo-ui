@@ -1,6 +1,5 @@
 import { Typography } from "@joe111/neo-ui/Typography";
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
@@ -24,8 +23,33 @@ export const Chip: React.FC<ChipProps> = ({
   textStyle,
   ...props
 }) => {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
   const [isPressed, setIsPressed] = useState(false);
+
+  const styles = StyleSheet.create({
+    chip: {
+      alignSelf: "flex-start",
+    },
+    content: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    iconContainer: {
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    startIcon: {
+      marginRight: spacing.xs,
+    },
+    endIcon: {
+      marginLeft: spacing.xs,
+    },
+    deleteButton: {
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  });
 
   const getSizeStyles = (size: ChipSize) => {
     const sizes = {
@@ -197,30 +221,5 @@ export const Chip: React.FC<ChipProps> = ({
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  chip: {
-    alignSelf: "flex-start",
-  },
-  content: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  iconContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  startIcon: {
-    marginRight: spacing.xs,
-  },
-  endIcon: {
-    marginLeft: spacing.xs,
-  },
-  deleteButton: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export * from "./types";

@@ -1,6 +1,5 @@
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
 import { PressableProps } from "react-native";
-
+import { ThemeColor, ThemeSpacing } from "@joe111/neo-ui/theme";
 export type ChipVariant = "solid" | "soft" | "outline" | "ghost";
 export type ChipSize = "xs" | "sm" | "md" | "lg";
 

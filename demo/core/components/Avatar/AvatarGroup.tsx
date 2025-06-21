@@ -1,5 +1,4 @@
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing as themeSpacing } from "@/core/theme/spacing";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Avatar } from "./index";
@@ -11,7 +10,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   spacing = "sm",
   style,
 }) => {
-  const { theme } = useTheme();
+  const { theme, spacing: spacingTheme } = useTheme();
 
   // Convert children to array and handle max limit
   const childrenArray = React.Children.toArray(children);
@@ -20,7 +19,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   const hiddenCount = Math.max(0, totalChildren - max);
 
   // Get spacing value from theme
-  const spacingValue = themeSpacing[spacing];
+  const spacingValue = spacingTheme[spacing];
 
   const containerStyle = [styles.container, style];
 

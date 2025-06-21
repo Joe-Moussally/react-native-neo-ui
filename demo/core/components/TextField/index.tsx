@@ -1,7 +1,6 @@
 import { Box } from "@joe111/neo-ui/Box";
 import { Typography } from "@joe111/neo-ui/Typography";
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
 import React, { useRef, useState } from "react";
 import { ActivityIndicator, StyleSheet, TextInput, View } from "react-native";
 import { TextFieldProps, TextFieldSize, TextFieldVariant } from "./types";
@@ -38,9 +37,36 @@ export const TextField: React.FC<TextFieldProps> = ({
   containerStyle,
   ...props
 }) => {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
   const [isFocused, setIsFocused] = useState(false);
   const textInputRef = useRef<TextInput>(null);
+
+  const styles = StyleSheet.create({
+    labelContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+    inputContainer: {
+      alignItems: "center",
+    },
+    input: {
+      flex: 1,
+      margin: 0,
+      padding: 0,
+    },
+    iconContainer: {
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    startIcon: {
+      paddingLeft: spacing.sm,
+      paddingRight: spacing.xs,
+    },
+    endIcon: {
+      paddingRight: spacing.sm,
+      paddingLeft: spacing.xs,
+    },
+  });
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -253,32 +279,5 @@ export const TextField: React.FC<TextFieldProps> = ({
     </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  labelContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  inputContainer: {
-    alignItems: "center",
-  },
-  input: {
-    flex: 1,
-    margin: 0,
-    padding: 0,
-  },
-  iconContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  startIcon: {
-    paddingLeft: spacing.sm,
-    paddingRight: spacing.xs,
-  },
-  endIcon: {
-    paddingRight: spacing.sm,
-    paddingLeft: spacing.xs,
-  },
-});
 
 export * from "./types";

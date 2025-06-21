@@ -1,12 +1,34 @@
 import { Alert } from "@joe111/neo-ui/Alert";
 import { Screen } from "@joe111/neo-ui/navigation";
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function AlertDemo() {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
+
+  const styles = StyleSheet.create({
+    scrollView: {
+      flex: 1,
+    },
+    contentContainer: {
+      padding: spacing.lg,
+      paddingBottom: spacing.xxl,
+    },
+    subtitle: {
+      fontSize: 16,
+      marginBottom: spacing.xl,
+      lineHeight: 24,
+    },
+    section: {
+      marginBottom: spacing.xl,
+    },
+    sectionTitle: {
+      fontSize: 20,
+      fontWeight: "600",
+      marginBottom: spacing.md,
+    },
+  });
 
   return (
     <Screen title="Alert">
@@ -117,26 +139,3 @@ export default function AlertDemo() {
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  scrollView: {
-    flex: 1,
-  },
-  contentContainer: {
-    padding: spacing.lg,
-    paddingBottom: spacing.xxl,
-  },
-  subtitle: {
-    fontSize: 16,
-    marginBottom: spacing.xl,
-    lineHeight: 24,
-  },
-  section: {
-    marginBottom: spacing.xl,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    marginBottom: spacing.md,
-  },
-});

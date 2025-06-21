@@ -1,5 +1,4 @@
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
@@ -14,7 +13,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   children,
   style,
 }) => {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
   const [imageError, setImageError] = useState(false);
 
   // Get initials from alt text

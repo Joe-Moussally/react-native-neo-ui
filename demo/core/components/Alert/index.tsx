@@ -1,6 +1,5 @@
 import { Box } from "@joe111/neo-ui/Box";
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
 import Feather from "@expo/vector-icons/Feather";
 import React from "react";
 import { StyleSheet, Text } from "react-native";
@@ -14,7 +13,19 @@ export const Alert: React.FC<AlertProps> = ({
   style,
   showIcon = true,
 }) => {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
+
+  const styles = StyleSheet.create({
+    title: {
+      fontSize: 16,
+      fontWeight: "600",
+      marginBottom: spacing.xs,
+    },
+    message: {
+      fontSize: 14,
+      lineHeight: 20,
+    },
+  });
 
   const getAlertColors = (
     severity: AlertSeverity,
@@ -123,17 +134,5 @@ export const Alert: React.FC<AlertProps> = ({
     </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 16,
-    fontWeight: "600",
-    marginBottom: spacing.xs,
-  },
-  message: {
-    fontSize: 14,
-    lineHeight: 20,
-  },
-});
 
 export * from "./types";

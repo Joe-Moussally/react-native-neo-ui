@@ -1,7 +1,6 @@
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
 import { ReactNode } from "react";
 import { StyleProp, ViewStyle } from "react-native";
-
+import { ThemeColor, ThemeSpacing } from "@joe111/neo-ui/theme";
 export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl";
 export type AvatarVariant = "circular" | "rounded" | "square";
 

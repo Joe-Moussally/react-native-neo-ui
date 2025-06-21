@@ -1,9 +1,8 @@
 import { Box } from "@joe111/neo-ui/Box";
-import { BoxVariant } from "@joe111/neo-ui/Box/types";
+import { BoxVariant } from "@joe111/neo-ui/Box";
 import { Typography } from "@joe111/neo-ui/Typography";
 import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
+import { ThemeColor, ThemeSpacing, useTheme } from "@joe111/neo-ui/theme";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

@@ -1,15 +1,54 @@
 import { Avatar, AvatarGroup } from "@joe111/neo-ui/Avatar";
-import { AvatarSize, AvatarVariant } from "@joe111/neo-ui/Avatar/types";
+import { AvatarSize, AvatarVariant } from "@joe111/neo-ui/Avatar";
 import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
-import { ThemeColor, ThemeSpacing } from "@/core/theme/types";
+import { ThemeColor, ThemeSpacing, useTheme } from "@joe111/neo-ui/theme";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function AvatarDemo() {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    content: {
+      padding: spacing.lg,
+      paddingBottom: spacing.xxl,
+    },
+    subtitle: {
+      fontSize: 16,
+      marginBottom: spacing.xl,
+      lineHeight: 24,
+    },
+    section: {
+      marginBottom: spacing.xl,
+    },
+    sectionTitle: {
+      fontSize: 20,
+      fontWeight: "600",
+      marginBottom: spacing.md,
+    },
+    exampleContainer: {
+      marginBottom: spacing.md,
+      paddingVertical: spacing.sm,
+      borderBottomWidth: 1,
+      borderBottomColor: "rgba(0,0,0,0.05)",
+    },
+    label: {
+      marginBottom: spacing.sm,
+      fontSize: 14,
+    },
+    avatarContainer: {
+      alignItems: "flex-start",
+    },
+    rowContainer: {
+      flexDirection: "row",
+      gap: spacing.md,
+      alignItems: "center",
+    },
+  });
 
   const Section = ({
     title,
@@ -305,44 +344,3 @@ export default function AvatarDemo() {
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  content: {
-    padding: spacing.lg,
-    paddingBottom: spacing.xxl,
-  },
-  subtitle: {
-    fontSize: 16,
-    marginBottom: spacing.xl,
-    lineHeight: 24,
-  },
-  section: {
-    marginBottom: spacing.xl,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    marginBottom: spacing.md,
-  },
-  exampleContainer: {
-    marginBottom: spacing.md,
-    paddingVertical: spacing.sm,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,0,0,0.05)",
-  },
-  label: {
-    marginBottom: spacing.sm,
-    fontSize: 14,
-  },
-  avatarContainer: {
-    alignItems: "flex-start",
-  },
-  rowContainer: {
-    flexDirection: "row",
-    gap: spacing.md,
-    alignItems: "center",
-  },
-});

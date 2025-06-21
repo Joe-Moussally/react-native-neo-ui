@@ -1,5 +1,4 @@
 import { useTheme } from "@joe111/neo-ui/theme";
-import { spacing } from "@/core/theme/spacing";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { BadgeAnchorOrigin, BadgeProps } from "./types";
@@ -15,7 +14,39 @@ export const Badge: React.FC<BadgeProps> = ({
   anchorOrigin = { vertical: "top", horizontal: "right" },
   style,
 }) => {
-  const { theme } = useTheme();
+  const { theme, spacing } = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      position: "relative",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    standardBadge: {
+      minWidth: 20,
+      height: 20,
+      borderRadius: 10,
+      paddingHorizontal: spacing.xs,
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "row",
+    },
+    dotBadge: {
+      width: 8,
+      height: 8,
+      borderRadius: 4,
+      minWidth: 0,
+    },
+    badgeText: {
+      fontWeight: "600",
+      textAlign: "center",
+      lineHeight: 20,
+      fontSize: 12,
+    },
+    hidden: {
+      opacity: 0,
+    },
+  });
 
   // Determine if badge should be shown
   const shouldShowBadge = () => {
@@ -103,37 +134,5 @@ export const Badge: React.FC<BadgeProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: "relative",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  standardBadge: {
-    minWidth: 20,
-    height: 20,
-    borderRadius: 10,
-    paddingHorizontal: spacing.xs,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
-  dotBadge: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    minWidth: 0,
-  },
-  badgeText: {
-    fontWeight: "600",
-    textAlign: "center",
-    lineHeight: 20,
-    fontSize: 12,
-  },
-  hidden: {
-    opacity: 0,
-  },
-});
 
 export * from "./types";
