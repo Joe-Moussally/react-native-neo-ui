@@ -246,4 +246,6 @@ const styles = _reactNative.StyleSheet.create({
     zIndex: 1
   }
 });
+
+// Export types
 //# sourceMappingURL=index.js.map

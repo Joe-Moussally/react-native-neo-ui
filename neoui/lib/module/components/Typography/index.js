@@ -1,12 +1,12 @@
 "use strict";
 
+import React from 'react';
+import { StyleSheet, Text } from 'react-native';
 import { useTheme } from "../../theme/index.js";
-import React from "react";
-import { StyleSheet, Text } from "react-native";
 import { jsx as _jsx } from "react/jsx-runtime";
 export function Typography({
   style,
-  variant = "body",
+  variant = 'body',
   weight,
   color,
   lightColor,
@@ -69,12 +69,14 @@ const styles = StyleSheet.create({
   button: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: "600"
+    fontWeight: '600'
   },
   link: {
     fontSize: 16,
     lineHeight: 24,
-    textDecorationLine: "underline"
+    textDecorationLine: 'underline'
   }
 });
+
+// Export types
 //# sourceMappingURL=index.js.map

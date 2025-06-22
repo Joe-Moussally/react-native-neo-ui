@@ -1,13 +1,13 @@
-import { Button } from "@joe111/neo-ui/Button";
+import { Ionicons } from "@expo/vector-icons";
 import {
+  Button,
   ButtonColorKey,
   ButtonSize,
   ButtonVariant,
-} from "@joe111/neo-ui/Button/types";
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
-import { Ionicons } from "@expo/vector-icons";
+  Screen,
+  Typography,
+  useTheme,
+} from "@joe111/neo-ui";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

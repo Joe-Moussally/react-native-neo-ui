@@ -1,11 +1,13 @@
-import { Alert } from "@joe111/neo-ui/Alert";
-import { Avatar } from "@joe111/neo-ui/Avatar";
-import { Box } from "@joe111/neo-ui/Box";
-import { Button } from "@joe111/neo-ui/Button";
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
+import {
+  Alert,
+  Avatar,
+  Box,
+  Button,
+  Screen,
+  Typography,
+  useTheme,
+} from "@joe111/neo-ui";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
@@ -162,15 +164,12 @@ export default function NotificationCenterExample() {
         {/* System Alerts */}
         <View style={styles.alertsSection}>
           <Alert
-            variant="info"
+            severity="info"
             title="New Features Available"
-            description="Check out the latest updates in your app settings"
-            action={{
-              label: "View Updates",
-              onPress: () => console.log("View updates"),
-            }}
             style={styles.systemAlert}
-          />
+          >
+            Check out the latest updates in your app settings
+          </Alert>
         </View>
 
         {/* Notifications List */}
@@ -311,12 +310,12 @@ export default function NotificationCenterExample() {
         {/* Bottom Alert */}
         {notifications.length > 0 && (
           <Alert
-            variant="warning"
+            severity="warning"
             title="Privacy Reminder"
-            description="Review your notification preferences in settings"
-            dismissible
             style={styles.bottomAlert}
-          />
+          >
+            Review your notification preferences in settings
+          </Alert>
         )}
       </ScrollView>
     </Screen>

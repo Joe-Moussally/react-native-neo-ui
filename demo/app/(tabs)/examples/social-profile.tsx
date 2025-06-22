@@ -1,11 +1,13 @@
-import { Avatar } from "@joe111/neo-ui/Avatar";
-import { Badge } from "@joe111/neo-ui/Badge";
-import { Box } from "@joe111/neo-ui/Box";
-import { Button } from "@joe111/neo-ui/Button";
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Screen,
+  Typography,
+  useTheme,
+} from "@joe111/neo-ui";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

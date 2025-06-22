@@ -1,8 +1,5 @@
-import { Badge } from "@joe111/neo-ui/Badge";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
-import { ThemeColor } from "@joe111/neo-ui/theme";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Badge, Screen, ThemeColor, useTheme } from "@joe111/neo-ui";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 

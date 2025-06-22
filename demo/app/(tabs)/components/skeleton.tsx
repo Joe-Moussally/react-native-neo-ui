@@ -1,12 +1,12 @@
-import { Avatar } from "@joe111/neo-ui/Avatar";
-import { Skeleton } from "@joe111/neo-ui/Skeleton";
 import {
+  Avatar,
+  Screen,
+  Skeleton,
   SkeletonAnimation,
   SkeletonVariant,
-} from "@joe111/neo-ui/Skeleton/types";
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
+  Typography,
+  useTheme,
+} from "@joe111/neo-ui";
 import React, { useState } from "react";
 import { Image, ScrollView, StyleSheet, Switch, View } from "react-native";
 

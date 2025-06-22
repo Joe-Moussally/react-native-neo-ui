@@ -1,13 +1,13 @@
-import { TextField } from "@joe111/neo-ui/TextField";
+import { Ionicons } from "@expo/vector-icons";
 import {
+  Screen,
+  TextField,
   TextFieldSize,
   TextFieldVariant,
-} from "@joe111/neo-ui/TextField/types";
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
-import { ThemeColor } from "@joe111/neo-ui/theme";
-import { Ionicons } from "@expo/vector-icons";
+  ThemeColor,
+  Typography,
+  useTheme,
+} from "@joe111/neo-ui";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

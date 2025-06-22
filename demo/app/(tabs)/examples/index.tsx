@@ -1,7 +1,5 @@
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
+import { Screen, Typography, useTheme } from "@joe111/neo-ui";
 import { router } from "expo-router";
 import React, { useCallback, useMemo } from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";

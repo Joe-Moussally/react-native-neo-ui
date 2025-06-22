@@ -1,4 +1,4 @@
-import { Ticker } from "@joe111/neo-ui/Ticker";
+import { Ticker } from "@joe111/neo-ui";
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
