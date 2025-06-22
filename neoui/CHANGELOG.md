@@ -1,3 +1,10 @@
+## [1.3.8](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.7...v1.3.8) (2025-06-22)
+
+
+### Bug Fixes
+
+* **npm:** Fixed imports on RootToastProvider ([bc468a4](https://github.com/Joe-Moussally/react-native-neo-ui/commit/bc468a4a0a6d235d83f7a2b345d06387b6e7c68f))
+
 ## [1.3.7](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.6...v1.3.7) (2025-06-22)
 
 
