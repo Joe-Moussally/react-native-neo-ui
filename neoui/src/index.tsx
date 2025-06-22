@@ -29,6 +29,6 @@ export * from './components/Typography';
 
 // ============================================================================
 // All components are now available from main package:
-// import { Button, Alert, Avatar, Badge } from '@joe111/neo-ui';
+// import { Button, Alert, Avatar, Badge, RootToastProvider } from '@joe111/neo-ui';
 // import { useTheme, ThemeProvider } from '@joe111/neo-ui';
 // ============================================================================

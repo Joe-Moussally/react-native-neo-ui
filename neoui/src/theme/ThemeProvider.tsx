@@ -8,7 +8,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
-}) => {
+}): React.ReactElement => {
   const colorScheme = useColorScheme();
   const [themeType, setThemeType] = useState<ThemeType>('system');
 
