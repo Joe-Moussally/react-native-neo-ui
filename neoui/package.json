@@ -1,6 +1,6 @@
 {
   "name": "@joe111/neo-ui",
-  "version": "1.3.4",
+  "version": "1.3.7",
   "description": "A modern React Native UI library",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/index.d.ts",
@@ -16,17 +16,7 @@
       "types": "./lib/typescript/components/Alert/index.d.ts",
       "default": "./lib/module/components/Alert/index.js"
     },
-    "./Alert.js": {
-      "source": "./src/components/Alert/index.tsx",
-      "types": "./lib/typescript/components/Alert/index.d.ts",
-      "default": "./lib/module/components/Alert/index.js"
-    },
     "./Avatar": {
-      "source": "./src/components/Avatar/index.tsx",
-      "types": "./lib/typescript/components/Avatar/index.d.ts",
-      "default": "./lib/module/components/Avatar/index.js"
-    },
-    "./Avatar.js": {
       "source": "./src/components/Avatar/index.tsx",
       "types": "./lib/typescript/components/Avatar/index.d.ts",
       "default": "./lib/module/components/Avatar/index.js"
@@ -36,17 +26,7 @@
       "types": "./lib/typescript/components/Badge/index.d.ts",
       "default": "./lib/module/components/Badge/index.js"
     },
-    "./Badge.js": {
-      "source": "./src/components/Badge/index.tsx",
-      "types": "./lib/typescript/components/Badge/index.d.ts",
-      "default": "./lib/module/components/Badge/index.js"
-    },
     "./Box": {
-      "source": "./src/components/Box/index.tsx",
-      "types": "./lib/typescript/components/Box/index.d.ts",
-      "default": "./lib/module/components/Box/index.js"
-    },
-    "./Box.js": {
       "source": "./src/components/Box/index.tsx",
       "types": "./lib/typescript/components/Box/index.d.ts",
       "default": "./lib/module/components/Box/index.js"
@@ -56,17 +36,7 @@
       "types": "./lib/typescript/components/Button/index.d.ts",
       "default": "./lib/module/components/Button/index.js"
     },
-    "./Button.js": {
-      "source": "./src/components/Button/index.tsx",
-      "types": "./lib/typescript/components/Button/index.d.ts",
-      "default": "./lib/module/components/Button/index.js"
-    },
     "./Chip": {
-      "source": "./src/components/Chip/index.tsx",
-      "types": "./lib/typescript/components/Chip/index.d.ts",
-      "default": "./lib/module/components/Chip/index.js"
-    },
-    "./Chip.js": {
       "source": "./src/components/Chip/index.tsx",
       "types": "./lib/typescript/components/Chip/index.d.ts",
       "default": "./lib/module/components/Chip/index.js"
@@ -76,17 +46,7 @@
       "types": "./lib/typescript/components/ParallaxScrollView.d.ts",
       "default": "./lib/module/components/ParallaxScrollView.js"
     },
-    "./ParallaxScrollView.js": {
-      "source": "./src/components/ParallaxScrollView.tsx",
-      "types": "./lib/typescript/components/ParallaxScrollView.d.ts",
-      "default": "./lib/module/components/ParallaxScrollView.js"
-    },
     "./Rating": {
-      "source": "./src/components/Rating/index.tsx",
-      "types": "./lib/typescript/components/Rating/index.d.ts",
-      "default": "./lib/module/components/Rating/index.js"
-    },
-    "./Rating.js": {
       "source": "./src/components/Rating/index.tsx",
       "types": "./lib/typescript/components/Rating/index.d.ts",
       "default": "./lib/module/components/Rating/index.js"
@@ -96,17 +56,7 @@
       "types": "./lib/typescript/components/Skeleton/index.d.ts",
       "default": "./lib/module/components/Skeleton/index.js"
     },
-    "./Skeleton.js": {
-      "source": "./src/components/Skeleton/index.tsx",
-      "types": "./lib/typescript/components/Skeleton/index.d.ts",
-      "default": "./lib/module/components/Skeleton/index.js"
-    },
     "./TextField": {
-      "source": "./src/components/TextField/index.tsx",
-      "types": "./lib/typescript/components/TextField/index.d.ts",
-      "default": "./lib/module/components/TextField/index.js"
-    },
-    "./TextField.js": {
       "source": "./src/components/TextField/index.tsx",
       "types": "./lib/typescript/components/TextField/index.d.ts",
       "default": "./lib/module/components/TextField/index.js"
@@ -116,17 +66,7 @@
       "types": "./lib/typescript/components/ThemedText.d.ts",
       "default": "./lib/module/components/ThemedText.js"
     },
-    "./ThemedText.js": {
-      "source": "./src/components/ThemedText.tsx",
-      "types": "./lib/typescript/components/ThemedText.d.ts",
-      "default": "./lib/module/components/ThemedText.js"
-    },
     "./ThemedView": {
-      "source": "./src/components/ThemedView.tsx",
-      "types": "./lib/typescript/components/ThemedView.d.ts",
-      "default": "./lib/module/components/ThemedView.js"
-    },
-    "./ThemedView.js": {
       "source": "./src/components/ThemedView.tsx",
       "types": "./lib/typescript/components/ThemedView.d.ts",
       "default": "./lib/module/components/ThemedView.js"
@@ -136,17 +76,7 @@
       "types": "./lib/typescript/components/Ticker/index.d.ts",
       "default": "./lib/module/components/Ticker/index.js"
     },
-    "./Ticker.js": {
-      "source": "./src/components/Ticker/index.tsx",
-      "types": "./lib/typescript/components/Ticker/index.d.ts",
-      "default": "./lib/module/components/Ticker/index.js"
-    },
     "./Toast": {
-      "source": "./src/components/Toast/index.tsx",
-      "types": "./lib/typescript/components/Toast/index.d.ts",
-      "default": "./lib/module/components/Toast/index.js"
-    },
-    "./Toast.js": {
       "source": "./src/components/Toast/index.tsx",
       "types": "./lib/typescript/components/Toast/index.d.ts",
       "default": "./lib/module/components/Toast/index.js"
@@ -156,27 +86,12 @@
       "types": "./lib/typescript/components/Typography/index.d.ts",
       "default": "./lib/module/components/Typography/index.js"
     },
-    "./Typography.js": {
-      "source": "./src/components/Typography/index.tsx",
-      "types": "./lib/typescript/components/Typography/index.d.ts",
-      "default": "./lib/module/components/Typography/index.js"
-    },
     "./theme": {
       "source": "./src/theme/index.ts",
       "types": "./lib/typescript/theme/index.d.ts",
       "default": "./lib/module/theme/index.js"
     },
-    "./theme.js": {
-      "source": "./src/theme/index.ts",
-      "types": "./lib/typescript/theme/index.d.ts",
-      "default": "./lib/module/theme/index.js"
-    },
     "./navigation": {
-      "source": "./src/navigation/index.ts",
-      "types": "./lib/typescript/navigation/index.d.ts",
-      "default": "./lib/module/navigation/index.js"
-    },
-    "./navigation.js": {
       "source": "./src/navigation/index.ts",
       "types": "./lib/typescript/navigation/index.d.ts",
       "default": "./lib/module/navigation/index.js"
