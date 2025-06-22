@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.4...v1.3.5) (2025-06-22)
+
+
+### Bug Fixes
+
+* **npm:** Fixing npm import path ([8d60e6f](https://github.com/Joe-Moussally/react-native-neo-ui/commit/8d60e6f9bccff15686df829f6fc629418f8444ac))
+
 ## [1.3.4](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.3...v1.3.4) (2025-06-21)
 
 
