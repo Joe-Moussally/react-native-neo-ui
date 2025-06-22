@@ -1,3 +1,10 @@
+## [1.3.7](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.6...v1.3.7) (2025-06-22)
+
+
+### Bug Fixes
+
+* **npm:** Updated subpath imports ([41ca04c](https://github.com/Joe-Moussally/react-native-neo-ui/commit/41ca04ce4e864148d38bcf879a5fbcfb649faf18))
+
 ## [1.3.6](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.5...v1.3.6) (2025-06-22)
 
 
