@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.5...v1.3.6) (2025-06-22)
+
+
+### Bug Fixes
+
+* **Docs:** Added documentation for the npm publishing guide ([4bf2047](https://github.com/Joe-Moussally/react-native-neo-ui/commit/4bf204768bddbf0b9431c3627b854a8a881f4163))
+
 ## [1.3.5](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.4...v1.3.5) (2025-06-22)
 
 
