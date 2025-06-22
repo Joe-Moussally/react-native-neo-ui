@@ -240,4 +240,6 @@ const styles = StyleSheet.create({
     zIndex: 1
   }
 });
+
+// Export types
 //# sourceMappingURL=index.js.map

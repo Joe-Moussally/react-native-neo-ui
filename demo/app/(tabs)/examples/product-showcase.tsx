@@ -1,12 +1,14 @@
-import { Avatar } from "@joe111/neo-ui/Avatar";
-import { Box } from "@joe111/neo-ui/Box";
-import { Button } from "@joe111/neo-ui/Button";
-import { Chip } from "@joe111/neo-ui/Chip";
-import { Rating } from "@joe111/neo-ui/Rating";
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
+import {
+  Avatar,
+  Box,
+  Button,
+  Chip,
+  Rating,
+  Screen,
+  Typography,
+  useTheme,
+} from "@joe111/neo-ui";
 import React, { useState } from "react";
 import { Image, ScrollView, StyleSheet, View } from "react-native";
 
@@ -65,7 +67,7 @@ export default function ProductShowcaseExample() {
             {review.name}
           </Typography>
           <View style={styles.reviewMeta}>
-            <Rating value={review.rating} size={14} readonly />
+            <Rating value={review.rating} size="small" readOnly />
             <Typography variant="caption" color={theme.colors.textSecondary}>
               {review.date}
             </Typography>
@@ -130,7 +132,7 @@ export default function ProductShowcaseExample() {
           </View>
 
           <View style={styles.ratingContainer}>
-            <Rating value={4.5} size={16} readonly />
+            <Rating value={4.5} size="small" readOnly />
             <Typography variant="body" color={theme.colors.textSecondary}>
               (4.5) • 1,234 reviews
             </Typography>
@@ -157,7 +159,7 @@ export default function ProductShowcaseExample() {
                   label={size}
                   selected={selectedSize === size}
                   onPress={() => setSelectedSize(size)}
-                  variant={selectedSize === size ? "filled" : "outlined"}
+                  variant={selectedSize === size ? "solid" : "outline"}
                   style={styles.sizeChip}
                 />
               ))}
@@ -179,7 +181,7 @@ export default function ProductShowcaseExample() {
                   label={color}
                   selected={selectedColor === color}
                   onPress={() => setSelectedColor(color)}
-                  variant={selectedColor === color ? "filled" : "outlined"}
+                  variant={selectedColor === color ? "solid" : "outline"}
                   style={styles.colorChip}
                 />
               ))}

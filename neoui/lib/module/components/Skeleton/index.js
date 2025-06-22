@@ -171,4 +171,6 @@ const styles = StyleSheet.create({
     }]
   }
 });
+
+// Export types
 //# sourceMappingURL=index.js.map

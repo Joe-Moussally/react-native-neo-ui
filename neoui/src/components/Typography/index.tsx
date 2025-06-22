@@ -1,11 +1,11 @@
-import { useTheme } from "../../theme";
-import React from "react";
-import { StyleSheet, Text } from "react-native";
-import { TypographyProps } from "./types";
+import React from 'react';
+import { StyleSheet, Text } from 'react-native';
+import { useTheme } from '../../theme';
+import { TypographyProps } from './types';
 
 export function Typography({
   style,
-  variant = "body",
+  variant = 'body',
   weight,
   color,
   lightColor,
@@ -19,10 +19,10 @@ export function Typography({
   const textColor = color
     ? color
     : theme.isDark && darkColor
-    ? darkColor
-    : !theme.isDark && lightColor
-    ? lightColor
-    : theme.colors.text;
+      ? darkColor
+      : !theme.isDark && lightColor
+        ? lightColor
+        : theme.colors.text;
 
   // Get the style for the variant
   const variantStyle = styles[variant] || styles.body;
@@ -78,11 +78,18 @@ const styles = StyleSheet.create({
   button: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: "600",
+    fontWeight: '600',
   },
   link: {
     fontSize: 16,
     lineHeight: 24,
-    textDecorationLine: "underline",
+    textDecorationLine: 'underline',
   },
 });
+
+// Export types
+export type {
+  TypographyProps,
+  TypographyVariant,
+  TypographyWeight,
+} from './types';

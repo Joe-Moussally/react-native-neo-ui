@@ -1,8 +1,14 @@
-import { Avatar, AvatarGroup } from "@joe111/neo-ui/Avatar";
-import { AvatarSize, AvatarVariant } from "@joe111/neo-ui/Avatar";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { ThemeColor, ThemeSpacing, useTheme } from "@joe111/neo-ui/theme";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import {
+  Avatar,
+  AvatarGroup,
+  AvatarSize,
+  AvatarVariant,
+  Screen,
+  ThemeColor,
+  ThemeSpacing,
+  useTheme,
+} from "@joe111/neo-ui";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 

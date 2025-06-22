@@ -1,46 +1,37 @@
 "use strict";
 
 // ============================================================================
-// MAIN PACKAGE EXPORTS - Only shared utilities and commonly used items
+// MAIN PACKAGE EXPORTS - All components available from main import
 // ============================================================================
 
-// Theme exports - commonly used across the app
+// Theme exports
 export * from "./theme/index.js";
 
-// Navigation exports - commonly used across the app
+// Navigation exports
 export * from "./navigation/index.js";
 
-// Core utility components that are commonly used
+// Core utility components
 export { default as ParallaxScrollView } from "./components/ParallaxScrollView.js";
 export * from "./components/ThemedText.js";
 export * from "./components/ThemedView.js";
 
+// All UI Components
+export * from "./components/Alert/index.js";
+export * from "./components/Avatar/index.js";
+export * from "./components/Badge/index.js";
+export * from "./components/Box/index.js";
+export * from "./components/Button/index.js";
+export * from "./components/Chip/index.js";
+export * from "./components/Rating/index.js";
+export * from "./components/Skeleton/index.js";
+export * from "./components/TextField/index.js";
+export * from "./components/Ticker/index.js";
+export * from "./components/Toast/index.js";
+export * from "./components/Typography/index.js";
+
 // ============================================================================
-// INDIVIDUAL COMPONENTS - Must be imported from specific paths
-// ============================================================================
-//
-// ❌ DO NOT IMPORT FROM MAIN PACKAGE:
-// import { Button } from '@joe111/neo-ui';
-// import { RootToastProvider } from '@joe111/neo-ui';
-//
-// ✅ CORRECT - Import from specific component paths:
-// import { Button, ButtonProps } from '@joe111/neo-ui/Button';
-// import { RootToastProvider, useToast } from '@joe111/neo-ui/Toast';
-// import { Alert, AlertProps } from '@joe111/neo-ui/Alert';
-// import { Avatar, AvatarProps } from '@joe111/neo-ui/Avatar';
-// import { Badge, BadgeProps } from '@joe111/neo-ui/Badge';
-// import { Box, BoxProps } from '@joe111/neo-ui/Box';
-// import { Chip, ChipProps } from '@joe111/neo-ui/Chip';
-// import { Rating, RatingProps } from '@joe111/neo-ui/Rating';
-// import { Skeleton, SkeletonProps } from '@joe111/neo-ui/Skeleton';
-// import { TextField, TextFieldProps } from '@joe111/neo-ui/TextField';
-// import { Ticker, TickerProps } from '@joe111/neo-ui/Ticker';
-// import { Typography, TypographyProps } from '@joe111/neo-ui/Typography';
-//
-// This approach provides:
-// - Better tree-shaking (smaller bundle sizes)
-// - Clearer component organization
-// - Explicit imports that show exactly what you're using
-// - Faster build times (no need to process unused components)
+// All components are now available from main package:
+// import { Button, Alert, Avatar, Badge } from '@joe111/neo-ui';
+// import { useTheme, ThemeProvider } from '@joe111/neo-ui';
 // ============================================================================
 //# sourceMappingURL=index.js.map

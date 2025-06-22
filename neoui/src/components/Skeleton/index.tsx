@@ -211,3 +211,10 @@ const styles = StyleSheet.create({
     transform: [{ skewX: '-20deg' }],
   },
 });
+
+// Export types
+export type {
+  SkeletonAnimation,
+  SkeletonProps,
+  SkeletonVariant,
+} from './types';

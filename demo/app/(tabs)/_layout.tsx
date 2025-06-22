@@ -1,8 +1,8 @@
 import { FontAwesome } from "@expo/vector-icons";
+import { useTheme } from "@joe111/neo-ui";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
-import { useTheme } from "@joe111/neo-ui/theme";
 
 export default function TabLayout() {
   const { theme } = useTheme();

@@ -1,10 +1,13 @@
-import { Chip } from "@joe111/neo-ui/Chip";
-import { ChipSize, ChipVariant } from "@joe111/neo-ui/Chip";
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
-import { ThemeColor } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
+import {
+  Chip,
+  ChipSize,
+  ChipVariant,
+  Screen,
+  ThemeColor,
+  Typography,
+  useTheme,
+} from "@joe111/neo-ui";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

@@ -177,4 +177,6 @@ const styles = _reactNative.StyleSheet.create({
     }]
   }
 });
+
+// Export types
 //# sourceMappingURL=index.js.map

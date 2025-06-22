@@ -292,3 +292,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
 });
+
+// Export types
+export type { RatingProps, RatingSize } from './types';

@@ -1,9 +1,6 @@
-import { Box } from "@joe111/neo-ui/Box";
-import { Button } from "@joe111/neo-ui/Button";
-import { Typography } from "@joe111/neo-ui/Typography";
+import { Box, Button, Typography, useTheme } from "@joe111/neo-ui";
 import React from "react";
 import { StyleSheet } from "react-native";
-import { useTheme } from "@joe111/neo-ui/theme";
 
 export default function HomeScreen() {
   const { theme, themeType, setThemeType } = useTheme();

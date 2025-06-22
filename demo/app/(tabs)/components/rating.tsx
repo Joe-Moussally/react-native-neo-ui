@@ -1,9 +1,11 @@
-import { Rating } from "@joe111/neo-ui/Rating";
-import { RatingSize } from "@joe111/neo-ui/Rating/types";
-import { Typography } from "@joe111/neo-ui/Typography";
-import { Screen } from "@joe111/neo-ui/navigation";
-import { useTheme } from "@joe111/neo-ui/theme";
 import { Ionicons } from "@expo/vector-icons";
+import {
+  Rating,
+  RatingSize,
+  Screen,
+  Typography,
+  useTheme,
+} from "@joe111/neo-ui";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 
