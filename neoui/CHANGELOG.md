@@ -1,3 +1,10 @@
+## [1.3.10](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.9...v1.3.10) (2025-06-22)
+
+
+### Reverts
+
+* Revert "fix(Expo): Fixing Expo Snack router entry" ([1ae041a](https://github.com/Joe-Moussally/react-native-neo-ui/commit/1ae041a73fb71ab511928366f3223c8c0eb63f92))
+
 ## [1.3.9](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.8...v1.3.9) (2025-06-22)
 
 
