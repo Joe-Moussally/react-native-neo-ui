@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Screen, Typography, useTheme } from "@joe111/neo-ui";
-import { router } from "expo-router";
-import React, { useCallback, useMemo } from "react";
+import { router, useNavigation } from "expo-router";
+import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 
 // Define component item type
@@ -108,10 +108,47 @@ const COMPONENTS: ComponentItem[] = [
 
 export default function ComponentsScreen() {
   const { theme } = useTheme();
+  const navigation = useNavigation();
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  // Set up search bar in navigation header
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLargeTitle: true,
+      headerSearchBarOptions: {
+        placeholder: "Search components",
+        tintColor: theme.colors.primary,
+        headerIconColor: theme.colors.text,
+        hintTextColor: theme.colors.textSecondary,
+        shouldShowHintSearchIcon: false,
+        textColor: theme.colors.text,
+        barTintColor: theme.colors.surface,
+        onChangeText: (event: { nativeEvent: { text: string } }) => {
+          const text = event?.nativeEvent?.text || "";
+          setSearchQuery(text);
+        },
+      },
+    });
+  }, [navigation, theme]);
 
   const navigateToComponent = useCallback((route: string) => {
     router.push(route as any);
   }, []);
+
+  // Filter components based on search query with robust null checking
+  const filteredData = useMemo(() => {
+    // Ensure searchQuery is a string and handle all edge cases
+    const query = searchQuery || "";
+    const trimmedQuery = typeof query === "string" ? query.trim() : "";
+
+    if (!trimmedQuery) {
+      return COMPONENTS;
+    }
+
+    return COMPONENTS.filter((component) =>
+      component.name.toLowerCase().includes(trimmedQuery.toLowerCase())
+    );
+  }, [searchQuery]);
 
   const renderItem = useCallback(
     ({ item }: { item: ComponentItem }) => (
@@ -168,39 +205,38 @@ export default function ComponentsScreen() {
     []
   );
 
-  const memoizedData = useMemo(() => COMPONENTS, []);
-
   return (
-    <Screen
-      title="Components"
-      options={{
-        headerLargeTitle: true,
-        headerSearchBarOptions: {
-          placeholder: "Search components",
-          tintColor: theme.colors.primary,
-          headerIconColor: theme.colors.text,
-          hintTextColor: theme.colors.textSecondary,
-          shouldShowHintSearchIcon: false,
-          textColor: theme.colors.text,
-          barTintColor: theme.colors.surface,
-        },
-      }}
-    >
-      <FlatList
-        data={memoizedData}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        contentContainerStyle={styles.list}
-        removeClippedSubviews={true}
-        maxToRenderPerBatch={10}
-        windowSize={10}
-        initialNumToRender={10}
-        getItemLayout={(data, index) => ({
-          length: 80, // Approximate height of each item
-          offset: 80 * index,
-          index,
-        })}
-      />
+    <Screen title="Components">
+      {filteredData.length === 0 ? (
+        <View style={styles.emptyState}>
+          <Typography variant="h3" style={styles.emptyTitle}>
+            No components found
+          </Typography>
+          <Typography
+            variant="body"
+            color={theme.colors.textSecondary}
+            style={styles.emptyDescription}
+          >
+            Try adjusting your search query or browse all available components.
+          </Typography>
+        </View>
+      ) : (
+        <FlatList
+          data={filteredData}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          contentContainerStyle={styles.list}
+          removeClippedSubviews={true}
+          maxToRenderPerBatch={10}
+          windowSize={10}
+          initialNumToRender={10}
+          getItemLayout={(data, index) => ({
+            length: 80, // Approximate height of each item
+            offset: 80 * index,
+            index,
+          })}
+        />
+      )}
     </Screen>
   );
 }
@@ -208,6 +244,20 @@ export default function ComponentsScreen() {
 const styles = StyleSheet.create({
   list: {
     padding: 16,
+  },
+  emptyState: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 32,
+  },
+  emptyTitle: {
+    textAlign: "center",
+    marginBottom: 8,
+  },
+  emptyDescription: {
+    textAlign: "center",
+    lineHeight: 20,
   },
   componentCard: {
     borderRadius: 12,

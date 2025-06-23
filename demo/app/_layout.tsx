@@ -1,8 +1,85 @@
 import { RootToastProvider, ThemeProvider, useTheme } from "@joe111/neo-ui";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";
+import { Dimensions, StyleSheet, View } from "react-native";
+import { Defs, G, LinearGradient, Path, Stop, Svg } from "react-native-svg";
+
+// Prevent the splash screen from auto-hiding
+SplashScreen.preventAutoHideAsync();
+
+const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
+
+// Neo UI Logo Component for Splash
+const NeoSplashLogo = ({ size = 120 }: { size?: number }) => (
+  <Svg
+    width={size}
+    height={size}
+    viewBox="57.325 24.92 289.142 351.97"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <Defs>
+      <LinearGradient
+        id="splash-gradient-0"
+        x1="0%"
+        y1="0%"
+        x2="0%"
+        y2="100%"
+        gradientUnits="objectBoundingBox"
+      >
+        <Stop offset="0" stopColor="rgb(68, 201, 235)" />
+        <Stop offset="1" stopColor="rgb(0, 99, 144)" />
+      </LinearGradient>
+      <LinearGradient
+        id="splash-gradient-1"
+        x1="0%"
+        y1="0%"
+        x2="0%"
+        y2="100%"
+        gradientUnits="objectBoundingBox"
+      >
+        <Stop offset="0" stopColor="rgb(68, 201, 235)" />
+        <Stop offset="1" stopColor="rgb(0, 99, 144)" />
+      </LinearGradient>
+      <LinearGradient
+        id="splash-gradient-2"
+        x1="0%"
+        y1="0%"
+        x2="0%"
+        y2="100%"
+        gradientUnits="objectBoundingBox"
+      >
+        <Stop offset="0" stopColor="rgb(68, 201, 235)" />
+        <Stop offset="1" stopColor="rgb(0, 99, 144)" />
+      </LinearGradient>
+    </Defs>
+    <G transform="matrix(0.1, 0, 0, -0.1, -0.878498, 399)">
+      <Path
+        d="M1993 3658 c-90 -139 -127 -302 -103 -448 32 -191 127 -371 288 -542 98 -104 1066 -949 1095 -956 16 -3 98 101 131 165 43 85 59 173 53 293 -6 150 -58 289 -164 438 -94 132 -111 147 -1195 1075 l-57 48 -48 -73z"
+        fill="url(#splash-gradient-0)"
+      />
+      <Path
+        d="M847 3393 c-147 -201 -175 -451 -78 -685 47 -112 141 -248 245 -352 50 -51 273 -249 495 -442 508 -438 1117 -966 1371 -1189 107 -93 223 -194 258 -224 l63 -54 44 43 c56 55 110 157 135 256 65 251 -33 532 -267 768 -42 43 -156 146 -252 229 -97 83 -212 183 -256 223 -44 39 -217 189 -385 334 -168 144 -350 301 -405 349 -624 544 -913 791 -924 791 -5 0 -25 -21 -44 -47z"
+        fill="url(#splash-gradient-1)"
+      />
+      <Path
+        d="M711 2178 c-220 -297 -155 -696 168 -1027 42 -42 251 -228 466 -412 534 -458 595 -509 605 -509 5 0 25 21 45 47 210 275 150 653 -156 987 -60 66 -1063 945 -1089 954 -4 2 -22 -16 -39 -40z"
+        fill="url(#splash-gradient-2)"
+      />
+    </G>
+  </Svg>
+);
+
+// Custom Splash Screen Component
+const CustomSplashScreen = () => (
+  <View style={splashStyles.container}>
+    <View style={splashStyles.logoContainer}>
+      <NeoSplashLogo size={140} />
+    </View>
+  </View>
+);
 
 // Inner component that uses the theme
 const AppStack = () => {
@@ -22,13 +99,20 @@ const AppStack = () => {
 };
 
 export default function RootLayout() {
-  const [loaded] = useFonts({
+  const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
+  useEffect(() => {
+    if (loaded || error) {
+      // Hide the splash screen once fonts are loaded or if there's an error
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    // Show custom splash screen while fonts are loading
+    return <CustomSplashScreen />;
   }
 
   return (
@@ -39,3 +123,22 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
+
+const splashStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoContainer: {
+    shadowColor: "#44C9EB",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 8,
+  },
+});
