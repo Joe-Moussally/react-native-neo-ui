@@ -1,10 +1,10 @@
+import { AntDesign } from "@expo/vector-icons";
 import { Box, Button, Chip, Typography, useTheme } from "@joe111/neo-ui";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
 import { Defs, G, LinearGradient, Path, Stop, Svg } from "react-native-svg";
-
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
 // Neo UI Logo Component
@@ -196,7 +196,9 @@ export default function HomeScreen() {
               <Button
                 variant="primary"
                 onPress={navigateToComponents}
-                style={styles.ctaButton}
+                endIcon={
+                  <AntDesign name="arrowright" size={24} color="black" />
+                }
               >
                 View Components
               </Button>
@@ -338,12 +340,6 @@ const styles = StyleSheet.create({
   ctaSection: {
     alignItems: "center",
     marginTop: 8,
-  },
-  ctaButton: {
-    paddingHorizontal: 32,
-    paddingVertical: 12,
-    borderRadius: 25,
-    minWidth: 200,
   },
   statsSection: {
     paddingHorizontal: 24,
