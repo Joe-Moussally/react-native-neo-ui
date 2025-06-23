@@ -1,3 +1,10 @@
+## [1.3.11](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.10...v1.3.11) (2025-06-23)
+
+
+### Bug Fixes
+
+* **Demo:** Removed dummy example screens ([398e678](https://github.com/Joe-Moussally/react-native-neo-ui/commit/398e6789e32ecf8b4e82f552382e33329c89402f))
+
 ## [1.3.10](https://github.com/Joe-Moussally/react-native-neo-ui/compare/v1.3.9...v1.3.10) (2025-06-22)
 
 
