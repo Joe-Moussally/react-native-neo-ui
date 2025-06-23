@@ -1,4 +1,5 @@
-import { Box, Typography, useTheme } from "@joe111/neo-ui";
+import { Box, Button, Chip, Typography, useTheme } from "@joe111/neo-ui";
+import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
@@ -78,7 +79,7 @@ const FeatureCard = ({
   description: string;
   theme: any;
 }) => (
-  <View
+  <Box
     style={[
       styles.featureCard,
       {
@@ -88,6 +89,7 @@ const FeatureCard = ({
           : "rgba(68, 201, 235, 0.1)",
       },
     ]}
+    padding="lg"
   >
     <Typography
       variant="h3"
@@ -107,7 +109,7 @@ const FeatureCard = ({
     >
       {description}
     </Typography>
-  </View>
+  </Box>
 );
 
 // Stats Component
@@ -120,7 +122,7 @@ const StatItem = ({
   label: string;
   theme: any;
 }) => (
-  <View style={styles.statItem}>
+  <Box style={styles.statItem} gap="xs">
     <Typography
       variant="h2"
       style={[styles.statNumber, { color: theme.colors.primary }]}
@@ -133,11 +135,15 @@ const StatItem = ({
     >
       {label}
     </Typography>
-  </View>
+  </Box>
 );
 
 export default function HomeScreen() {
   const { theme } = useTheme();
+
+  const navigateToComponents = () => {
+    router.push("/(tabs)/components");
+  };
 
   return (
     <>
@@ -146,40 +152,16 @@ export default function HomeScreen() {
         style={[styles.container, { backgroundColor: theme.colors.background }]}
         showsVerticalScrollIndicator={false}
       >
-        {/* Animated Background Elements */}
-        <View
-          style={[
-            styles.backgroundPattern,
-            {
-              backgroundColor: theme.isDark
-                ? "rgba(68, 201, 235, 0.03)"
-                : "rgba(68, 201, 235, 0.05)",
-            },
-          ]}
-        />
-
         {/* Hero Section */}
         <Box style={styles.heroSection} gap="xl">
-          {/* Logo with Animation Container */}
-          <View style={styles.logoWrapper}>
-            <View
-              style={[
-                styles.logoGlow,
-                {
-                  backgroundColor: theme.isDark
-                    ? "rgba(68, 201, 235, 0.1)"
-                    : "rgba(68, 201, 235, 0.15)",
-                },
-              ]}
-            />
-            <View style={styles.logoContainer}>
-              <NeoLogo size={160} />
-            </View>
-          </View>
+          {/* Logo Container - Removed background glow */}
+          <Box style={styles.logoContainer}>
+            <NeoLogo size={160} />
+          </Box>
 
-          {/* Title Section */}
+          {/* Title Section - Added more spacing */}
           <Box gap="lg" style={styles.titleSection}>
-            <View style={styles.titleContainer}>
+            <Box style={styles.titleContainer} gap="sm">
               <Typography
                 variant="h1"
                 style={[styles.mainTitle, { color: theme.colors.primary }]}
@@ -192,7 +174,7 @@ export default function HomeScreen() {
                   { backgroundColor: theme.colors.primary },
                 ]}
               />
-            </View>
+            </Box>
 
             <Typography
               variant="body"
@@ -208,16 +190,27 @@ export default function HomeScreen() {
               Crafted for modern applications • Built with precision • Designed
               for excellence
             </Typography>
+
+            {/* Navigation Button */}
+            <Box style={styles.ctaSection} gap="md">
+              <Button
+                variant="primary"
+                onPress={navigateToComponents}
+                style={styles.ctaButton}
+              >
+                View Components
+              </Button>
+            </Box>
           </Box>
         </Box>
 
         {/* Stats Section */}
         <Box style={styles.statsSection} gap="md">
-          <View style={styles.statsContainer}>
+          <Box style={styles.statsContainer}>
             <StatItem number="50+" label="Components" theme={theme} />
             <StatItem number="100%" label="TypeScript" theme={theme} />
             <StatItem number="∞" label="Possibilities" theme={theme} />
-          </View>
+          </Box>
         </Box>
 
         {/* Features Grid */}
@@ -229,7 +222,7 @@ export default function HomeScreen() {
             Why Choose Neo UI?
           </Typography>
 
-          <View style={styles.featuresGrid}>
+          <Box style={styles.featuresGrid} gap="md">
             <FeatureCard
               icon="🎨"
               title="Beautiful Design"
@@ -254,10 +247,10 @@ export default function HomeScreen() {
               description="Built specifically for React Native and Expo"
               theme={theme}
             />
-          </View>
+          </Box>
         </Box>
 
-        {/* Technology Badges */}
+        {/* Technology Badges using Chip component */}
         <Box style={styles.techSection} gap="lg">
           <Typography
             variant="body"
@@ -266,36 +259,18 @@ export default function HomeScreen() {
             Built With Modern Technologies
           </Typography>
 
-          <View style={styles.techBadges}>
+          <Box style={styles.techBadges} gap="sm">
             {["React Native", "TypeScript", "Expo", "React Navigation"].map(
               (tech, index) => (
-                <View
+                <Chip
                   key={index}
-                  style={[
-                    styles.techBadge,
-                    {
-                      backgroundColor: theme.isDark
-                        ? "rgba(68, 201, 235, 0.1)"
-                        : "rgba(68, 201, 235, 0.08)",
-                      borderColor: theme.isDark
-                        ? "rgba(68, 201, 235, 0.3)"
-                        : "rgba(68, 201, 235, 0.2)",
-                    },
-                  ]}
-                >
-                  <Typography
-                    variant="caption"
-                    style={[
-                      styles.techBadgeText,
-                      { color: theme.colors.primary },
-                    ]}
-                  >
-                    {tech}
-                  </Typography>
-                </View>
+                  label={tech}
+                  variant="soft"
+                  style={styles.techChip}
+                />
               )
             )}
-          </View>
+          </Box>
         </Box>
 
         {/* Bottom Spacer */}
@@ -309,34 +284,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  backgroundPattern: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    height: screenHeight * 0.7,
-    borderBottomLeftRadius: 50,
-    borderBottomRightRadius: 50,
-  },
   heroSection: {
     alignItems: "center",
     paddingHorizontal: 24,
-    paddingTop: 60,
+    paddingTop: 80, // Increased from 60 to give more space
     paddingBottom: 40,
-    minHeight: screenHeight * 0.6,
+    minHeight: screenHeight * 0.65, // Slightly increased
     justifyContent: "center",
-  },
-  logoWrapper: {
-    position: "relative",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logoGlow: {
-    position: "absolute",
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    opacity: 0.6,
   },
   logoContainer: {
     shadowColor: "#44C9EB",
@@ -344,6 +298,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 25,
     elevation: 12,
+    alignItems: "center",
+    justifyContent: "center",
   },
   titleSection: {
     alignItems: "center",
@@ -351,19 +307,19 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     alignItems: "center",
-    position: "relative",
+    paddingTop: 20, // Added padding to prevent title cutoff
   },
   mainTitle: {
     fontSize: 56,
     fontWeight: "800",
     textAlign: "center",
-    letterSpacing: -2,
+    paddingTop: 10,
+    // letterSpacing: -2,
   },
   titleUnderline: {
     width: 80,
     height: 4,
     borderRadius: 2,
-    marginTop: 8,
     opacity: 0.8,
   },
   subtitle: {
@@ -371,7 +327,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     opacity: 0.9,
-    marginTop: 8,
   },
   tagline: {
     fontSize: 15,
@@ -379,6 +334,16 @@ const styles = StyleSheet.create({
     opacity: 0.7,
     lineHeight: 22,
     maxWidth: screenWidth * 0.8,
+  },
+  ctaSection: {
+    alignItems: "center",
+    marginTop: 8,
+  },
+  ctaButton: {
+    paddingHorizontal: 32,
+    paddingVertical: 12,
+    borderRadius: 25,
+    minWidth: 200,
   },
   statsSection: {
     paddingHorizontal: 24,
@@ -399,7 +364,6 @@ const styles = StyleSheet.create({
   statLabel: {
     fontSize: 12,
     fontWeight: "500",
-    marginTop: 4,
     textTransform: "uppercase",
     letterSpacing: 1,
   },
@@ -417,19 +381,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    gap: 16,
   },
   featureCard: {
     width: (screenWidth - 64) / 2,
-    padding: 20,
-    borderRadius: 16,
     borderWidth: 1,
+    borderRadius: 16,
     alignItems: "center",
     shadowColor: "#44C9EB",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 12,
     elevation: 4,
+    marginBottom: 16,
   },
   featureIcon: {
     fontSize: 32,
@@ -461,19 +424,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    gap: 12,
   },
-  techBadge: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-    borderWidth: 1,
-  },
-  techBadgeText: {
-    fontSize: 12,
-    fontWeight: "600",
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
+  techChip: {
+    margin: 4,
   },
   bottomSpacer: {
     height: 40,
