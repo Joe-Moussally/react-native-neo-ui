@@ -6,6 +6,9 @@ docs/
 # landing page
 landing-page/
 
+# demo
+demo/
+
 # dependencies
 node_modules/
 
