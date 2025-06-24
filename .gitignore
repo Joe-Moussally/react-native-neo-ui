@@ -3,6 +3,9 @@
 # docs
 docs/
 
+# landing page
+landing-page/
+
 # dependencies
 node_modules/
 
