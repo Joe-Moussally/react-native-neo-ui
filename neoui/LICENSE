@@ -1,21 +1,43 @@
-MIT License
+# Neo UI – Custom Source-Available License
 
 Copyright (c) 2024 Joe Moussally
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+---
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## ✅ What You Can Do
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE. 
+You are allowed to:
+
+- Use Neo UI in **personal** and **commercial projects**, including web and mobile applications.
+- Modify the source code for your own use within your apps.
+- Fork this repository **for the purpose of contributing**, such as bug fixes, feature suggestions, or pull requests.
+
+---
+
+## ❌ What You Cannot Do
+
+You are **not** allowed to:
+
+- Reproduce, redistribute, or republish this code as part of another **UI library**, **component kit**, **framework**, or similar toolkit — whether free or commercial — without **explicit written permission**.
+- Use Neo UI or significant portions of its code to create a **competing product** (e.g., a component library, design system, or developer toolkit).
+- Publish or rebrand this project under a different name or package.
+
+---
+
+## 💬 Contributions
+
+Contributions are welcome! Feel free to fork this repo and submit pull requests for fixes, improvements, or new ideas.
+
+---
+
+## 🛡️ Disclaimer
+
+This project is provided "as is" without warranty of any kind. Use at your own risk.
+
+---
+
+## 🔄 Future Licensing
+
+This license may be updated in the future to reflect commercial options, pro features, or different usage tiers. Any changes will be clearly documented and versioned.
+
+By using this project, you agree to the terms above.

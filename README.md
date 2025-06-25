@@ -197,7 +197,11 @@ We welcome contributions! Please see our [Contributing Guide](https://github.com
 
 ## 📄 License
 
-MIT © [Joe Moussally](https://github.com/Joe-Moussally)
+> 📄 **License Notice:** Neo UI is **source-available** under a custom license.  
+> You're free to use it in personal or commercial apps and projects.  
+> Redistribution or republishing as part of another library, toolkit, or competing product is **not allowed** without written permission.
+
+Custom Source-Available License © [Joe Moussally](https://github.com/Joe-Moussally)
 
 ## 🙏 Support & Community
 
