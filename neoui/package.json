@@ -68,7 +68,7 @@
     "@eslint/js": "^9.22.0",
     "@evilmartians/lefthook": "^1.5.0",
     "@react-native/babel-preset": "0.78.2",
-    "@react-native/eslint-config": "^0.78.0",
+    "@react-native/eslint-config": "^0.80.0",
     "@react-navigation/native-stack": "^7.1.4",
     "@release-it/conventional-changelog": "^9.0.2",
     "@semantic-release/changelog": "^6.0.3",
