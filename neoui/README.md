@@ -1,18 +1,38 @@
-# @joe111/neo-ui
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Joe-Moussally/react-native-neo-ui/main/neo-logo-blue-gradient.svg" alt="NeoUI Logo" width="200" height="200" />
+  
+  # @joe111/neo-ui
+  
+  ### A modern, customizable React Native UI library built with TypeScript
+  
+  [![npm version](https://badge.fury.io/js/@joe111%2Fneo-ui.svg)](https://www.npmjs.com/package/@joe111/neo-ui)
+  [![GitHub](https://img.shields.io/github/license/Joe-Moussally/react-native-neo-ui)](https://github.com/Joe-Moussally/react-native-neo-ui/blob/main/LICENSE)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
+  
+  ### 🌐 [**Visit Neo-UI.dev**](https://neo-ui.dev/) | 📚 [**Documentation**](https://docs.neo-ui.dev/)
+</div>
 
-A modern, customizable React Native UI library built with TypeScript. Inspired by Material-UI, @neoui provides a comprehensive set of components with a powerful theming system.
+---
 
-## Features
+## 🚧 **BETA DEVELOPMENT** 🚧
+
+**⚠️ This library is currently in beta development (v1.3.13) and is still under active development. APIs may change, and some features may not be fully stable. Use with caution in production environments.**
+
+---
+
+## ✨ Features
 
 - 🎨 **Comprehensive Theme System** - Fully customizable colors, typography, and spacing
-- 🧩 **Rich Component Library** - Pre-built components for common UI patterns
+- 🧩 **Rich Component Library** - 15+ pre-built components for common UI patterns
 - 📱 **React Native First** - Built specifically for React Native with Expo support
 - 🔧 **TypeScript Support** - Full type safety and IntelliSense
-- 🎯 **Navigation Ready** - Integrated navigation components
+- 🎯 **Navigation Ready** - Integrated navigation components with React Navigation
 - 🚀 **Performance Optimized** - Lightweight and efficient
 - 📦 **Tree Shakeable** - Individual component imports for optimal bundle size
+- 🎭 **Modern Design** - Inspired by Material-UI with custom NeoUI styling
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install @joe111/neo-ui
@@ -22,13 +42,21 @@ yarn add @joe111/neo-ui
 
 ### Peer Dependencies
 
-Make sure you have the following peer dependencies installed:
+Install the required peer dependencies:
 
 ```bash
 npm install react react-native @react-navigation/native @react-navigation/bottom-tabs @react-navigation/elements react-native-gesture-handler react-native-reanimated react-native-safe-area-context react-native-screens react-native-svg
 ```
 
-## Quick Start
+### Additional Dependencies
+
+The package also requires:
+
+```bash
+npm install @expo/vector-icons
+```
+
+## 🚀 Quick Start
 
 ### 1. Setup Theme Provider
 
@@ -36,7 +64,7 @@ Wrap your app with the `ThemeProvider`:
 
 ```tsx
 import React from 'react';
-import { ThemeProvider } from '@joe111/neo-ui/theme';
+import { ThemeProvider } from '@joe111/neo-ui';
 import { YourApp } from './YourApp';
 
 export default function App() {
@@ -50,29 +78,7 @@ export default function App() {
 
 ### 2. Use Components
 
-You can import components in two ways:
-
-#### Individual Imports (Recommended for Tree Shaking)
-
-```tsx
-import React from 'react';
-import { Button } from '@joe111/neo-ui/Button';
-import { Typography } from '@joe111/neo-ui/Typography';
-import { Box } from '@joe111/neo-ui/Box';
-
-export function YourApp() {
-  return (
-    <Box padding="lg">
-      <Typography variant="h1">Welcome to NeoUI</Typography>
-      <Button variant="primary" onPress={() => console.log('Hello NeoUI!')}>
-        Get Started
-      </Button>
-    </Box>
-  );
-}
-```
-
-#### Barrel Imports (Legacy)
+You can import and use components directly:
 
 ```tsx
 import React from 'react';
@@ -90,164 +96,127 @@ export function YourApp() {
 }
 ```
 
-## Import Paths
+## 🧩 Available Components
 
-### Components
+### Layout & Navigation
 
-- `@joe111/neo-ui/Alert` - Alert components
-- `@joe111/neo-ui/Avatar` - Avatar and AvatarGroup
-- `@joe111/neo-ui/Badge` - Badge component
-- `@joe111/neo-ui/Box` - Layout container
-- `@joe111/neo-ui/Button` - Button component
-- `@joe111/neo-ui/Chip` - Chip component
-- `@joe111/neo-ui/Rating` - Rating component
-- `@joe111/neo-ui/Skeleton` - Loading skeleton
-- `@joe111/neo-ui/TextField` - Text input
-- `@joe111/neo-ui/Ticker` - Animated ticker
-- `@joe111/neo-ui/Toast` - Toast notifications
-- `@joe111/neo-ui/Typography` - Text component
-- `@joe111/neo-ui/ParallaxScrollView` - Parallax scroll view
-- `@joe111/neo-ui/ThemedText` - Themed text
-- `@joe111/neo-ui/ThemedView` - Themed view
+- **Box** - Flexible container with theme-aware spacing and styling
+- **Screen** - Screen wrapper with safe area handling and navigation integration
+- **ParallaxScrollView** - Parallax scroll view component
 
-### Theme and Navigation
+### Typography & Text
 
-- `@joe111/neo-ui/theme` - Theme provider, hooks, and utilities
-- `@joe111/neo-ui/navigation` - Navigation components and utilities
+- **Typography** - Text component with predefined styles and variants
+- **ThemedText** - Theme-aware text component
+- **ThemedView** - Theme-aware view component
 
-## Components
+### Form Controls & Input
 
-### Layout
+- **Button** - Customizable button with multiple variants and states
+- **TextField** - Input field with validation, theming, and form integration
+- **Chip** - Compact elements for tags, filters, and actions
 
-- `Box` - Flexible container with theme-aware spacing and styling
-- `Screen` - Screen wrapper with safe area handling
+### Feedback & Notifications
 
-### Typography
+- **Alert** - Alert messages with different severity levels and customizable styling
+- **Toast** - Toast notifications with global state management and positioning
+- **Skeleton** - Loading placeholders with customizable shapes and animations
+- **Rating** - Interactive star rating component
 
-- `Typography` - Text component with predefined styles and variants
+### Data Display & Indicators
 
-### Form Controls
+- **Avatar** - User profile pictures with fallbacks and group support
+- **Badge** - Small status indicators and notification badges
+- **Ticker** - Animated text ticker for scrolling content
 
-- `Button` - Customizable button with multiple variants
-- `TextField` - Input field with validation and theming
-- `Chip` - Compact elements for tags, filters, or actions
+### Theme System
 
-### Feedback
+- **ThemeProvider** - Context provider for theme management
+- **useTheme** - Hook for accessing theme values
+- **createTheme** - Utility for creating custom themes
 
-- `Alert` - Alert messages with different severity levels
-- `Toast` - Toast notifications with global state management
-- `Skeleton` - Loading placeholders
-- `Progress` - Progress indicators
+## 🎨 Theming System
 
-### Data Display
-
-- `Avatar` - User profile pictures with fallbacks
-- `Badge` - Small status indicators
-- `Rating` - Star rating component
-- `Ticker` - Animated text ticker
-
-### Navigation
-
-- `Screen` - Screen wrapper with navigation integration
-- Navigation utilities and helpers
-
-## Theming
-
-### Custom Theme
+### Default Theme Usage
 
 ```tsx
-import { ThemeProvider, createTheme } from '@joe111/neo-ui/theme';
-
-const customTheme = createTheme({
-  colors: {
-    primary: '#007AFF',
-    secondary: '#5856D6',
-    // ... other colors
-  },
-  spacing: {
-    xs: 4,
-    sm: 8,
-    md: 16,
-    lg: 24,
-    xl: 32,
-  },
-  typography: {
-    h1: {
-      fontSize: 32,
-      fontWeight: 'bold',
-    },
-    // ... other typography styles
-  },
-});
-
-export default function App() {
-  return (
-    <ThemeProvider theme={customTheme}>
-      <YourApp />
-    </ThemeProvider>
-  );
-}
-```
-
-### Using Theme in Components
-
-```tsx
-import { useTheme } from '@joe111/neo-ui/theme';
+import { ThemeProvider, useTheme } from '@joe111/neo-ui';
 
 export function CustomComponent() {
   const theme = useTheme();
 
   return (
     <View style={{ backgroundColor: theme.colors.primary }}>
-      {/* Your content */}
+      <Text style={theme.typography.h1}>Styled with theme</Text>
     </View>
   );
 }
 ```
 
-## Example App
+## 📱 Demo & Examples
 
-Check out the example app in the `/example` directory to see all components in action:
+### Demo Repository
+
+Experience all components in action with our comprehensive demo app:
+
+- [📖 Demo Documentation](https://docs.neo-ui.dev/demo) - Detailed demo guide with screenshots
+- Clone and run the demo app locally to explore all components
+
+### Run Demo App
 
 ```bash
-cd example
+git clone https://github.com/Joe-Moussally/react-native-neo-ui.git
+cd react-native-neo-ui/example
+
+# Install dependencies
 npm install
-npm run ios # or android
+
+# Start the demo app
+npm start
 ```
 
-## Migration Guide
+## 📚 Documentation
 
-### From v1.x to v2.x
+- 📖 [Full Documentation](https://docs.neo-ui.dev/) - Complete API reference
+- 🔄 [Changelog](https://github.com/Joe-Moussally/react-native-neo-ui/releases) - Version history and updates
 
-Version 2.0 introduces individual module imports for better tree shaking. While the old barrel imports still work, we recommend migrating to individual imports:
+## 🚀 Recent Updates (v1.3.13)
 
-```tsx
-// Old (v1.x) - Still works but not recommended
-import { Button, ThemeProvider } from '@joe111/neo-ui';
+- ✅ **Individual Module Imports** - Tree-shakeable imports for better bundle optimization
+- 🐛 **Bug Fixes** - Resolved import path issues and npm publishing
+- 📦 **Build Improvements** - Enhanced build process with better TypeScript support
+- 🔧 **Documentation** - Updated examples and usage guides
 
-// New (v2.x) - Recommended
-import { Button } from '@joe111/neo-ui/Button';
-import { ThemeProvider } from '@joe111/neo-ui/theme';
-```
+## 🤝 Contributing
 
-## API Documentation
+We welcome contributions! Please see our [Contributing Guide](https://github.com/Joe-Moussally/react-native-neo-ui/blob/main/CONTRIBUTING.md) for details.
 
-For detailed API documentation, visit [our documentation site](https://neoui.dev/docs).
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## Contributing
+## 📄 License
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+MIT © [Joe Moussally](https://github.com/Joe-Moussally)
 
-## License
+## 🙏 Support & Community
 
-MIT © [NeoUI Team](https://neoui.dev)
+- ⭐ [Star on GitHub](https://github.com/Joe-Moussally/react-native-neo-ui) - Show your support!
+- 🐛 [Report Issues](https://github.com/Joe-Moussally/react-native-neo-ui/issues) - Help us improve
+- 💬 [Discussions](https://github.com/Joe-Moussally/react-native-neo-ui/discussions) - Ask questions and share ideas
+- 📧 [Email Support](mailto:joemoussally111@gmail.com) - Direct contact
 
-## Support
+---
 
-- 📖 [Documentation](https://neoui.dev/docs)
-- 🐛 [Issue Tracker](https://github.com/neoui/neoui/issues)
-- 💬 [Discussions](https://github.com/neoui/neoui/discussions)
-- 📧 [Email Support](mailto:team@neoui.dev)
+<div align="center">
+  <p><strong>Made with ❤️ for the React Native community</strong></p>
+  <p>
+    <img src="https://raw.githubusercontent.com/Joe-Moussally/react-native-neo-ui/main/neo-logo-blue.svg" alt="NeoUI" width="32" height="32" />
+    <em>Building beautiful mobile experiences, one component at a time.</em>
+  </p>
+</div>
 
 ---
 

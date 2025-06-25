@@ -1,6 +1,6 @@
 {
   "name": "@joe111/neo-ui",
-  "version": "1.3.11",
+  "version": "1.3.13",
   "description": "A modern React Native UI library",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/index.d.ts",

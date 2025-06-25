@@ -1,26 +1,36 @@
-# @joe111/neo-ui
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Joe-Moussally/react-native-neo-ui/main/neo-logo-blue-gradient.svg" alt="NeoUI Logo" width="200" height="200" />
+  
+  # @joe111/neo-ui
+  
+  ### A modern, customizable React Native UI library built with TypeScript
+  
+  [![npm version](https://badge.fury.io/js/@joe111%2Fneo-ui.svg)](https://www.npmjs.com/package/@joe111/neo-ui)
+  [![GitHub](https://img.shields.io/github/license/Joe-Moussally/react-native-neo-ui)](https://github.com/Joe-Moussally/react-native-neo-ui/blob/main/LICENSE)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
+  
+  ### 🌐 [**Visit Neo-UI.dev**](https://neo-ui.dev/) | 📚 [**Documentation**](https://docs.neo-ui.dev/)
+</div>
 
-[![npm version](https://badge.fury.io/js/@joe111%2Fneo-ui.svg)](https://www.npmjs.com/package/@joe111/neo-ui)
-[![GitHub](https://img.shields.io/github/license/Joe-Moussally/react-native-neo-ui)](https://github.com/Joe-Moussally/react-native-neo-ui/blob/builder-bob/LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
+---
 
 ## 🚧 **BETA DEVELOPMENT** 🚧
 
-**⚠️ This library is currently in beta development and is still under active development. APIs may change, and some features may not be fully stable. Use with caution in production environments.**
+**⚠️ This library is currently in beta development (v1.3.13) and is still under active development. APIs may change, and some features may not be fully stable. Use with caution in production environments.**
 
-A modern, customizable React Native UI library built with TypeScript. Inspired by Material-UI, @neoui provides a comprehensive set of components with a powerful theming system.
-
-![NeoUI Demo](https://raw.githubusercontent.com/Joe-Moussally/neo-ui/builder-bob/assets/demo.gif)
+---
 
 ## ✨ Features
 
 - 🎨 **Comprehensive Theme System** - Fully customizable colors, typography, and spacing
-- 🧩 **Rich Component Library** - Pre-built components for common UI patterns
+- 🧩 **Rich Component Library** - 15+ pre-built components for common UI patterns
 - 📱 **React Native First** - Built specifically for React Native with Expo support
 - 🔧 **TypeScript Support** - Full type safety and IntelliSense
-- 🎯 **Navigation Ready** - Integrated navigation components
+- 🎯 **Navigation Ready** - Integrated navigation components with React Navigation
 - 🚀 **Performance Optimized** - Lightweight and efficient
+- 📦 **Tree Shakeable** - Individual component imports for optimal bundle size
+- 🎭 **Modern Design** - Inspired by Material-UI with custom NeoUI styling
 
 ## 📦 Installation
 
@@ -36,6 +46,14 @@ Install the required peer dependencies:
 
 ```bash
 npm install react react-native @react-navigation/native @react-navigation/bottom-tabs @react-navigation/elements react-native-gesture-handler react-native-reanimated react-native-safe-area-context react-native-screens react-native-svg
+```
+
+### Additional Dependencies
+
+The package also requires:
+
+```bash
+npm install @expo/vector-icons
 ```
 
 ## 🚀 Quick Start
@@ -76,119 +94,104 @@ export function YourApp() {
 }
 ```
 
-## 🧩 Components
+## 🧩 Available Components
 
 ### Layout & Navigation
 
-- **Box** - Flexible container with theme-aware spacing
-- **Screen** - Screen wrapper with safe area handling
+- **Box** - Flexible container with theme-aware spacing and styling
+- **Screen** - Screen wrapper with safe area handling and navigation integration
+- **ParallaxScrollView** - Parallax scroll view component
 
-### Typography
+### Typography & Text
 
-- **Typography** - Text component with predefined styles
+- **Typography** - Text component with predefined styles and variants
 - **ThemedText** - Theme-aware text component
+- **ThemedView** - Theme-aware view component
 
-### Form Controls
+### Form Controls & Input
 
-- **Button** - Customizable button with multiple variants
-- **TextField** - Input field with validation and theming
-- **Chip** - Compact elements for tags and filters
+- **Button** - Customizable button with multiple variants and states
+- **TextField** - Input field with validation, theming, and form integration
+- **Chip** - Compact elements for tags, filters, and actions
 
-### Feedback & Indicators
+### Feedback & Notifications
 
-- **Alert** - Alert messages with different severity levels
-- **Toast** - Toast notifications with global state
-- **Skeleton** - Loading placeholders
-- **Rating** - Star rating component
+- **Alert** - Alert messages with different severity levels and customizable styling
+- **Toast** - Toast notifications with global state management and positioning
+- **Skeleton** - Loading placeholders with customizable shapes and animations
+- **Rating** - Interactive star rating component
 
-### Data Display
+### Data Display & Indicators
 
-- **Avatar** - User profile pictures with fallbacks
-- **Badge** - Small status indicators
-- **Ticker** - Animated text ticker
+- **Avatar** - User profile pictures with fallbacks and group support
+- **Badge** - Small status indicators and notification badges
+- **Ticker** - Animated text ticker for scrolling content
 
-## 🎨 Theming
+### Theme System
 
-### Custom Theme
+- **ThemeProvider** - Context provider for theme management
+- **useTheme** - Hook for accessing theme values
+- **createTheme** - Utility for creating custom themes
 
-```tsx
-import { ThemeProvider, createTheme } from "@joe111/neo-ui";
+## 🎨 Theming System
 
-const customTheme = createTheme({
-  colors: {
-    primary: "#007AFF",
-    secondary: "#5856D6",
-    // ... other colors
-  },
-  spacing: {
-    xs: 4,
-    sm: 8,
-    md: 16,
-    lg: 24,
-    xl: 32,
-  },
-  typography: {
-    h1: {
-      fontSize: 32,
-      fontWeight: "bold",
-    },
-    // ... other typography styles
-  },
-});
-
-export default function App() {
-  return (
-    <ThemeProvider theme={customTheme}>
-      <YourApp />
-    </ThemeProvider>
-  );
-}
-```
-
-### Using Theme in Components
+### Default Theme Usage
 
 ```tsx
-import { useTheme } from "@joe111/neo-ui";
+import { ThemeProvider, useTheme } from "@joe111/neo-ui";
 
 export function CustomComponent() {
   const theme = useTheme();
 
   return (
     <View style={{ backgroundColor: theme.colors.primary }}>
-      {/* Your content */}
+      <Text style={theme.typography.h1}>Styled with theme</Text>
     </View>
   );
 }
 ```
 
-## 📱 Example App
+## 📱 Demo & Examples
 
-Check out our comprehensive example app that demonstrates all components:
+### Demo Repository
+
+Experience all components in action with our comprehensive demo app:
+
+- [📖 Demo Documentation](https://docs.neo-ui.dev/demo) - Detailed demo guide with screenshots
+- Clone and run the demo app locally to explore all components
+
+### Run Demo App
 
 ```bash
 git clone https://github.com/Joe-Moussally/react-native-neo-ui.git
-cd neo-ui
-git checkout builder-bob
-./setup.sh
+cd react-native-neo-ui/example
 
-# Run the example
-cd example
-npm run ios    # or android, web
+# Install dependencies
+npm install
+
+# Start the demo app
+npm start
 ```
 
 ## 📚 Documentation
 
-- 📖 [API Documentation](https://github.com/Joe-Moussally/react-native-neo-ui/tree/builder-bob/docs)
-- 🎯 [Component Gallery](https://github.com/Joe-Moussally/react-native-neo-ui/tree/builder-bob/example)
-- 🛠️ [Development Guide](https://github.com/Joe-Moussally/react-native-neo-ui/blob/builder-bob/DEVELOPMENT.md)
+- 📖 [Full Documentation](https://docs.neo-ui.dev/) - Complete API reference
+- 🔄 [Changelog](https://github.com/Joe-Moussally/react-native-neo-ui/releases) - Version history and updates
+
+## 🚀 Recent Updates (v1.3.13)
+
+- ✅ **Individual Module Imports** - Tree-shakeable imports for better bundle optimization
+- 🐛 **Bug Fixes** - Resolved import path issues and npm publishing
+- 📦 **Build Improvements** - Enhanced build process with better TypeScript support
+- 🔧 **Documentation** - Updated examples and usage guides
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](https://github.com/Joe-Moussally/react-native-neo-ui/blob/builder-bob/CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guide](https://github.com/Joe-Moussally/react-native-neo-ui/blob/main/CONTRIBUTING.md) for details.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
@@ -196,12 +199,19 @@ We welcome contributions! Please see our [Contributing Guide](https://github.com
 
 MIT © [Joe Moussally](https://github.com/Joe-Moussally)
 
-## 🙏 Support
+## 🙏 Support & Community
 
-- ⭐ [Star on GitHub](https://github.com/Joe-Moussally/react-native-neo-ui)
-- 🐛 [Report Issues](https://github.com/Joe-Moussally/react-native-neo-ui/issues)
-- 💬 [Discussions](https://github.com/Joe-Moussally/react-native-neo-ui/discussions)
+- ⭐ [Star on GitHub](https://github.com/Joe-Moussally/react-native-neo-ui) - Show your support!
+- 🐛 [Report Issues](https://github.com/Joe-Moussally/react-native-neo-ui/issues) - Help us improve
+- 💬 [Discussions](https://github.com/Joe-Moussally/react-native-neo-ui/discussions) - Ask questions and share ideas
+- 📧 [Email Support](mailto:joemoussally111@gmail.com) - Direct contact
 
 ---
 
-<p align="center">Made with ❤️ for the React Native community</p>
+<div align="center">
+  <p><strong>Made with ❤️ for the React Native community</strong></p>
+  <p>
+    <img src="https://raw.githubusercontent.com/Joe-Moussally/react-native-neo-ui/main/neo-logo-blue.svg" alt="NeoUI" width="32" height="32" />
+    <em>Building beautiful mobile experiences, one component at a time.</em>
+  </p>
+</div>
