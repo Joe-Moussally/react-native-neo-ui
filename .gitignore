@@ -45,4 +45,5 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-app-example
+# local README.md
+SEO_OPTIMIZATION_SUMMARY.md
