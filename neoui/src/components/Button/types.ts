@@ -1,29 +1,25 @@
-import { PressableProps } from "react-native";
+import { PressableProps } from 'react-native';
 
 export type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "outline"
-  | "ghost"
-  | "soft"
-  | "text"
-  | "danger"
-  | "success"
-  | "warning"
-  | "info";
+  | 'primary'
+  | 'secondary'
+  | 'outline'
+  | 'ghost'
+  | 'soft'
+  | 'text';
 
-export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ButtonColorKey =
-  | "primary"
-  | "secondary"
-  | "accent"
-  | "error"
-  | "success"
-  | "warning"
-  | "info";
+  | 'primary'
+  | 'secondary'
+  | 'accent'
+  | 'error'
+  | 'success'
+  | 'warning'
+  | 'info';
 
-export interface ButtonProps extends Omit<PressableProps, "style"> {
+export interface ButtonProps extends Omit<PressableProps, 'style'> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   color?: ButtonColorKey;
@@ -33,6 +29,6 @@ export interface ButtonProps extends Omit<PressableProps, "style"> {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   children?: React.ReactNode;
-  style?: PressableProps["style"];
+  style?: PressableProps['style'];
   hapticsDisabled?: boolean;
 }

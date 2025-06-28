@@ -1,16 +1,16 @@
 "use strict";
 
+import * as Haptics from 'expo-haptics';
+import React from 'react';
+import { ActivityIndicator, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { useTheme } from "../../theme/index.js";
 import { spacing } from "../../theme/spacing.js";
-import * as Haptics from "expo-haptics";
-import React from "react";
-import { ActivityIndicator, Platform, Pressable, StyleSheet, Text, View } from "react-native";
-import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 export const Button = ({
-  variant = "primary",
-  size = "md",
+  variant = 'primary',
+  size = 'md',
   color,
   fullWidth = false,
   loading = false,
@@ -50,7 +50,7 @@ export const Button = ({
   };
 
   // Check if this is an icon-only button (no text children)
-  const isIconOnly = !children || typeof children !== "string" && /*#__PURE__*/React.isValidElement(children);
+  const isIconOnly = !children || typeof children !== 'string' && /*#__PURE__*/React.isValidElement(children);
   const getButtonColors = (variant, colorKey, disabled) => {
     if (disabled) {
       return {
@@ -62,76 +62,48 @@ export const Button = ({
     }
     const baseColor = colorKey ? theme.colors[colorKey] : theme.colors.primary;
     switch (variant) {
-      case "primary":
+      case 'primary':
         return {
           backgroundColor: baseColor,
           textColor: theme.isDark ? theme.colors.text : theme.colors.background,
           borderColor: baseColor,
           shadowColor: baseColor
         };
-      case "secondary":
+      case 'secondary':
         return {
           backgroundColor: theme.colors.surface,
           textColor: baseColor,
           borderColor: theme.colors.border,
           shadowColor: theme.colors.border
         };
-      case "outline":
+      case 'outline':
         return {
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
           textColor: baseColor,
           borderColor: baseColor,
           shadowColor: baseColor
         };
-      case "ghost":
+      case 'ghost':
         return {
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
           textColor: baseColor,
-          borderColor: "transparent",
+          borderColor: 'transparent',
           shadowColor: baseColor
         };
-      case "soft":
+      case 'soft':
         return {
-          backgroundColor: baseColor + "15",
+          backgroundColor: baseColor + '15',
           // 15% opacity
           textColor: baseColor,
-          borderColor: "transparent",
+          borderColor: 'transparent',
           shadowColor: baseColor
         };
-      case "text":
+      case 'text':
         return {
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
           textColor: baseColor,
-          borderColor: "transparent",
+          borderColor: 'transparent',
           shadowColor: baseColor
-        };
-      case "danger":
-        return {
-          backgroundColor: theme.colors.error,
-          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
-          borderColor: theme.colors.error,
-          shadowColor: theme.colors.error
-        };
-      case "success":
-        return {
-          backgroundColor: theme.colors.success,
-          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
-          borderColor: theme.colors.success,
-          shadowColor: theme.colors.success
-        };
-      case "warning":
-        return {
-          backgroundColor: theme.colors.warning,
-          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
-          borderColor: theme.colors.warning,
-          shadowColor: theme.colors.warning
-        };
-      case "info":
-        return {
-          backgroundColor: theme.colors.info,
-          textColor: theme.isDark ? theme.colors.text : theme.colors.background,
-          borderColor: theme.colors.info,
-          shadowColor: theme.colors.info
         };
       default:
         return {
@@ -200,10 +172,10 @@ export const Button = ({
   const sizeStyles = getSizeStyles(size);
 
   // Determine border width - make outline variants thicker
-  const borderWidth = variant === "outline" ? 2 : 1;
+  const borderWidth = variant === 'outline' ? 2 : 1;
 
   // Determine if this variant should have shadows
-  const shouldHaveShadow = !["outline", "ghost", "soft", "text"].includes(variant);
+  const shouldHaveShadow = !['outline', 'ghost', 'soft', 'text'].includes(variant);
 
   // Animated styles for 3D effect
   const animatedButtonStyle = useAnimatedStyle(() => {
@@ -218,7 +190,7 @@ export const Button = ({
     };
 
     // Add iOS-specific shadow properties only for variants that should have shadows
-    if (Platform.OS === "ios" && shouldHaveShadow) {
+    if (Platform.OS === 'ios' && shouldHaveShadow) {
       return {
         ...baseStyle,
         shadowOffset: {
@@ -240,10 +212,10 @@ export const Button = ({
     borderRadius: sizeStyles.borderRadius,
     minHeight: sizeStyles.minHeight,
     opacity: disabled && !loading ? 0.6 : 1,
-    width: fullWidth ? "100%" : undefined,
+    width: fullWidth ? '100%' : undefined,
     marginBottom: shouldHaveShadow ? sizeStyles.shadowOffset : 0,
     // Reserve space for shadow only when needed
-    ...(Platform.OS === "ios" && shouldHaveShadow && {
+    ...(Platform.OS === 'ios' && shouldHaveShadow && {
       shadowColor: colors.shadowColor
     })
   }, style];
@@ -277,7 +249,7 @@ export const Button = ({
       }), !loading && startIcon && /*#__PURE__*/_jsx(View, {
         style: styles.startIcon,
         children: cloneIconWithColor(startIcon)
-      }), typeof children === "string" ? /*#__PURE__*/_jsx(Text, {
+      }), typeof children === 'string' ? /*#__PURE__*/_jsx(Text, {
         style: textStyle,
         children: children
       }) : /*#__PURE__*/React.isValidElement(children) ? cloneIconWithColor(children) : children, !loading && endIcon && /*#__PURE__*/_jsx(View, {
@@ -289,18 +261,18 @@ export const Button = ({
 };
 const styles = StyleSheet.create({
   button: {
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row"
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row'
   },
   content: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   text: {
-    fontWeight: "600",
-    textAlign: "center"
+    fontWeight: '600',
+    textAlign: 'center'
   },
   loadingIndicator: {
     marginRight: 8
