@@ -4,8 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { Pressable, SafeAreaView, View } from 'react-native';
 import Animated, { LinearTransition, SlideInDown, SlideInUp, SlideOutDown, SlideOutUp } from 'react-native-reanimated';
-import { useTheme } from "../../theme/index.js";
-import { Typography } from "../Typography/index.js";
+import { useTheme } from '../../theme';
+import { Typography } from '../Typography';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 const ToastContext = /*#__PURE__*/createContext(null);
 export const useToast = () => {
@@ -349,6 +349,6 @@ export const toast = {
 };
 
 // Convenience exports
-export * from "./types.js";
+export * from './types';
 export { Toast };
 //# sourceMappingURL=index.js.map

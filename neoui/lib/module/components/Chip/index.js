@@ -1,8 +1,8 @@
 "use strict";
 
-import { Typography } from "../Typography/index.js";
-import { useTheme } from "../../theme/index.js";
-import { spacing } from "../../theme/spacing.js";
+import { Typography } from "../Typography";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
@@ -196,5 +196,5 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
-export * from "./types.js";
+export * from "./types";
 //# sourceMappingURL=index.js.map

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
-import { useTheme } from "../theme/index.js";
+import { useTheme } from '../theme';
 import { jsx as _jsx } from "react/jsx-runtime";
 export function ThemedText({
   style,

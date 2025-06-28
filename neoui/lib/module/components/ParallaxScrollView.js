@@ -3,7 +3,7 @@
 import React from 'react';
 import { StyleSheet, useColorScheme } from 'react-native';
 import Animated, { interpolate, useAnimatedRef, useAnimatedStyle, useScrollViewOffset } from 'react-native-reanimated';
-import { ThemedView } from "./ThemedView.js";
+import { ThemedView } from './ThemedView';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 const HEADER_HEIGHT = 250;
 export default function ParallaxScrollView({

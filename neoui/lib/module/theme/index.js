@@ -1,6 +1,6 @@
 "use strict";
 
-export * from "./colors.js";
-export * from "./ThemeProvider.js";
-export * from "./types.js";
+export * from "./colors";
+export * from "./ThemeProvider";
+export * from "./types";
 //# sourceMappingURL=index.js.map

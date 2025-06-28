@@ -1,9 +1,9 @@
 "use strict";
 
-import { Box } from "../Box/index.js";
-import { Typography } from "../Typography/index.js";
-import { useTheme } from "../../theme/index.js";
-import { spacing } from "../../theme/spacing.js";
+import { Box } from "../Box";
+import { Typography } from "../Typography";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import React, { useRef, useState } from "react";
 import { ActivityIndicator, StyleSheet, TextInput, View } from "react-native";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
@@ -233,5 +233,5 @@ const styles = StyleSheet.create({
     paddingLeft: spacing.xs
   }
 });
-export * from "./types.js";
+export * from "./types";
 //# sourceMappingURL=index.js.map

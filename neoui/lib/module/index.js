@@ -5,29 +5,29 @@
 // ============================================================================
 
 // Theme exports
-export * from "./theme/index.js";
+export * from './theme';
 
 // Navigation exports
-export * from "./navigation/index.js";
+export * from './navigation';
 
 // Core utility components
-export { default as ParallaxScrollView } from "./components/ParallaxScrollView.js";
-export * from "./components/ThemedText.js";
-export * from "./components/ThemedView.js";
+export { default as ParallaxScrollView } from './components/ParallaxScrollView';
+export * from './components/ThemedText';
+export * from './components/ThemedView';
 
 // All UI Components
-export * from "./components/Alert/index.js";
-export * from "./components/Avatar/index.js";
-export * from "./components/Badge/index.js";
-export * from "./components/Box/index.js";
-export * from "./components/Button/index.js";
-export * from "./components/Chip/index.js";
-export * from "./components/Rating/index.js";
-export * from "./components/Skeleton/index.js";
-export * from "./components/TextField/index.js";
-export * from "./components/Ticker/index.js";
-export * from "./components/Toast/index.js";
-export * from "./components/Typography/index.js";
+export * from './components/Alert';
+export * from './components/Avatar';
+export * from './components/Badge';
+export * from './components/Box';
+export * from './components/Button';
+export * from './components/Chip';
+export * from './components/Rating';
+export * from './components/Skeleton';
+export * from './components/TextField';
+export * from './components/Ticker';
+export * from './components/Toast';
+export * from './components/Typography';
 
 // ============================================================================
 // All components are now available from main package:

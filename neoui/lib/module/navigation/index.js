@@ -1,4 +1,4 @@
 "use strict";
 
-export * from "./Screen/index.js";
+export * from './Screen';
 //# sourceMappingURL=index.js.map

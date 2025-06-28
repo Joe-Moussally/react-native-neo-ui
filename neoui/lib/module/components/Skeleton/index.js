@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Animated, Dimensions, StyleSheet, View } from 'react-native';
-import { useTheme } from "../../theme/index.js";
+import { useTheme } from '../../theme';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 const {
   width: screenWidth

@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Platform, SafeAreaView, StyleSheet, View } from 'react-native';
-import { useTheme } from "../../theme/index.js";
+import { useTheme } from '../../theme';
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 export const Screen = ({
   children,
@@ -72,5 +72,5 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
-export * from "./types.js";
+export * from './types';
 //# sourceMappingURL=index.js.map

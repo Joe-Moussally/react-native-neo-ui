@@ -1,10 +1,10 @@
 "use strict";
 
-import { useTheme } from "../../theme/index.js";
-import { spacing as themeSpacing } from "../../theme/spacing.js";
+import { useTheme } from "../../theme";
+import { spacing as themeSpacing } from "../../theme/spacing";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Avatar } from "./index.js";
+import { Avatar } from "./index";
 import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
 export const AvatarGroup = ({
   children,

@@ -1,7 +1,7 @@
 "use strict";
 
-import { useTheme } from "../../theme/index.js";
-import { spacing } from "../../theme/spacing.js";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
@@ -126,5 +126,5 @@ const styles = StyleSheet.create({
     opacity: 0
   }
 });
-export * from "./types.js";
+export * from "./types";
 //# sourceMappingURL=index.js.map

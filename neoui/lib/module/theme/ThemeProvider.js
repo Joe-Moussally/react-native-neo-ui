@@ -2,8 +2,8 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
-import { darkColors, lightColors } from "./colors.js";
-import { spacing } from "./spacing.js";
+import { darkColors, lightColors } from './colors';
+import { spacing } from './spacing';
 import { jsx as _jsx } from "react/jsx-runtime";
 const ThemeContext = /*#__PURE__*/createContext(undefined);
 export const ThemeProvider = ({

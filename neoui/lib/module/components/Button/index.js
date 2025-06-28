@@ -4,8 +4,8 @@ import * as Haptics from 'expo-haptics';
 import React from 'react';
 import { ActivityIndicator, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import { useTheme } from "../../theme/index.js";
-import { spacing } from "../../theme/spacing.js";
+import { useTheme } from '../../theme';
+import { spacing } from '../../theme/spacing';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 export const Button = ({
@@ -284,5 +284,5 @@ const styles = StyleSheet.create({
     marginLeft: 8
   }
 });
-export * from "./types.js";
+export * from './types';
 //# sourceMappingURL=index.js.map

@@ -3,7 +3,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect, useState } from 'react';
 import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useTheme } from "../../theme/index.js";
+import { useTheme } from '../../theme';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 const getSizeFromVariant = size => {
   switch (size) {

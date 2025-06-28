@@ -10,7 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "skipLibCheck": true,
-    "jsx": "react-jsx",
+    "jsx": "react-native",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
@@ -18,7 +18,8 @@
     "paths": {
       "@joe111/neo-ui": ["./src/index"]
     },
-    "types": ["react-native", "jest"]
+    "types": ["react-native", "jest"],
+    "noImplicitAny": false
   },
   "include": ["src/**/*", "scripts/**/*", "**/__tests__/**/*"],
   "exclude": ["node_modules", "lib", "example"]

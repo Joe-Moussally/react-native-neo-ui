@@ -7,9 +7,11 @@
     "rootDir": "./src",
     "noEmit": false,
     "emitDeclarationOnly": true,
-    "jsx": "react-jsx",
+    "jsx": "react-native",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false
   },
   "include": ["src/**/*"],
   "exclude": [

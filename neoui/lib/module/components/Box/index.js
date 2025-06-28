@@ -1,7 +1,7 @@
 "use strict";
 
-import { useTheme } from "../../theme/index.js";
-import { spacing } from "../../theme/spacing.js";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { jsx as _jsx } from "react/jsx-runtime";
@@ -73,5 +73,5 @@ const styles = StyleSheet.create({
     borderRadius: spacing.rounded
   }
 });
-export * from "./types.js";
+export * from "./types";
 //# sourceMappingURL=index.js.map

@@ -3,9 +3,9 @@
 import Feather from '@expo/vector-icons/Feather';
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
-import { useTheme } from "../../theme/index.js";
-import { spacing } from "../../theme/spacing.js";
-import { Box } from "../Box/index.js";
+import { useTheme } from '../../theme';
+import { spacing } from '../../theme/spacing';
+import { Box } from '../Box';
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 export const Alert = ({
   severity,
@@ -130,5 +130,5 @@ const styles = StyleSheet.create({
     lineHeight: 20
   }
 });
-export * from "./types.js";
+export * from './types';
 //# sourceMappingURL=index.js.map

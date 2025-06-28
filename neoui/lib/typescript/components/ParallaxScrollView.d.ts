@@ -1,4 +1,4 @@
-import { type PropsWithChildren, type ReactElement } from 'react';
+import React, { type PropsWithChildren, type ReactElement } from 'react';
 type Props = PropsWithChildren<{
     headerImage: ReactElement;
     headerBackgroundColor: {
@@ -6,6 +6,6 @@ type Props = PropsWithChildren<{
         light: string;
     };
 }>;
-export default function ParallaxScrollView({ children, headerImage, headerBackgroundColor, }: Props): import("react/jsx-runtime").JSX.Element;
+export default function ParallaxScrollView({ children, headerImage, headerBackgroundColor, }: Props): React.JSX.Element;
 export {};
 //# sourceMappingURL=ParallaxScrollView.d.ts.map

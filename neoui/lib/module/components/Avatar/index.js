@@ -1,7 +1,7 @@
 "use strict";
 
-import { useTheme } from "../../theme/index.js";
-import { spacing } from "../../theme/spacing.js";
+import { useTheme } from "../../theme";
+import { spacing } from "../../theme/spacing";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
@@ -160,6 +160,6 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
-export { AvatarGroup } from "./AvatarGroup.js";
-export * from "./types.js";
+export { AvatarGroup } from "./AvatarGroup";
+export * from "./types";
 //# sourceMappingURL=index.js.map
